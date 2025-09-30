@@ -3,6 +3,7 @@ using namespace std;
 
 int main() {
     int n = 10;
+    int m = 20;
 
     // Facciamo un'operazione: ad esempio calcoliamo il quadrato
     int risultato = n * n;
