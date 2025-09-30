@@ -1,1 +1,14 @@
-int n = 10;
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n = 10;
+
+    // Facciamo un'operazione: ad esempio calcoliamo il quadrato
+    int risultato = n * n;
+
+    // Stampa a schermo
+    cout << "Il quadrato di " << n << " è: " << risultato << endl;
+
+    return 0;
+}
