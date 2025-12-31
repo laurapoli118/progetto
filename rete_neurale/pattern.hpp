@@ -32,9 +32,9 @@ public:
 
     void addNoise(float noisePerc);
 
-    // Gestione e salvataggio pattern
-
-    void saveToFile(const std::string &filename) const;
+    // Gestione e salvataggio pattern   QUESTE SERVONO SOLTANTO SE VOGLIAMO FARE 3 ESEGUIBILI 
+                                     // SEPARATI O SE VOGLIAMO SALVARE UN FILE CON TUTTI GLI INGRESSI DEI VETTORI
+   // void saveToFile(const std::string &filename) const;
     
-    void loadFromFile(const std::string &filename);
+    //void loadFromFile(const std::string &filename);
 };

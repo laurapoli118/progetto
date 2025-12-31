@@ -1,11 +1,13 @@
 #include "pattern.hpp"
-#include <iostream> // Serve per stampare gli errori (cerr)
-#include <cstdlib>  // Serve per la funzione exit(1)
+#include <iostream> 
+#include <cstdlib>  
 #include <vector>
 #include <cmath>
 #include <fstream>
 #include <random>
 #include <algorithm>
+#include <fstream>  
+#include <string>   
 
 // RICORDARSI DI METTERE TUTTE LE ASSERT E EXCEPTION PER GESTIRE RUNTIME
 
@@ -53,17 +55,22 @@ const std::vector<int> &Pattern::getData() const
 
 // FUNZIONE NOISE
 
-void Pattern::addNoise(float noisePerc)   //QUA HO USATO UNA LAMBDA E UN ALGORITMO,
-{                                         //VOLENDO SI PUO' FARE ANCHE CON UN CICLO FOR 
+void Pattern::addNoise(float noisePerc) // QUA HO USATO UNA LAMBDA E UN ALGORITMO,
+{                                       // VOLENDO SI PUO' FARE ANCHE CON UN CICLO FOR
 
     std::random_device rd;
     std::mt19937 gen(rd());
     std::bernoulli_distribution coin_flip(noisePerc);
 
     // std::transform prende: Inizio, Fine, Dove Scrivere, La Funzione da applicare
-    std::transform(neurons.begin(), neurons.end(), neurons.begin(), [&](int currentNeuron)
+    std::transform(neurons.begin(), neurons.end(), neurons.begin(), [=](int currentNeuron)
                    {
-            if (coin_flip(gen))
+
+
+        float random = static_cast<float>(std::rand()) / static_cast<float>(RAND_MAX);
+
+        if (random < noisePerc)
+        
             {
                 return -currentNeuron;
             }
@@ -72,3 +79,4 @@ void Pattern::addNoise(float noisePerc)   //QUA HO USATO UNA LAMBDA E UN ALGORIT
                 return currentNeuron;
             } });
 }
+
