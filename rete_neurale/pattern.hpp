@@ -19,9 +19,13 @@ public:
     // Funzioni per ottenere le grandezze del pattern
 
     int getNeuron(unsigned index) const;
+    
     unsigned getHeight() const;
+
     unsigned getBase() const;
+
     unsigned getNumNeurons() const;
+
     const std::vector<int> &getData() const;
 
     // Funzione per rumore
@@ -31,5 +35,6 @@ public:
     // Gestione e salvataggio pattern
 
     void saveToFile(const std::string &filename) const;
+    
     void loadFromFile(const std::string &filename);
 };

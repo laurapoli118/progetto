@@ -4,10 +4,10 @@
 #include <vector>
 #include <cmath>
 #include <fstream>
+#include <random>
+#include <algorithm>
 
-
-//RICORDARSI DI METTERE TUTTE LE ASSERT E EXCEPTION PER GESTIRE RUNTIME
-
+// RICORDARSI DI METTERE TUTTE LE ASSERT E EXCEPTION PER GESTIRE RUNTIME
 
 Pattern::Pattern(int size)
 {
@@ -18,11 +18,15 @@ Pattern::Pattern(int size)
     neurons.resize(numNeurons);
 }
 
+// FUNZIONI PER SETTARE
+
 void Pattern::setNeuron(unsigned index, int value)
 {
 
     neurons[index] = value;
 }
+
+// FUNZIONI GETTERS
 
 unsigned Pattern::getBase() const
 {
@@ -42,4 +46,29 @@ unsigned Pattern::getNumNeurons() const
     return numNeurons;
 }
 
+const std::vector<int> &Pattern::getData() const
+{
+    return neurons;
+}
 
+// FUNZIONE NOISE
+
+void Pattern::addNoise(float noisePerc)
+{
+
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::bernoulli_distribution coin_flip(noisePerc);
+
+    // std::transform prende: Inizio, Fine, Dove Scrivere, La Funzione da applicare
+    std::transform(neurons.begin(), neurons.end(), neurons.begin(), [&](int currentNeuron)
+                   {
+            if (coin_flip(gen))
+            {
+                return -currentNeuron;
+            }
+            else
+            {
+                return currentNeuron;
+            } });
+}
