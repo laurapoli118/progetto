@@ -53,8 +53,8 @@ const std::vector<int> &Pattern::getData() const
 
 // FUNZIONE NOISE
 
-void Pattern::addNoise(float noisePerc)
-{
+void Pattern::addNoise(float noisePerc)   //QUA HO USATO UNA LAMBDA E UN ALGORITMO,
+{                                         //VOLENDO SI PUO' FARE ANCHE CON UN CICLO FOR 
 
     std::random_device rd;
     std::mt19937 gen(rd());
