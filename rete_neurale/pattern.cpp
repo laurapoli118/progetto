@@ -57,10 +57,7 @@ const std::vector<int> &Pattern::getData() const
 
 void Pattern::addNoise(float noisePerc) // QUA HO USATO UNA LAMBDA E UN ALGORITMO,
 {                                       // VOLENDO SI PUO' FARE ANCHE CON UN CICLO FOR
-
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::bernoulli_distribution coin_flip(noisePerc);
+    
 
     // std::transform prende: Inizio, Fine, Dove Scrivere, La Funzione da applicare
     std::transform(neurons.begin(), neurons.end(), neurons.begin(), [=](int currentNeuron)
