@@ -1,13 +1,12 @@
-#include <vector>   
-#include <string> 
-
+#include <vector>
+#include <string>
 
 class Pattern
 {
 private:
-    unsigned height;
     unsigned base;
-    unsigned numNeurons;
+    unsigned height;     // qua bisogna decidere se usare solo un lato o base e latezza
+    unsigned numNeurons; // comunqur ci conviene lavorare con immagini quadrate così è più semplice
     std::vector<int> neurons;
 
 public:
@@ -15,11 +14,11 @@ public:
 
     // Funzioni per settare valori
 
-    void setSpin(unsigned index, int value);
+    void setNeuron(unsigned index, int value);
 
     // Funzioni per ottenere le grandezze del pattern
 
-    int getSpin(unsigned index) const;
+    int getNeuron(unsigned index) const;
     unsigned getHeight() const;
     unsigned getBase() const;
     unsigned getNumNeurons() const;
