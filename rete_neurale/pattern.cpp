@@ -1,13 +1,13 @@
 #include "pattern.hpp"
-#include <iostream> 
-#include <cstdlib>  
+#include <iostream>
+#include <cstdlib>
 #include <vector>
 #include <cmath>
 #include <fstream>
 #include <random>
 #include <algorithm>
-#include <fstream>  
-#include <string>   
+#include <fstream>
+#include <string>
 
 // RICORDARSI DI METTERE TUTTE LE ASSERT E EXCEPTION PER GESTIRE RUNTIME
 
@@ -29,6 +29,13 @@ void Pattern::setNeuron(unsigned index, int value)
 }
 
 // FUNZIONI GETTERS
+
+int Pattern::getNeuron(unsigned index) const
+{
+
+   return neurons[index];
+
+}
 
 unsigned Pattern::getBase() const
 {
@@ -57,7 +64,6 @@ const std::vector<int> &Pattern::getData() const
 
 void Pattern::addNoise(float noisePerc) // QUA HO USATO UNA LAMBDA E UN ALGORITMO,
 {                                       // VOLENDO SI PUO' FARE ANCHE CON UN CICLO FOR
-    
 
     // std::transform prende: Inizio, Fine, Dove Scrivere, La Funzione da applicare
     std::transform(neurons.begin(), neurons.end(), neurons.begin(), [=](int currentNeuron)
@@ -76,4 +82,3 @@ void Pattern::addNoise(float noisePerc) // QUA HO USATO UNA LAMBDA E UN ALGORITM
                 return currentNeuron;
             } });
 }
-
