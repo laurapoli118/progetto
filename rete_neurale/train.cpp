@@ -8,7 +8,7 @@
 #include <fstream>
 #include <string>
 #include <train.hpp>
-#include "pattern.hpp"
+#include <pattern.hpp>
 
 Train::Train(unsigned size) // la inizializzo a 0 e poi sommo i pesi
 {
