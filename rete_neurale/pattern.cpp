@@ -16,7 +16,7 @@ Pattern::Pattern(int size)
 
     lato = size;
     numNeurons = size * size;
-    neurons.resize(numNeurons);
+    neurons.resize(numNeurons);  //questo è da capire se si può toglire
 }
 
 // FUNZIONI PER SETTARE

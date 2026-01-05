@@ -9,10 +9,10 @@
 #include <string>
 #include <train.hpp>
 
-Train::Train(unsigned lato)
+Train::Train(unsigned size)
 {
 
-    numNeurons = lato * lato;
+    numNeurons = size * size;
 
     for (unsigned i = 0; i < numNeurons; ++i)
     {
@@ -24,3 +24,23 @@ Train::Train(unsigned lato)
         weights.push_back(row);
     }
 }
+
+
+
+float Train::getWeight(unsigned i, unsigned j) const{
+
+    return weights[i][j];
+}
+
+void Train::setWeight(unsigned i, unsigned j, float weight)
+{
+    weights[i][j] = weight;
+}
+
+void learnPattern(const Pattern& pattern){
+
+
+
+}
+
+
