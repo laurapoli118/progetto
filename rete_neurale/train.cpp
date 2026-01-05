@@ -10,14 +10,14 @@
 #include <train.hpp>
 #include "pattern.hpp"
 
-Train::Train(unsigned size)
+Train::Train(unsigned size) // la inizializzo a 0 e poi sommo i pesi
 {
 
     numNeurons = size * size;
 
     for (unsigned i = 0; i < numNeurons; ++i)
     {
-        std::vector<float> row;
+        std::vector<float> row;   //inizializza un vettore per ogni riga
         for (unsigned j = 0; j < numNeurons; ++j)
         {
             row.push_back(0.0f);
@@ -26,9 +26,8 @@ Train::Train(unsigned size)
     }
 }
 
-
-
-float Train::getWeight(unsigned i, unsigned j) const{
+float Train::getWeight(unsigned i, unsigned j) const
+{
 
     return weights[i][j];
 }
@@ -38,18 +37,22 @@ void Train::setWeight(unsigned i, unsigned j, float weight)
     weights[i][j] = weight;
 }
 
-void learnPattern(const Pattern& pattern){
+void Train::learnPattern(const Pattern &pattern)
+{
+    float normFactor = 1.0f / numNeurons;
 
-    for(unsigned i=0; i<numNeurons; ++i){
-        for(unsigned j=0; j<numNeurons; ++j){
-            
-        
+    for (unsigned i = 0; i < numNeurons; ++i)
+    {
+        int i_neuron = pattern.getNeuron(i);
+        for (unsigned j = 0; j < numNeurons; ++j)
+        {
+
+            if (i != j) // controllo per la diagonale nulla
+            {
+                float coeffWeight = i_neuron * pattern.getNeuron(j) * normFactor;
+
+                weights[i][j] += coeffWeight;
             }
         }
     }
-
-
-
 }
-
-
