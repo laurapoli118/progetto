@@ -14,8 +14,7 @@
 Pattern::Pattern(int size)
 {
 
-    height = size;
-    base = size;
+    lato = size;
     numNeurons = size * size;
     neurons.resize(numNeurons);
 }
@@ -37,16 +36,12 @@ int Pattern::getNeuron(unsigned index) const
 
 }
 
-unsigned Pattern::getBase() const
+
+
+unsigned Pattern::getLato() const
 {
 
-    return base;
-}
-
-unsigned Pattern::getHeight() const
-{
-
-    return height;
+    return lato;
 }
 
 unsigned Pattern::getNumNeurons() const

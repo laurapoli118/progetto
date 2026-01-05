@@ -4,8 +4,7 @@
 class Pattern
 {
 private:
-    unsigned base;
-    unsigned height;     // qua bisogna decidere se usare solo un lato o base e latezza
+    unsigned lato;       // qua bisogna decidere se usare solo un lato o base e latezza
     unsigned numNeurons; // comunqur ci conviene lavorare con immagini quadrate così è più semplice
     std::vector<int> neurons;
 
@@ -19,10 +18,8 @@ public:
     // Funzioni per ottenere le grandezze del pattern
 
     int getNeuron(unsigned index) const;
-    
-    unsigned getHeight() const;
 
-    unsigned getBase() const;
+    unsigned getLato() const;
 
     unsigned getNumNeurons() const;
 
@@ -32,9 +29,9 @@ public:
 
     void addNoise(float noisePerc);
 
-    // Gestione e salvataggio pattern   QUESTE SERVONO SOLTANTO SE VOGLIAMO FARE 3 ESEGUIBILI 
-                                     // SEPARATI O SE VOGLIAMO SALVARE UN FILE CON TUTTI GLI INGRESSI DEI VETTORI
-   // void saveToFile(const std::string &filename) const;
-    
-    //void loadFromFile(const std::string &filename);
+    // Gestione e salvataggio pattern   QUESTE SERVONO SOLTANTO SE VOGLIAMO FARE 3 ESEGUIBILI
+    // SEPARATI O SE VOGLIAMO SALVARE UN FILE CON TUTTI GLI INGRESSI DEI VETTORI
+    // void saveToFile(const std::string &filename) const;
+
+    // void loadFromFile(const std::string &filename);
 };
