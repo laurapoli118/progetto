@@ -5,20 +5,15 @@ class Train
 {
 
 private:
-
-std::vector<std::vector<float>> weights;  // da decidere come la vogliamo fare
-unsigned numNeurons; 
+    std::vector<std::vector<float>> weights; // da decidere come la vogliamo fare
+    unsigned numNeurons;
 
 public:
+    Train(unsigned size);
 
-Train(unsigned size);
+    float getWeight(unsigned i, unsigned j) const;
 
-float getWeight(unsigned i, unsigned j) const;
+    void setWeight(unsigned i, unsigned j, float weight);
 
-void setWeight(unsigned i, unsigned j, float weight);
-
-void learnPattern(const Pattern& pattern);
-
-
-
+    void learnPattern(const Pattern &pattern);
 };
