@@ -8,6 +8,7 @@
 #include <fstream>
 #include <string>
 #include <train.hpp>
+#include "pattern.hpp"
 
 Train::Train(unsigned size)
 {
@@ -38,6 +39,14 @@ void Train::setWeight(unsigned i, unsigned j, float weight)
 }
 
 void learnPattern(const Pattern& pattern){
+
+    for(unsigned i=0; i<numNeurons; ++i){
+        for(unsigned j=0; j<numNeurons; ++j){
+            
+        
+            }
+        }
+    }
 
 
 
