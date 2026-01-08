@@ -1,3 +1,6 @@
+#ifndef PATTERN_HPP
+#define PATTERN_HPP
+
 #include <vector>
 #include <string>
 
@@ -35,3 +38,5 @@ public:
 
     // void loadFromFile(const std::string &filename);
 };
+
+#endif
