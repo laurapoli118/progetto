@@ -7,5 +7,6 @@
 
 sf::Image ridimensionaImmagine(const sf::Image& originale);
 std::vector<int> caricaImmaginePerRete(const std::string& nomeFile);
+sf::Image vettoreAImmagine(const std::vector<int>& rete_input);
 
 #endif
