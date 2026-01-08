@@ -11,7 +11,7 @@ sf::Image ridimensionaImmagine(const sf::Image& originale) {
     } //controllo se va già bene
 
     // creo una tela (RenderTexture) delle dimensioni che vogliamo
-    sf::RenderTexture renderTexture;
+    sf::RenderTexture renderTexture(lato, lato);
 
     if (!renderTexture.create(lato, lato)) {
         std::cerr << "Errore nel ridimensionamento dell'immagine." << std::endl;
