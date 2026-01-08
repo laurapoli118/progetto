@@ -71,7 +71,7 @@ std::vector<int> caricaImmaginePerRete(const std::string& nomeFile) {
 }
 
 // trasforma il vettore in un'immagine visibile
-sf::Image vettoreAImmagine(const std::vector<int>& rete_input) {
+void vettoreAImmagine(const std::vector<int>& rete_input) {
     sf::Image immagineVisiva;
     immagineVisiva.create(lato, lato); // Crea una tela vuota nera
 
