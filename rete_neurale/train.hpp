@@ -1,3 +1,6 @@
+#ifndef TRAIN_HPP
+#define TRAIN_HPP
+
 #include <vector>
 #include "pattern.hpp"
 
@@ -17,3 +20,5 @@ public:
 
     void learnPattern(const Pattern &pattern);
 };
+
+#endif
