@@ -67,6 +67,8 @@ std::vector<int> caricaImmaginePerRete(const std::string& nomeFile) {
         }
     }
 
+    vettoreAImmagine(input_rete);    
+
     return input_rete;
 }
 

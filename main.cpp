@@ -1,19 +1,15 @@
-#include <iostream>
-using namespace std;
+#include "rete_neurale/acquisition.hpp"
+#include "rete_neurale/pattern.hpp"
+#include "rete_neurale/recall.hpp"
+#include "rete_neurale/train.hpp"
 
 int main() {
-    int n = 10;
-
-    int m = 20;
-    int d=6;
-
-    // Facciamo un'operazione: ad esempio calcoliamo il quadrato
-    int risultato = n * n;
-
-    // Stampa a schermo
-    cout << "Il quadrato di " << n << " è: " << risultato << endl;
+    for (int i=0; i<5; i++) {
+        std::cout << "Inserisci il nome di un file jpg: ";
+        std::string imgName;
+        std::cin >> imgName;
+        caricaImmaginePerRete(imgName);
+    }
 
     return 0;
 }
-
-//ho aggiunto questa modifica inutile per provare le pull request
