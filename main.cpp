@@ -4,13 +4,16 @@
 #include "rete_neurale/train.hpp"
 
 int main() {
-    for (int i=0; i<5; i++) {
+
+    char y{};
+    do {
         std::cout << "Inserisci il nome di un file jpg: ";
         std::string imgName;
         std::cin >> imgName;
         caricaImmaginePerRete(imgName);
-        std::cout << '\n';
-    }
+        std::cout << "\nVuoi caricare altre foto? (y/n)\n";
+        std::cin >> y;
+    } while (y == 'y');
 
     return 0;
 }
