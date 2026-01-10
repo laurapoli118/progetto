@@ -31,3 +31,6 @@
 1559	1713	1768053091840509620	Debug/ReteNeurale	92b23d858c9d2a22
 4	1317	1768053435506163883	CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/acquisition.cpp.o	a361ad6b5cc85306
 1317	1492	1768053435682050620	Debug/ReteNeurale	92b23d858c9d2a22
+11	1227	1768059286362610953	CMakeFiles/ReteNeurale.dir/Debug/main.cpp.o	7a5e1c879ce2ea7e
+11	1624	1768059286760489526	CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/acquisition.cpp.o	a361ad6b5cc85306
+1624	1959	1768059287092055003	Debug/ReteNeurale	92b23d858c9d2a22
