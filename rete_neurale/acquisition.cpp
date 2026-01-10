@@ -37,41 +37,6 @@ sf::Image ridimensionaImmagine(const sf::Image& originale) {
     return renderTexture.getTexture().copyToImage();
 }
 
-// Funzione Principale: Carica, Ridimensiona e Converte
-std::vector<int> caricaImmaginePerRete(const std::string& nomeFile) {
-    sf::Image immagineGrezza;
-    
-    // Caricamento
-    if (!immagineGrezza.loadFromFile(nomeFile)) {
-        std::cerr << "Errore: Impossibile caricare il file " << nomeFile << std::endl;
-        return {}; 
-    }
-
-    //ridimensiono
-    sf::Image immagine = ridimensionaImmagine(immagineGrezza);
-
-    unsigned int width = immagine.getSize().x;
-    unsigned int height = immagine.getSize().y;
-
-    std::vector<int> input_rete;
-    input_rete.reserve(width * height);
-
-    // conversione in -1 / +1
-    for (unsigned int y = 0; y < height; ++y) {
-        for (unsigned int x = 0; x < width; ++x) {
-            sf::Color colore = immagine.getPixel(x, y);
-            int luminosita = (static_cast<int>(colore.r) + static_cast<int>(colore.g) + static_cast<int>(colore.b)) / 3;
-
-            if (luminosita > 127) input_rete.push_back(1); 
-            else input_rete.push_back(-1);
-        }
-    }
-
-    vettoreAImmagine(input_rete);    
-
-    return input_rete;
-}
-
 // trasforma il vettore in un'immagine visibile
 void vettoreAImmagine(const std::vector<int>& rete_input) {
     sf::Image immagineVisiva;
@@ -111,40 +76,37 @@ void vettoreAImmagine(const std::vector<int>& rete_input) {
 
 }
 
-int main() {
-    // A. OTTIENI I DATI (Qui userai la tua funzione di caricamento file)
-    // Per ora uso dati finti per farti vedere che funziona
-    // std::vector<int> input_rete = creaDatiTest(); 
-
-    // B. PREPARAZIONE GRAFICA
-    // 1. Convertiamo i numeri in pixel visibili
-    // sf::Image img = vettoreAImmagine(input_rete);
-
-    // 2. Carichiamo nella scheda video (Texture)
-    //sf::Texture texture;
-    // texture.loadFromImage(img);
-
-    // 3. Creiamo lo sprite e lo ingrandiamo (sennò 50x50 è minuscolo)
-    // sf::Sprite sprite(texture);
-    // sprite.setScale(10.0f, 10.0f); // Ingrandisce 10 volte
-
-    // C. APERTURA FINESTRA (IL LOOP FONDAMENTALE)
-    // sf::RenderWindow window(sf::VideoMode(500, 500), "Rete Neurale - Visualizzatore");
-
-    // Finché la finestra è aperta...
-    /* while (window.isOpen()) {
-        sf::Event event;
-        // Controlla se hai cliccato la X per chiudere
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        // DISEGNA
-        window.clear();      // 1. Pulisci tutto (schermo nero)
-        window.draw(sprite); // 2. Disegna l'immagine
-        window.display();    // 3. Mostra il risultato
+// Funzione Principale: Carica, Ridimensiona e Converte
+std::vector<int> caricaImmaginePerRete(const std::string& nomeFile) {
+    sf::Image immagineGrezza;
+    
+    // Caricamento
+    if (!immagineGrezza.loadFromFile(nomeFile)) {
+        std::cerr << "Errore: Impossibile caricare il file " << nomeFile << std::endl;
+        return {}; 
     }
 
-    return 0; */
+    //ridimensiono
+    sf::Image immagine = ridimensionaImmagine(immagineGrezza);
+
+    unsigned int width = immagine.getSize().x;
+    unsigned int height = immagine.getSize().y;
+
+    std::vector<int> input_rete;
+    input_rete.reserve(width * height);
+
+    // conversione in -1 / +1
+    for (unsigned int y = 0; y < height; ++y) {
+        for (unsigned int x = 0; x < width; ++x) {
+            sf::Color colore = immagine.getPixel(x, y);
+            int luminosita = (static_cast<int>(colore.r) + static_cast<int>(colore.g) + static_cast<int>(colore.b)) / 3;
+
+            if (luminosita > 127) input_rete.push_back(1); 
+            else input_rete.push_back(-1);
+        }
+    }
+
+    vettoreAImmagine(input_rete);    
+
+    return input_rete;
 }
