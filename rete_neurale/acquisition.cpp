@@ -78,7 +78,7 @@ void vettoreAImmagine(const std::vector<int>& rete_input) {
 // Funzione Principale: Carica, Ridimensiona e Converte
 std::vector<int> caricaImmaginePerRete(std::string& nomeFile) {
     sf::Image immagineGrezza;
-    nomeFile = "/home/amasini/masi/progetto/progetto/images/" + nomeFile;
+    nomeFile = "./images/" + nomeFile;
     if (!immagineGrezza.loadFromFile(nomeFile)) {
         std::cerr << "Errore: Impossibile caricare il file " << nomeFile << std::endl;
         return {}; 

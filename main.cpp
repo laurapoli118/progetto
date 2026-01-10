@@ -11,7 +11,7 @@ int main() {
         std::string imgName;
         std::cin >> imgName;
         caricaImmaginePerRete(imgName);
-        std::cout << "\nVuoi caricare altre foto? (y/n)\n";
+        std::cout << "Vuoi caricare altre foto? (y/n)\n";
         std::cin >> y;
     } while (y == 'y');
 
