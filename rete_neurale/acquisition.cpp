@@ -4,7 +4,6 @@
 
 const unsigned int lato = 50;
 
-// Funzione ausiliaria: Ridimensiona un'immagine SFML
 sf::Image ridimensionaImmagine(const sf::Image& originale) {
     if (originale.getSize().x == lato && originale.getSize().y == lato) {
         return originale;
@@ -42,8 +41,8 @@ void vettoreAImmagine(const std::vector<int>& rete_input) {
     sf::Image immagineVisiva;
     immagineVisiva.create(lato, lato); // Crea una tela vuota nera
 
-    for (unsigned int y = 0; y < lato; ++y) {
-        for (unsigned int x = 0; x < lato; ++x) {
+    for (unsigned int y = 0; y < lato; y++) {
+        for (unsigned int x = 0; x < lato; x++) {
             int indice = y * lato + x;
             int valore = rete_input[indice];
 
@@ -77,10 +76,9 @@ void vettoreAImmagine(const std::vector<int>& rete_input) {
 }
 
 // Funzione Principale: Carica, Ridimensiona e Converte
-std::vector<int> caricaImmaginePerRete(const std::string& nomeFile) {
+std::vector<int> caricaImmaginePerRete(std::string& nomeFile) {
     sf::Image immagineGrezza;
-    
-    // Caricamento
+    nomeFile = "/home/amasini/masi/progetto/progetto/images/" + nomeFile;
     if (!immagineGrezza.loadFromFile(nomeFile)) {
         std::cerr << "Errore: Impossibile caricare il file " << nomeFile << std::endl;
         return {}; 
@@ -96,8 +94,8 @@ std::vector<int> caricaImmaginePerRete(const std::string& nomeFile) {
     input_rete.reserve(width * height);
 
     // conversione in -1 / +1
-    for (unsigned int y = 0; y < height; ++y) {
-        for (unsigned int x = 0; x < width; ++x) {
+    for (unsigned int y = 0; y < height; y++) {
+        for (unsigned int x = 0; x < width; x++) {
             sf::Color colore = immagine.getPixel(x, y);
             int luminosita = (static_cast<int>(colore.r) + static_cast<int>(colore.g) + static_cast<int>(colore.b)) / 3;
 
@@ -106,7 +104,7 @@ std::vector<int> caricaImmaginePerRete(const std::string& nomeFile) {
         }
     }
 
-    vettoreAImmagine(input_rete);    
+    vettoreAImmagine(input_rete);
 
     return input_rete;
 }

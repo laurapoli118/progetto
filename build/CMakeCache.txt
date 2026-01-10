@@ -149,7 +149,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=patter
+CMAKE_PROJECT_NAME:STATIC=ReteNeurale
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=0.1.0
@@ -258,6 +258,18 @@ MEMORYCHECK_COMMAND:FILEPATH=MEMORYCHECK_COMMAND-NOTFOUND
 
 //File that contains suppressions for the memory checker
 MEMORYCHECK_SUPPRESSIONS_FILE:FILEPATH=
+
+//Value Computed by CMake
+ReteNeurale_BINARY_DIR:STATIC=/home/amasini/masi/progetto/progetto/build
+
+//Value Computed by CMake
+ReteNeurale_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+ReteNeurale_SOURCE_DIR:STATIC=/home/amasini/masi/progetto/progetto
+
+//The directory containing a CMake configuration file for SFML.
+SFML_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/SFML
 
 //Name of the computer/site where compile is being run
 SITE:STRING=DESKTOP-E51EDUS
