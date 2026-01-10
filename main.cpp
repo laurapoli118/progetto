@@ -9,6 +9,7 @@ int main() {
         std::string imgName;
         std::cin >> imgName;
         caricaImmaginePerRete(imgName);
+        std::cout << '\n';
     }
 
     return 0;
