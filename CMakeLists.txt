@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.28)
-project(patter VERSION 0.1.0) #HO SOSTITUITO REGRESSION CON PATTERN NON SO SE BASTA
+project(ReteNeurale)
 
 # abilita il supporto per i test, tra cui l'opzione BUILD_TESTING usata sotto
 include(CTest)
@@ -10,6 +10,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+
+find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED) #cerca la libreria sfml se no è finita
 
 # abilita warning
 string(APPEND CMAKE_CXX_FLAGS " -fno-omit-frame-pointer -Wall -Wextra")
@@ -24,16 +26,17 @@ endif()
 string(APPEND CMAKE_CXX_FLAGS_DEBUG " -fsanitize=address,undefined")
 string(APPEND CMAKE_EXE_LINKER_FLAGS_DEBUG " -fsanitize=address,undefined")
 
-add_executable(pattern main.cpp pattern.cpp)
+add_executable(ReteNeurale pattern.cpp main.cpp acquisition.cpp recall.cpp train.cpp)
+
+target_link_libraries(ReteNeurale sfml-graphics sfml-window sfml-system)
 
 # se il testing e' abilitato...
 #   per disabilitare il testing, passare -DBUILD_TESTING=OFF a cmake durante la fase di configurazione
 if (BUILD_TESTING)
 
   # aggiungi l'eseguibile sample.t
-  add_executable(pattern.t pattern.test.cpp pattern.cpp)
+  add_executable (ReteNeuraleTest.t pattern_test.cpp recall_test.cpp train_test.cpp acquisition_test.cpp)
   # aggiungi l'eseguibile sample.t alla lista dei test
-  add_test(NAME pattern.t COMMAND pattern.t)
+  add_test(NAME ReteNeuraleTest.t COMMAND ReteNeuraleTest.t)
 
 endif()
-
