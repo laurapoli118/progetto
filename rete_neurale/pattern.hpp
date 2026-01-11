@@ -25,7 +25,7 @@ public:
 
     int getNeuron(unsigned index) const;
 
-    unsigned getLato() const;
+    unsigned getSize() const;
 
     unsigned getNumNeurons() const;
 
