@@ -1,4 +1,4 @@
-# Install script for directory: /home/amasini/masi/progetto/progetto
+# Install script for directory: /home/amasini/masi/progetto
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/amasini/masi/progetto/progetto/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/amasini/masi/progetto/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

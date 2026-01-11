@@ -71,7 +71,7 @@ build ReteNeuraleTest.t: phony Debug/ReteNeuraleTest.t
 
 
 #############################################
-# Folder: /home/amasini/masi/progetto/progetto/build
+# Folder: /home/amasini/masi/progetto/build
 
 build all: phony all$:Debug
 

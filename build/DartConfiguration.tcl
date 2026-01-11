@@ -4,8 +4,8 @@
 
 
 # Configuration directories and files
-SourceDirectory: /home/amasini/masi/progetto/progetto
-BuildDirectory: /home/amasini/masi/progetto/progetto/build
+SourceDirectory: /home/amasini/masi/progetto
+BuildDirectory: /home/amasini/masi/progetto/build
 
 # Where to place the cost data store
 CostDataFile: 
@@ -27,7 +27,7 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/home/amasini/masi/progetto/progetto"
+ConfigureCommand: "/usr/bin/cmake" "/home/amasini/masi/progetto"
 MakeCommand: /usr/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 

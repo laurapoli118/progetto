@@ -211,40 +211,41 @@ build ContinuousSubmit$:Debug: phony CMakeFiles/ContinuousSubmit-Debug
 
 build cmake_object_order_depends_target_ReteNeurale_DEBUG: phony || CMakeFiles/ReteNeurale.dir
 
-build CMakeFiles/ReteNeurale.dir/Debug/main.cpp.o: CXX_COMPILER__ReteNeurale_unscanned_Debug /home/amasini/masi/progetto/progetto/main.cpp || cmake_object_order_depends_target_ReteNeurale_DEBUG
+build CMakeFiles/ReteNeurale.dir/Debug/main.cpp.o: CXX_COMPILER__ReteNeurale_unscanned_Debug /home/amasini/masi/progetto/main.cpp || cmake_object_order_depends_target_ReteNeurale_DEBUG
   DEFINES = -DCMAKE_INTDIR=\"Debug\"
   DEP_FILE = CMakeFiles/ReteNeurale.dir/Debug/main.cpp.o.d
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeurale.dir/Debug
   OBJECT_FILE_DIR = CMakeFiles/ReteNeurale.dir/Debug
+  TARGET_COMPILE_PDB = CMakeFiles/ReteNeurale.dir/Debug/
+  TARGET_PDB = Debug/ReteNeurale.pdb
 
-build CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/pattern.cpp.o: CXX_COMPILER__ReteNeurale_unscanned_Debug /home/amasini/masi/progetto/progetto/rete_neurale/pattern.cpp || cmake_object_order_depends_target_ReteNeurale_DEBUG
+build CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/pattern.cpp.o: CXX_COMPILER__ReteNeurale_unscanned_Debug /home/amasini/masi/progetto/rete_neurale/pattern.cpp || cmake_object_order_depends_target_ReteNeurale_DEBUG
   DEFINES = -DCMAKE_INTDIR=\"Debug\"
   DEP_FILE = CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/pattern.cpp.o.d
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeurale.dir/Debug
   OBJECT_FILE_DIR = CMakeFiles/ReteNeurale.dir/Debug/rete_neurale
+  TARGET_COMPILE_PDB = CMakeFiles/ReteNeurale.dir/Debug/
+  TARGET_PDB = Debug/ReteNeurale.pdb
 
-build CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/acquisition.cpp.o: CXX_COMPILER__ReteNeurale_unscanned_Debug /home/amasini/masi/progetto/progetto/rete_neurale/acquisition.cpp || cmake_object_order_depends_target_ReteNeurale_DEBUG
-  DEFINES = -DCMAKE_INTDIR=\"Debug\"
-  DEP_FILE = CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/acquisition.cpp.o.d
-  FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20
-  OBJECT_DIR = CMakeFiles/ReteNeurale.dir/Debug
-  OBJECT_FILE_DIR = CMakeFiles/ReteNeurale.dir/Debug/rete_neurale
-
-build CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/recall.cpp.o: CXX_COMPILER__ReteNeurale_unscanned_Debug /home/amasini/masi/progetto/progetto/rete_neurale/recall.cpp || cmake_object_order_depends_target_ReteNeurale_DEBUG
+build CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/recall.cpp.o: CXX_COMPILER__ReteNeurale_unscanned_Debug /home/amasini/masi/progetto/rete_neurale/recall.cpp || cmake_object_order_depends_target_ReteNeurale_DEBUG
   DEFINES = -DCMAKE_INTDIR=\"Debug\"
   DEP_FILE = CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/recall.cpp.o.d
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeurale.dir/Debug
   OBJECT_FILE_DIR = CMakeFiles/ReteNeurale.dir/Debug/rete_neurale
+  TARGET_COMPILE_PDB = CMakeFiles/ReteNeurale.dir/Debug/
+  TARGET_PDB = Debug/ReteNeurale.pdb
 
-build CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/train.cpp.o: CXX_COMPILER__ReteNeurale_unscanned_Debug /home/amasini/masi/progetto/progetto/rete_neurale/train.cpp || cmake_object_order_depends_target_ReteNeurale_DEBUG
+build CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/train.cpp.o: CXX_COMPILER__ReteNeurale_unscanned_Debug /home/amasini/masi/progetto/rete_neurale/train.cpp || cmake_object_order_depends_target_ReteNeurale_DEBUG
   DEFINES = -DCMAKE_INTDIR=\"Debug\"
   DEP_FILE = CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/train.cpp.o.d
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeurale.dir/Debug
   OBJECT_FILE_DIR = CMakeFiles/ReteNeurale.dir/Debug/rete_neurale
+  TARGET_COMPILE_PDB = CMakeFiles/ReteNeurale.dir/Debug/
+  TARGET_PDB = Debug/ReteNeurale.pdb
 
 
 # =============================================================================
@@ -254,15 +255,16 @@ build CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/train.cpp.o: CXX_COMPILER__R
 #############################################
 # Link the executable Debug/ReteNeurale
 
-build Debug/ReteNeurale: CXX_EXECUTABLE_LINKER__ReteNeurale_Debug CMakeFiles/ReteNeurale.dir/Debug/main.cpp.o CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/pattern.cpp.o CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/acquisition.cpp.o CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/recall.cpp.o CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/train.cpp.o | /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
+build Debug/ReteNeurale: CXX_EXECUTABLE_LINKER__ReteNeurale_Debug CMakeFiles/ReteNeurale.dir/Debug/main.cpp.o CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/pattern.cpp.o CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/recall.cpp.o CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/train.cpp.o | /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined
   LINK_FLAGS = -fsanitize=address,undefined
   LINK_LIBRARIES = /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
   OBJECT_DIR = CMakeFiles/ReteNeurale.dir/Debug
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = CMakeFiles/ReteNeurale.dir/Debug/
   TARGET_FILE = Debug/ReteNeurale
-  TARGET_PDB = ReteNeurale.dbg
+  TARGET_PDB = Debug/ReteNeurale.pdb
 
 # =============================================================================
 # Object build statements for EXECUTABLE target ReteNeuraleTest.t
@@ -273,40 +275,41 @@ build Debug/ReteNeurale: CXX_EXECUTABLE_LINKER__ReteNeurale_Debug CMakeFiles/Ret
 
 build cmake_object_order_depends_target_ReteNeuraleTest.t_DEBUG: phony || CMakeFiles/ReteNeuraleTest.t.dir
 
-build CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/test_runner.cpp.o: CXX_COMPILER__ReteNeuraleTest.2et_unscanned_Debug /home/amasini/masi/progetto/progetto/test/test_runner.cpp || cmake_object_order_depends_target_ReteNeuraleTest.t_DEBUG
+build CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/test_runner.cpp.o: CXX_COMPILER__ReteNeuraleTest.2et_unscanned_Debug /home/amasini/masi/progetto/test/test_runner.cpp || cmake_object_order_depends_target_ReteNeuraleTest.t_DEBUG
   DEFINES = -DCMAKE_INTDIR=\"Debug\"
   DEP_FILE = CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/test_runner.cpp.o.d
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Debug
   OBJECT_FILE_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Debug/test
+  TARGET_COMPILE_PDB = CMakeFiles/ReteNeuraleTest.t.dir/Debug/
+  TARGET_PDB = Debug/ReteNeuraleTest.t.pdb
 
-build CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/pattern_test.cpp.o: CXX_COMPILER__ReteNeuraleTest.2et_unscanned_Debug /home/amasini/masi/progetto/progetto/test/pattern_test.cpp || cmake_object_order_depends_target_ReteNeuraleTest.t_DEBUG
+build CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/pattern_test.cpp.o: CXX_COMPILER__ReteNeuraleTest.2et_unscanned_Debug /home/amasini/masi/progetto/test/pattern_test.cpp || cmake_object_order_depends_target_ReteNeuraleTest.t_DEBUG
   DEFINES = -DCMAKE_INTDIR=\"Debug\"
   DEP_FILE = CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/pattern_test.cpp.o.d
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Debug
   OBJECT_FILE_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Debug/test
+  TARGET_COMPILE_PDB = CMakeFiles/ReteNeuraleTest.t.dir/Debug/
+  TARGET_PDB = Debug/ReteNeuraleTest.t.pdb
 
-build CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/recall_test.cpp.o: CXX_COMPILER__ReteNeuraleTest.2et_unscanned_Debug /home/amasini/masi/progetto/progetto/test/recall_test.cpp || cmake_object_order_depends_target_ReteNeuraleTest.t_DEBUG
+build CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/recall_test.cpp.o: CXX_COMPILER__ReteNeuraleTest.2et_unscanned_Debug /home/amasini/masi/progetto/test/recall_test.cpp || cmake_object_order_depends_target_ReteNeuraleTest.t_DEBUG
   DEFINES = -DCMAKE_INTDIR=\"Debug\"
   DEP_FILE = CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/recall_test.cpp.o.d
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Debug
   OBJECT_FILE_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Debug/test
+  TARGET_COMPILE_PDB = CMakeFiles/ReteNeuraleTest.t.dir/Debug/
+  TARGET_PDB = Debug/ReteNeuraleTest.t.pdb
 
-build CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/train_test.cpp.o: CXX_COMPILER__ReteNeuraleTest.2et_unscanned_Debug /home/amasini/masi/progetto/progetto/test/train_test.cpp || cmake_object_order_depends_target_ReteNeuraleTest.t_DEBUG
+build CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/train_test.cpp.o: CXX_COMPILER__ReteNeuraleTest.2et_unscanned_Debug /home/amasini/masi/progetto/test/train_test.cpp || cmake_object_order_depends_target_ReteNeuraleTest.t_DEBUG
   DEFINES = -DCMAKE_INTDIR=\"Debug\"
   DEP_FILE = CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/train_test.cpp.o.d
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Debug
   OBJECT_FILE_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Debug/test
-
-build CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/acquisition_test.cpp.o: CXX_COMPILER__ReteNeuraleTest.2et_unscanned_Debug /home/amasini/masi/progetto/progetto/test/acquisition_test.cpp || cmake_object_order_depends_target_ReteNeuraleTest.t_DEBUG
-  DEFINES = -DCMAKE_INTDIR=\"Debug\"
-  DEP_FILE = CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/acquisition_test.cpp.o.d
-  FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20
-  OBJECT_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Debug
-  OBJECT_FILE_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Debug/test
+  TARGET_COMPILE_PDB = CMakeFiles/ReteNeuraleTest.t.dir/Debug/
+  TARGET_PDB = Debug/ReteNeuraleTest.t.pdb
 
 
 # =============================================================================
@@ -316,21 +319,22 @@ build CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/acquisition_test.cpp.o: CXX_CO
 #############################################
 # Link the executable Debug/ReteNeuraleTest.t
 
-build Debug/ReteNeuraleTest.t: CXX_EXECUTABLE_LINKER__ReteNeuraleTest.2et_Debug CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/test_runner.cpp.o CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/pattern_test.cpp.o CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/recall_test.cpp.o CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/train_test.cpp.o CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/acquisition_test.cpp.o
+build Debug/ReteNeuraleTest.t: CXX_EXECUTABLE_LINKER__ReteNeuraleTest.2et_Debug CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/test_runner.cpp.o CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/pattern_test.cpp.o CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/recall_test.cpp.o CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/train_test.cpp.o
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined
   LINK_FLAGS = -fsanitize=address,undefined
   OBJECT_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Debug
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = CMakeFiles/ReteNeuraleTest.t.dir/Debug/
   TARGET_FILE = Debug/ReteNeuraleTest.t
-  TARGET_PDB = ReteNeuraleTest.t.dbg
+  TARGET_PDB = Debug/ReteNeuraleTest.t.pdb
 
 
 #############################################
 # Custom command for CMakeFiles/Experimental-Debug
 
 build CMakeFiles/Experimental-Debug | ${cmake_ninja_workdir}CMakeFiles/Experimental-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D Experimental
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D Experimental
   pool = console
 
 
@@ -338,7 +342,7 @@ build CMakeFiles/Experimental-Debug | ${cmake_ninja_workdir}CMakeFiles/Experimen
 # Custom command for CMakeFiles/Nightly-Debug
 
 build CMakeFiles/Nightly-Debug | ${cmake_ninja_workdir}CMakeFiles/Nightly-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D Nightly
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D Nightly
   pool = console
 
 
@@ -346,7 +350,7 @@ build CMakeFiles/Nightly-Debug | ${cmake_ninja_workdir}CMakeFiles/Nightly-Debug:
 # Custom command for CMakeFiles/Continuous-Debug
 
 build CMakeFiles/Continuous-Debug | ${cmake_ninja_workdir}CMakeFiles/Continuous-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D Continuous
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D Continuous
   pool = console
 
 
@@ -354,7 +358,7 @@ build CMakeFiles/Continuous-Debug | ${cmake_ninja_workdir}CMakeFiles/Continuous-
 # Custom command for CMakeFiles/NightlyMemoryCheck-Debug
 
 build CMakeFiles/NightlyMemoryCheck-Debug | ${cmake_ninja_workdir}CMakeFiles/NightlyMemoryCheck-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D NightlyMemoryCheck
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D NightlyMemoryCheck
   pool = console
 
 
@@ -362,7 +366,7 @@ build CMakeFiles/NightlyMemoryCheck-Debug | ${cmake_ninja_workdir}CMakeFiles/Nig
 # Custom command for CMakeFiles/NightlyStart-Debug
 
 build CMakeFiles/NightlyStart-Debug | ${cmake_ninja_workdir}CMakeFiles/NightlyStart-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D NightlyStart
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D NightlyStart
   pool = console
 
 
@@ -370,7 +374,7 @@ build CMakeFiles/NightlyStart-Debug | ${cmake_ninja_workdir}CMakeFiles/NightlySt
 # Custom command for CMakeFiles/NightlyUpdate-Debug
 
 build CMakeFiles/NightlyUpdate-Debug | ${cmake_ninja_workdir}CMakeFiles/NightlyUpdate-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D NightlyUpdate
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D NightlyUpdate
   pool = console
 
 
@@ -378,7 +382,7 @@ build CMakeFiles/NightlyUpdate-Debug | ${cmake_ninja_workdir}CMakeFiles/NightlyU
 # Custom command for CMakeFiles/NightlyConfigure-Debug
 
 build CMakeFiles/NightlyConfigure-Debug | ${cmake_ninja_workdir}CMakeFiles/NightlyConfigure-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D NightlyConfigure
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D NightlyConfigure
   pool = console
 
 
@@ -386,7 +390,7 @@ build CMakeFiles/NightlyConfigure-Debug | ${cmake_ninja_workdir}CMakeFiles/Night
 # Custom command for CMakeFiles/NightlyBuild-Debug
 
 build CMakeFiles/NightlyBuild-Debug | ${cmake_ninja_workdir}CMakeFiles/NightlyBuild-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D NightlyBuild
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D NightlyBuild
   pool = console
 
 
@@ -394,7 +398,7 @@ build CMakeFiles/NightlyBuild-Debug | ${cmake_ninja_workdir}CMakeFiles/NightlyBu
 # Custom command for CMakeFiles/NightlyTest-Debug
 
 build CMakeFiles/NightlyTest-Debug | ${cmake_ninja_workdir}CMakeFiles/NightlyTest-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D NightlyTest
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D NightlyTest
   pool = console
 
 
@@ -402,7 +406,7 @@ build CMakeFiles/NightlyTest-Debug | ${cmake_ninja_workdir}CMakeFiles/NightlyTes
 # Custom command for CMakeFiles/NightlyCoverage-Debug
 
 build CMakeFiles/NightlyCoverage-Debug | ${cmake_ninja_workdir}CMakeFiles/NightlyCoverage-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D NightlyCoverage
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D NightlyCoverage
   pool = console
 
 
@@ -410,7 +414,7 @@ build CMakeFiles/NightlyCoverage-Debug | ${cmake_ninja_workdir}CMakeFiles/Nightl
 # Custom command for CMakeFiles/NightlyMemCheck-Debug
 
 build CMakeFiles/NightlyMemCheck-Debug | ${cmake_ninja_workdir}CMakeFiles/NightlyMemCheck-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D NightlyMemCheck
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D NightlyMemCheck
   pool = console
 
 
@@ -418,7 +422,7 @@ build CMakeFiles/NightlyMemCheck-Debug | ${cmake_ninja_workdir}CMakeFiles/Nightl
 # Custom command for CMakeFiles/NightlySubmit-Debug
 
 build CMakeFiles/NightlySubmit-Debug | ${cmake_ninja_workdir}CMakeFiles/NightlySubmit-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D NightlySubmit
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D NightlySubmit
   pool = console
 
 
@@ -426,7 +430,7 @@ build CMakeFiles/NightlySubmit-Debug | ${cmake_ninja_workdir}CMakeFiles/NightlyS
 # Custom command for CMakeFiles/ExperimentalStart-Debug
 
 build CMakeFiles/ExperimentalStart-Debug | ${cmake_ninja_workdir}CMakeFiles/ExperimentalStart-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D ExperimentalStart
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D ExperimentalStart
   pool = console
 
 
@@ -434,7 +438,7 @@ build CMakeFiles/ExperimentalStart-Debug | ${cmake_ninja_workdir}CMakeFiles/Expe
 # Custom command for CMakeFiles/ExperimentalUpdate-Debug
 
 build CMakeFiles/ExperimentalUpdate-Debug | ${cmake_ninja_workdir}CMakeFiles/ExperimentalUpdate-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D ExperimentalUpdate
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D ExperimentalUpdate
   pool = console
 
 
@@ -442,7 +446,7 @@ build CMakeFiles/ExperimentalUpdate-Debug | ${cmake_ninja_workdir}CMakeFiles/Exp
 # Custom command for CMakeFiles/ExperimentalConfigure-Debug
 
 build CMakeFiles/ExperimentalConfigure-Debug | ${cmake_ninja_workdir}CMakeFiles/ExperimentalConfigure-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D ExperimentalConfigure
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D ExperimentalConfigure
   pool = console
 
 
@@ -450,7 +454,7 @@ build CMakeFiles/ExperimentalConfigure-Debug | ${cmake_ninja_workdir}CMakeFiles/
 # Custom command for CMakeFiles/ExperimentalBuild-Debug
 
 build CMakeFiles/ExperimentalBuild-Debug | ${cmake_ninja_workdir}CMakeFiles/ExperimentalBuild-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D ExperimentalBuild
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D ExperimentalBuild
   pool = console
 
 
@@ -458,7 +462,7 @@ build CMakeFiles/ExperimentalBuild-Debug | ${cmake_ninja_workdir}CMakeFiles/Expe
 # Custom command for CMakeFiles/ExperimentalTest-Debug
 
 build CMakeFiles/ExperimentalTest-Debug | ${cmake_ninja_workdir}CMakeFiles/ExperimentalTest-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D ExperimentalTest
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D ExperimentalTest
   pool = console
 
 
@@ -466,7 +470,7 @@ build CMakeFiles/ExperimentalTest-Debug | ${cmake_ninja_workdir}CMakeFiles/Exper
 # Custom command for CMakeFiles/ExperimentalCoverage-Debug
 
 build CMakeFiles/ExperimentalCoverage-Debug | ${cmake_ninja_workdir}CMakeFiles/ExperimentalCoverage-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D ExperimentalCoverage
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D ExperimentalCoverage
   pool = console
 
 
@@ -474,7 +478,7 @@ build CMakeFiles/ExperimentalCoverage-Debug | ${cmake_ninja_workdir}CMakeFiles/E
 # Custom command for CMakeFiles/ExperimentalMemCheck-Debug
 
 build CMakeFiles/ExperimentalMemCheck-Debug | ${cmake_ninja_workdir}CMakeFiles/ExperimentalMemCheck-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D ExperimentalMemCheck
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D ExperimentalMemCheck
   pool = console
 
 
@@ -482,7 +486,7 @@ build CMakeFiles/ExperimentalMemCheck-Debug | ${cmake_ninja_workdir}CMakeFiles/E
 # Custom command for CMakeFiles/ExperimentalSubmit-Debug
 
 build CMakeFiles/ExperimentalSubmit-Debug | ${cmake_ninja_workdir}CMakeFiles/ExperimentalSubmit-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D ExperimentalSubmit
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D ExperimentalSubmit
   pool = console
 
 
@@ -490,7 +494,7 @@ build CMakeFiles/ExperimentalSubmit-Debug | ${cmake_ninja_workdir}CMakeFiles/Exp
 # Custom command for CMakeFiles/ContinuousStart-Debug
 
 build CMakeFiles/ContinuousStart-Debug | ${cmake_ninja_workdir}CMakeFiles/ContinuousStart-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D ContinuousStart
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D ContinuousStart
   pool = console
 
 
@@ -498,7 +502,7 @@ build CMakeFiles/ContinuousStart-Debug | ${cmake_ninja_workdir}CMakeFiles/Contin
 # Custom command for CMakeFiles/ContinuousUpdate-Debug
 
 build CMakeFiles/ContinuousUpdate-Debug | ${cmake_ninja_workdir}CMakeFiles/ContinuousUpdate-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D ContinuousUpdate
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D ContinuousUpdate
   pool = console
 
 
@@ -506,7 +510,7 @@ build CMakeFiles/ContinuousUpdate-Debug | ${cmake_ninja_workdir}CMakeFiles/Conti
 # Custom command for CMakeFiles/ContinuousConfigure-Debug
 
 build CMakeFiles/ContinuousConfigure-Debug | ${cmake_ninja_workdir}CMakeFiles/ContinuousConfigure-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D ContinuousConfigure
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D ContinuousConfigure
   pool = console
 
 
@@ -514,7 +518,7 @@ build CMakeFiles/ContinuousConfigure-Debug | ${cmake_ninja_workdir}CMakeFiles/Co
 # Custom command for CMakeFiles/ContinuousBuild-Debug
 
 build CMakeFiles/ContinuousBuild-Debug | ${cmake_ninja_workdir}CMakeFiles/ContinuousBuild-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D ContinuousBuild
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D ContinuousBuild
   pool = console
 
 
@@ -522,7 +526,7 @@ build CMakeFiles/ContinuousBuild-Debug | ${cmake_ninja_workdir}CMakeFiles/Contin
 # Custom command for CMakeFiles/ContinuousTest-Debug
 
 build CMakeFiles/ContinuousTest-Debug | ${cmake_ninja_workdir}CMakeFiles/ContinuousTest-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D ContinuousTest
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D ContinuousTest
   pool = console
 
 
@@ -530,7 +534,7 @@ build CMakeFiles/ContinuousTest-Debug | ${cmake_ninja_workdir}CMakeFiles/Continu
 # Custom command for CMakeFiles/ContinuousCoverage-Debug
 
 build CMakeFiles/ContinuousCoverage-Debug | ${cmake_ninja_workdir}CMakeFiles/ContinuousCoverage-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D ContinuousCoverage
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D ContinuousCoverage
   pool = console
 
 
@@ -538,7 +542,7 @@ build CMakeFiles/ContinuousCoverage-Debug | ${cmake_ninja_workdir}CMakeFiles/Con
 # Custom command for CMakeFiles/ContinuousMemCheck-Debug
 
 build CMakeFiles/ContinuousMemCheck-Debug | ${cmake_ninja_workdir}CMakeFiles/ContinuousMemCheck-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D ContinuousMemCheck
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D ContinuousMemCheck
   pool = console
 
 
@@ -546,7 +550,7 @@ build CMakeFiles/ContinuousMemCheck-Debug | ${cmake_ninja_workdir}CMakeFiles/Con
 # Custom command for CMakeFiles/ContinuousSubmit-Debug
 
 build CMakeFiles/ContinuousSubmit-Debug | ${cmake_ninja_workdir}CMakeFiles/ContinuousSubmit-Debug: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Debug -D ContinuousSubmit
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Debug -D ContinuousSubmit
   pool = console
 
 build ReteNeurale$:Debug: phony Debug/ReteNeurale
@@ -555,7 +559,7 @@ build ReteNeuraleTest.t$:Debug: phony Debug/ReteNeuraleTest.t
 
 
 #############################################
-# Folder: /home/amasini/masi/progetto/progetto/build
+# Folder: /home/amasini/masi/progetto/build
 
 build all$:Debug: phony Debug/ReteNeurale Debug/ReteNeuraleTest.t
 

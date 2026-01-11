@@ -211,40 +211,41 @@ build ContinuousSubmit$:Release: phony CMakeFiles/ContinuousSubmit-Release
 
 build cmake_object_order_depends_target_ReteNeurale_RELEASE: phony || CMakeFiles/ReteNeurale.dir
 
-build CMakeFiles/ReteNeurale.dir/Release/main.cpp.o: CXX_COMPILER__ReteNeurale_unscanned_Release /home/amasini/masi/progetto/progetto/main.cpp || cmake_object_order_depends_target_ReteNeurale_RELEASE
+build CMakeFiles/ReteNeurale.dir/Release/main.cpp.o: CXX_COMPILER__ReteNeurale_unscanned_Release /home/amasini/masi/progetto/main.cpp || cmake_object_order_depends_target_ReteNeurale_RELEASE
   DEFINES = -DCMAKE_INTDIR=\"Release\"
   DEP_FILE = CMakeFiles/ReteNeurale.dir/Release/main.cpp.o.d
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O3 -DNDEBUG -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeurale.dir/Release
   OBJECT_FILE_DIR = CMakeFiles/ReteNeurale.dir/Release
+  TARGET_COMPILE_PDB = CMakeFiles/ReteNeurale.dir/Release/
+  TARGET_PDB = Release/ReteNeurale.pdb
 
-build CMakeFiles/ReteNeurale.dir/Release/rete_neurale/pattern.cpp.o: CXX_COMPILER__ReteNeurale_unscanned_Release /home/amasini/masi/progetto/progetto/rete_neurale/pattern.cpp || cmake_object_order_depends_target_ReteNeurale_RELEASE
+build CMakeFiles/ReteNeurale.dir/Release/rete_neurale/pattern.cpp.o: CXX_COMPILER__ReteNeurale_unscanned_Release /home/amasini/masi/progetto/rete_neurale/pattern.cpp || cmake_object_order_depends_target_ReteNeurale_RELEASE
   DEFINES = -DCMAKE_INTDIR=\"Release\"
   DEP_FILE = CMakeFiles/ReteNeurale.dir/Release/rete_neurale/pattern.cpp.o.d
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O3 -DNDEBUG -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeurale.dir/Release
   OBJECT_FILE_DIR = CMakeFiles/ReteNeurale.dir/Release/rete_neurale
+  TARGET_COMPILE_PDB = CMakeFiles/ReteNeurale.dir/Release/
+  TARGET_PDB = Release/ReteNeurale.pdb
 
-build CMakeFiles/ReteNeurale.dir/Release/rete_neurale/acquisition.cpp.o: CXX_COMPILER__ReteNeurale_unscanned_Release /home/amasini/masi/progetto/progetto/rete_neurale/acquisition.cpp || cmake_object_order_depends_target_ReteNeurale_RELEASE
-  DEFINES = -DCMAKE_INTDIR=\"Release\"
-  DEP_FILE = CMakeFiles/ReteNeurale.dir/Release/rete_neurale/acquisition.cpp.o.d
-  FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O3 -DNDEBUG -std=c++20
-  OBJECT_DIR = CMakeFiles/ReteNeurale.dir/Release
-  OBJECT_FILE_DIR = CMakeFiles/ReteNeurale.dir/Release/rete_neurale
-
-build CMakeFiles/ReteNeurale.dir/Release/rete_neurale/recall.cpp.o: CXX_COMPILER__ReteNeurale_unscanned_Release /home/amasini/masi/progetto/progetto/rete_neurale/recall.cpp || cmake_object_order_depends_target_ReteNeurale_RELEASE
+build CMakeFiles/ReteNeurale.dir/Release/rete_neurale/recall.cpp.o: CXX_COMPILER__ReteNeurale_unscanned_Release /home/amasini/masi/progetto/rete_neurale/recall.cpp || cmake_object_order_depends_target_ReteNeurale_RELEASE
   DEFINES = -DCMAKE_INTDIR=\"Release\"
   DEP_FILE = CMakeFiles/ReteNeurale.dir/Release/rete_neurale/recall.cpp.o.d
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O3 -DNDEBUG -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeurale.dir/Release
   OBJECT_FILE_DIR = CMakeFiles/ReteNeurale.dir/Release/rete_neurale
+  TARGET_COMPILE_PDB = CMakeFiles/ReteNeurale.dir/Release/
+  TARGET_PDB = Release/ReteNeurale.pdb
 
-build CMakeFiles/ReteNeurale.dir/Release/rete_neurale/train.cpp.o: CXX_COMPILER__ReteNeurale_unscanned_Release /home/amasini/masi/progetto/progetto/rete_neurale/train.cpp || cmake_object_order_depends_target_ReteNeurale_RELEASE
+build CMakeFiles/ReteNeurale.dir/Release/rete_neurale/train.cpp.o: CXX_COMPILER__ReteNeurale_unscanned_Release /home/amasini/masi/progetto/rete_neurale/train.cpp || cmake_object_order_depends_target_ReteNeurale_RELEASE
   DEFINES = -DCMAKE_INTDIR=\"Release\"
   DEP_FILE = CMakeFiles/ReteNeurale.dir/Release/rete_neurale/train.cpp.o.d
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O3 -DNDEBUG -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeurale.dir/Release
   OBJECT_FILE_DIR = CMakeFiles/ReteNeurale.dir/Release/rete_neurale
+  TARGET_COMPILE_PDB = CMakeFiles/ReteNeurale.dir/Release/
+  TARGET_PDB = Release/ReteNeurale.pdb
 
 
 # =============================================================================
@@ -254,14 +255,15 @@ build CMakeFiles/ReteNeurale.dir/Release/rete_neurale/train.cpp.o: CXX_COMPILER_
 #############################################
 # Link the executable Release/ReteNeurale
 
-build Release/ReteNeurale: CXX_EXECUTABLE_LINKER__ReteNeurale_Release CMakeFiles/ReteNeurale.dir/Release/main.cpp.o CMakeFiles/ReteNeurale.dir/Release/rete_neurale/pattern.cpp.o CMakeFiles/ReteNeurale.dir/Release/rete_neurale/acquisition.cpp.o CMakeFiles/ReteNeurale.dir/Release/rete_neurale/recall.cpp.o CMakeFiles/ReteNeurale.dir/Release/rete_neurale/train.cpp.o | /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
+build Release/ReteNeurale: CXX_EXECUTABLE_LINKER__ReteNeurale_Release CMakeFiles/ReteNeurale.dir/Release/main.cpp.o CMakeFiles/ReteNeurale.dir/Release/rete_neurale/pattern.cpp.o CMakeFiles/ReteNeurale.dir/Release/rete_neurale/recall.cpp.o CMakeFiles/ReteNeurale.dir/Release/rete_neurale/train.cpp.o | /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O3 -DNDEBUG
   LINK_LIBRARIES = /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
   OBJECT_DIR = CMakeFiles/ReteNeurale.dir/Release
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = CMakeFiles/ReteNeurale.dir/Release/
   TARGET_FILE = Release/ReteNeurale
-  TARGET_PDB = ReteNeurale.dbg
+  TARGET_PDB = Release/ReteNeurale.pdb
 
 # =============================================================================
 # Object build statements for EXECUTABLE target ReteNeuraleTest.t
@@ -272,40 +274,41 @@ build Release/ReteNeurale: CXX_EXECUTABLE_LINKER__ReteNeurale_Release CMakeFiles
 
 build cmake_object_order_depends_target_ReteNeuraleTest.t_RELEASE: phony || CMakeFiles/ReteNeuraleTest.t.dir
 
-build CMakeFiles/ReteNeuraleTest.t.dir/Release/test/test_runner.cpp.o: CXX_COMPILER__ReteNeuraleTest.2et_unscanned_Release /home/amasini/masi/progetto/progetto/test/test_runner.cpp || cmake_object_order_depends_target_ReteNeuraleTest.t_RELEASE
+build CMakeFiles/ReteNeuraleTest.t.dir/Release/test/test_runner.cpp.o: CXX_COMPILER__ReteNeuraleTest.2et_unscanned_Release /home/amasini/masi/progetto/test/test_runner.cpp || cmake_object_order_depends_target_ReteNeuraleTest.t_RELEASE
   DEFINES = -DCMAKE_INTDIR=\"Release\"
   DEP_FILE = CMakeFiles/ReteNeuraleTest.t.dir/Release/test/test_runner.cpp.o.d
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O3 -DNDEBUG -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Release
   OBJECT_FILE_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Release/test
+  TARGET_COMPILE_PDB = CMakeFiles/ReteNeuraleTest.t.dir/Release/
+  TARGET_PDB = Release/ReteNeuraleTest.t.pdb
 
-build CMakeFiles/ReteNeuraleTest.t.dir/Release/test/pattern_test.cpp.o: CXX_COMPILER__ReteNeuraleTest.2et_unscanned_Release /home/amasini/masi/progetto/progetto/test/pattern_test.cpp || cmake_object_order_depends_target_ReteNeuraleTest.t_RELEASE
+build CMakeFiles/ReteNeuraleTest.t.dir/Release/test/pattern_test.cpp.o: CXX_COMPILER__ReteNeuraleTest.2et_unscanned_Release /home/amasini/masi/progetto/test/pattern_test.cpp || cmake_object_order_depends_target_ReteNeuraleTest.t_RELEASE
   DEFINES = -DCMAKE_INTDIR=\"Release\"
   DEP_FILE = CMakeFiles/ReteNeuraleTest.t.dir/Release/test/pattern_test.cpp.o.d
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O3 -DNDEBUG -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Release
   OBJECT_FILE_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Release/test
+  TARGET_COMPILE_PDB = CMakeFiles/ReteNeuraleTest.t.dir/Release/
+  TARGET_PDB = Release/ReteNeuraleTest.t.pdb
 
-build CMakeFiles/ReteNeuraleTest.t.dir/Release/test/recall_test.cpp.o: CXX_COMPILER__ReteNeuraleTest.2et_unscanned_Release /home/amasini/masi/progetto/progetto/test/recall_test.cpp || cmake_object_order_depends_target_ReteNeuraleTest.t_RELEASE
+build CMakeFiles/ReteNeuraleTest.t.dir/Release/test/recall_test.cpp.o: CXX_COMPILER__ReteNeuraleTest.2et_unscanned_Release /home/amasini/masi/progetto/test/recall_test.cpp || cmake_object_order_depends_target_ReteNeuraleTest.t_RELEASE
   DEFINES = -DCMAKE_INTDIR=\"Release\"
   DEP_FILE = CMakeFiles/ReteNeuraleTest.t.dir/Release/test/recall_test.cpp.o.d
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O3 -DNDEBUG -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Release
   OBJECT_FILE_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Release/test
+  TARGET_COMPILE_PDB = CMakeFiles/ReteNeuraleTest.t.dir/Release/
+  TARGET_PDB = Release/ReteNeuraleTest.t.pdb
 
-build CMakeFiles/ReteNeuraleTest.t.dir/Release/test/train_test.cpp.o: CXX_COMPILER__ReteNeuraleTest.2et_unscanned_Release /home/amasini/masi/progetto/progetto/test/train_test.cpp || cmake_object_order_depends_target_ReteNeuraleTest.t_RELEASE
+build CMakeFiles/ReteNeuraleTest.t.dir/Release/test/train_test.cpp.o: CXX_COMPILER__ReteNeuraleTest.2et_unscanned_Release /home/amasini/masi/progetto/test/train_test.cpp || cmake_object_order_depends_target_ReteNeuraleTest.t_RELEASE
   DEFINES = -DCMAKE_INTDIR=\"Release\"
   DEP_FILE = CMakeFiles/ReteNeuraleTest.t.dir/Release/test/train_test.cpp.o.d
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O3 -DNDEBUG -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Release
   OBJECT_FILE_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Release/test
-
-build CMakeFiles/ReteNeuraleTest.t.dir/Release/test/acquisition_test.cpp.o: CXX_COMPILER__ReteNeuraleTest.2et_unscanned_Release /home/amasini/masi/progetto/progetto/test/acquisition_test.cpp || cmake_object_order_depends_target_ReteNeuraleTest.t_RELEASE
-  DEFINES = -DCMAKE_INTDIR=\"Release\"
-  DEP_FILE = CMakeFiles/ReteNeuraleTest.t.dir/Release/test/acquisition_test.cpp.o.d
-  FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O3 -DNDEBUG -std=c++20
-  OBJECT_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Release
-  OBJECT_FILE_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Release/test
+  TARGET_COMPILE_PDB = CMakeFiles/ReteNeuraleTest.t.dir/Release/
+  TARGET_PDB = Release/ReteNeuraleTest.t.pdb
 
 
 # =============================================================================
@@ -315,20 +318,21 @@ build CMakeFiles/ReteNeuraleTest.t.dir/Release/test/acquisition_test.cpp.o: CXX_
 #############################################
 # Link the executable Release/ReteNeuraleTest.t
 
-build Release/ReteNeuraleTest.t: CXX_EXECUTABLE_LINKER__ReteNeuraleTest.2et_Release CMakeFiles/ReteNeuraleTest.t.dir/Release/test/test_runner.cpp.o CMakeFiles/ReteNeuraleTest.t.dir/Release/test/pattern_test.cpp.o CMakeFiles/ReteNeuraleTest.t.dir/Release/test/recall_test.cpp.o CMakeFiles/ReteNeuraleTest.t.dir/Release/test/train_test.cpp.o CMakeFiles/ReteNeuraleTest.t.dir/Release/test/acquisition_test.cpp.o
+build Release/ReteNeuraleTest.t: CXX_EXECUTABLE_LINKER__ReteNeuraleTest.2et_Release CMakeFiles/ReteNeuraleTest.t.dir/Release/test/test_runner.cpp.o CMakeFiles/ReteNeuraleTest.t.dir/Release/test/pattern_test.cpp.o CMakeFiles/ReteNeuraleTest.t.dir/Release/test/recall_test.cpp.o CMakeFiles/ReteNeuraleTest.t.dir/Release/test/train_test.cpp.o
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O3 -DNDEBUG
   OBJECT_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Release
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = CMakeFiles/ReteNeuraleTest.t.dir/Release/
   TARGET_FILE = Release/ReteNeuraleTest.t
-  TARGET_PDB = ReteNeuraleTest.t.dbg
+  TARGET_PDB = Release/ReteNeuraleTest.t.pdb
 
 
 #############################################
 # Custom command for CMakeFiles/Experimental-Release
 
 build CMakeFiles/Experimental-Release | ${cmake_ninja_workdir}CMakeFiles/Experimental-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D Experimental
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D Experimental
   pool = console
 
 
@@ -336,7 +340,7 @@ build CMakeFiles/Experimental-Release | ${cmake_ninja_workdir}CMakeFiles/Experim
 # Custom command for CMakeFiles/Nightly-Release
 
 build CMakeFiles/Nightly-Release | ${cmake_ninja_workdir}CMakeFiles/Nightly-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D Nightly
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D Nightly
   pool = console
 
 
@@ -344,7 +348,7 @@ build CMakeFiles/Nightly-Release | ${cmake_ninja_workdir}CMakeFiles/Nightly-Rele
 # Custom command for CMakeFiles/Continuous-Release
 
 build CMakeFiles/Continuous-Release | ${cmake_ninja_workdir}CMakeFiles/Continuous-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D Continuous
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D Continuous
   pool = console
 
 
@@ -352,7 +356,7 @@ build CMakeFiles/Continuous-Release | ${cmake_ninja_workdir}CMakeFiles/Continuou
 # Custom command for CMakeFiles/NightlyMemoryCheck-Release
 
 build CMakeFiles/NightlyMemoryCheck-Release | ${cmake_ninja_workdir}CMakeFiles/NightlyMemoryCheck-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D NightlyMemoryCheck
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D NightlyMemoryCheck
   pool = console
 
 
@@ -360,7 +364,7 @@ build CMakeFiles/NightlyMemoryCheck-Release | ${cmake_ninja_workdir}CMakeFiles/N
 # Custom command for CMakeFiles/NightlyStart-Release
 
 build CMakeFiles/NightlyStart-Release | ${cmake_ninja_workdir}CMakeFiles/NightlyStart-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D NightlyStart
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D NightlyStart
   pool = console
 
 
@@ -368,7 +372,7 @@ build CMakeFiles/NightlyStart-Release | ${cmake_ninja_workdir}CMakeFiles/Nightly
 # Custom command for CMakeFiles/NightlyUpdate-Release
 
 build CMakeFiles/NightlyUpdate-Release | ${cmake_ninja_workdir}CMakeFiles/NightlyUpdate-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D NightlyUpdate
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D NightlyUpdate
   pool = console
 
 
@@ -376,7 +380,7 @@ build CMakeFiles/NightlyUpdate-Release | ${cmake_ninja_workdir}CMakeFiles/Nightl
 # Custom command for CMakeFiles/NightlyConfigure-Release
 
 build CMakeFiles/NightlyConfigure-Release | ${cmake_ninja_workdir}CMakeFiles/NightlyConfigure-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D NightlyConfigure
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D NightlyConfigure
   pool = console
 
 
@@ -384,7 +388,7 @@ build CMakeFiles/NightlyConfigure-Release | ${cmake_ninja_workdir}CMakeFiles/Nig
 # Custom command for CMakeFiles/NightlyBuild-Release
 
 build CMakeFiles/NightlyBuild-Release | ${cmake_ninja_workdir}CMakeFiles/NightlyBuild-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D NightlyBuild
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D NightlyBuild
   pool = console
 
 
@@ -392,7 +396,7 @@ build CMakeFiles/NightlyBuild-Release | ${cmake_ninja_workdir}CMakeFiles/Nightly
 # Custom command for CMakeFiles/NightlyTest-Release
 
 build CMakeFiles/NightlyTest-Release | ${cmake_ninja_workdir}CMakeFiles/NightlyTest-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D NightlyTest
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D NightlyTest
   pool = console
 
 
@@ -400,7 +404,7 @@ build CMakeFiles/NightlyTest-Release | ${cmake_ninja_workdir}CMakeFiles/NightlyT
 # Custom command for CMakeFiles/NightlyCoverage-Release
 
 build CMakeFiles/NightlyCoverage-Release | ${cmake_ninja_workdir}CMakeFiles/NightlyCoverage-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D NightlyCoverage
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D NightlyCoverage
   pool = console
 
 
@@ -408,7 +412,7 @@ build CMakeFiles/NightlyCoverage-Release | ${cmake_ninja_workdir}CMakeFiles/Nigh
 # Custom command for CMakeFiles/NightlyMemCheck-Release
 
 build CMakeFiles/NightlyMemCheck-Release | ${cmake_ninja_workdir}CMakeFiles/NightlyMemCheck-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D NightlyMemCheck
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D NightlyMemCheck
   pool = console
 
 
@@ -416,7 +420,7 @@ build CMakeFiles/NightlyMemCheck-Release | ${cmake_ninja_workdir}CMakeFiles/Nigh
 # Custom command for CMakeFiles/NightlySubmit-Release
 
 build CMakeFiles/NightlySubmit-Release | ${cmake_ninja_workdir}CMakeFiles/NightlySubmit-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D NightlySubmit
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D NightlySubmit
   pool = console
 
 
@@ -424,7 +428,7 @@ build CMakeFiles/NightlySubmit-Release | ${cmake_ninja_workdir}CMakeFiles/Nightl
 # Custom command for CMakeFiles/ExperimentalStart-Release
 
 build CMakeFiles/ExperimentalStart-Release | ${cmake_ninja_workdir}CMakeFiles/ExperimentalStart-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D ExperimentalStart
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D ExperimentalStart
   pool = console
 
 
@@ -432,7 +436,7 @@ build CMakeFiles/ExperimentalStart-Release | ${cmake_ninja_workdir}CMakeFiles/Ex
 # Custom command for CMakeFiles/ExperimentalUpdate-Release
 
 build CMakeFiles/ExperimentalUpdate-Release | ${cmake_ninja_workdir}CMakeFiles/ExperimentalUpdate-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D ExperimentalUpdate
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D ExperimentalUpdate
   pool = console
 
 
@@ -440,7 +444,7 @@ build CMakeFiles/ExperimentalUpdate-Release | ${cmake_ninja_workdir}CMakeFiles/E
 # Custom command for CMakeFiles/ExperimentalConfigure-Release
 
 build CMakeFiles/ExperimentalConfigure-Release | ${cmake_ninja_workdir}CMakeFiles/ExperimentalConfigure-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D ExperimentalConfigure
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D ExperimentalConfigure
   pool = console
 
 
@@ -448,7 +452,7 @@ build CMakeFiles/ExperimentalConfigure-Release | ${cmake_ninja_workdir}CMakeFile
 # Custom command for CMakeFiles/ExperimentalBuild-Release
 
 build CMakeFiles/ExperimentalBuild-Release | ${cmake_ninja_workdir}CMakeFiles/ExperimentalBuild-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D ExperimentalBuild
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D ExperimentalBuild
   pool = console
 
 
@@ -456,7 +460,7 @@ build CMakeFiles/ExperimentalBuild-Release | ${cmake_ninja_workdir}CMakeFiles/Ex
 # Custom command for CMakeFiles/ExperimentalTest-Release
 
 build CMakeFiles/ExperimentalTest-Release | ${cmake_ninja_workdir}CMakeFiles/ExperimentalTest-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D ExperimentalTest
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D ExperimentalTest
   pool = console
 
 
@@ -464,7 +468,7 @@ build CMakeFiles/ExperimentalTest-Release | ${cmake_ninja_workdir}CMakeFiles/Exp
 # Custom command for CMakeFiles/ExperimentalCoverage-Release
 
 build CMakeFiles/ExperimentalCoverage-Release | ${cmake_ninja_workdir}CMakeFiles/ExperimentalCoverage-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D ExperimentalCoverage
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D ExperimentalCoverage
   pool = console
 
 
@@ -472,7 +476,7 @@ build CMakeFiles/ExperimentalCoverage-Release | ${cmake_ninja_workdir}CMakeFiles
 # Custom command for CMakeFiles/ExperimentalMemCheck-Release
 
 build CMakeFiles/ExperimentalMemCheck-Release | ${cmake_ninja_workdir}CMakeFiles/ExperimentalMemCheck-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D ExperimentalMemCheck
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D ExperimentalMemCheck
   pool = console
 
 
@@ -480,7 +484,7 @@ build CMakeFiles/ExperimentalMemCheck-Release | ${cmake_ninja_workdir}CMakeFiles
 # Custom command for CMakeFiles/ExperimentalSubmit-Release
 
 build CMakeFiles/ExperimentalSubmit-Release | ${cmake_ninja_workdir}CMakeFiles/ExperimentalSubmit-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D ExperimentalSubmit
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D ExperimentalSubmit
   pool = console
 
 
@@ -488,7 +492,7 @@ build CMakeFiles/ExperimentalSubmit-Release | ${cmake_ninja_workdir}CMakeFiles/E
 # Custom command for CMakeFiles/ContinuousStart-Release
 
 build CMakeFiles/ContinuousStart-Release | ${cmake_ninja_workdir}CMakeFiles/ContinuousStart-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D ContinuousStart
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D ContinuousStart
   pool = console
 
 
@@ -496,7 +500,7 @@ build CMakeFiles/ContinuousStart-Release | ${cmake_ninja_workdir}CMakeFiles/Cont
 # Custom command for CMakeFiles/ContinuousUpdate-Release
 
 build CMakeFiles/ContinuousUpdate-Release | ${cmake_ninja_workdir}CMakeFiles/ContinuousUpdate-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D ContinuousUpdate
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D ContinuousUpdate
   pool = console
 
 
@@ -504,7 +508,7 @@ build CMakeFiles/ContinuousUpdate-Release | ${cmake_ninja_workdir}CMakeFiles/Con
 # Custom command for CMakeFiles/ContinuousConfigure-Release
 
 build CMakeFiles/ContinuousConfigure-Release | ${cmake_ninja_workdir}CMakeFiles/ContinuousConfigure-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D ContinuousConfigure
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D ContinuousConfigure
   pool = console
 
 
@@ -512,7 +516,7 @@ build CMakeFiles/ContinuousConfigure-Release | ${cmake_ninja_workdir}CMakeFiles/
 # Custom command for CMakeFiles/ContinuousBuild-Release
 
 build CMakeFiles/ContinuousBuild-Release | ${cmake_ninja_workdir}CMakeFiles/ContinuousBuild-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D ContinuousBuild
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D ContinuousBuild
   pool = console
 
 
@@ -520,7 +524,7 @@ build CMakeFiles/ContinuousBuild-Release | ${cmake_ninja_workdir}CMakeFiles/Cont
 # Custom command for CMakeFiles/ContinuousTest-Release
 
 build CMakeFiles/ContinuousTest-Release | ${cmake_ninja_workdir}CMakeFiles/ContinuousTest-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D ContinuousTest
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D ContinuousTest
   pool = console
 
 
@@ -528,7 +532,7 @@ build CMakeFiles/ContinuousTest-Release | ${cmake_ninja_workdir}CMakeFiles/Conti
 # Custom command for CMakeFiles/ContinuousCoverage-Release
 
 build CMakeFiles/ContinuousCoverage-Release | ${cmake_ninja_workdir}CMakeFiles/ContinuousCoverage-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D ContinuousCoverage
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D ContinuousCoverage
   pool = console
 
 
@@ -536,7 +540,7 @@ build CMakeFiles/ContinuousCoverage-Release | ${cmake_ninja_workdir}CMakeFiles/C
 # Custom command for CMakeFiles/ContinuousMemCheck-Release
 
 build CMakeFiles/ContinuousMemCheck-Release | ${cmake_ninja_workdir}CMakeFiles/ContinuousMemCheck-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D ContinuousMemCheck
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D ContinuousMemCheck
   pool = console
 
 
@@ -544,7 +548,7 @@ build CMakeFiles/ContinuousMemCheck-Release | ${cmake_ninja_workdir}CMakeFiles/C
 # Custom command for CMakeFiles/ContinuousSubmit-Release
 
 build CMakeFiles/ContinuousSubmit-Release | ${cmake_ninja_workdir}CMakeFiles/ContinuousSubmit-Release: CUSTOM_COMMAND
-  COMMAND = cd /home/amasini/masi/progetto/progetto/build && /usr/bin/ctest -C Release -D ContinuousSubmit
+  COMMAND = cd /home/amasini/masi/progetto/build && /usr/bin/ctest -C Release -D ContinuousSubmit
   pool = console
 
 build ReteNeurale$:Release: phony Release/ReteNeurale
@@ -553,7 +557,7 @@ build ReteNeuraleTest.t$:Release: phony Release/ReteNeuraleTest.t
 
 
 #############################################
-# Folder: /home/amasini/masi/progetto/progetto/build
+# Folder: /home/amasini/masi/progetto/build
 
 build all$:Release: phony Release/ReteNeurale Release/ReteNeuraleTest.t
 
