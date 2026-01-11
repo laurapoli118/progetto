@@ -8,8 +8,8 @@ class Train
 {
 
 private:
-    std::vector<std::vector<float>> weights; // da decidere come la vogliamo fare
-    unsigned numNeurons;
+    std::vector<std::vector<float>> weights_; // da decidere come la vogliamo fare
+    unsigned numNeurons_;
 
 public:
     Train(unsigned size);

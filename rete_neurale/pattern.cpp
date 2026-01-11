@@ -8,51 +8,49 @@
 #include <algorithm>
 #include <fstream>
 #include <string>
-
+#include <cassert>
 // RICORDARSI DI METTERE TUTTE LE ASSERT E EXCEPTION PER GESTIRE RUNTIME
 
 Pattern::Pattern(int size)
 {
 
-    lato = size;
-    numNeurons = size * size;
-    neurons.resize(numNeurons);  //questo è da capire se si può toglire
+    size_ = size;
+    numNeurons_ = size * size;
+    neurons_.resize(numNeurons_); // questo è da capire se si può toglierere
 }
 
 // FUNZIONI PER SETTARE
 
 void Pattern::setNeuron(unsigned index, int value)
 {
+    assert(index < numNeurons_);
 
-    neurons[index] = value;
+    neurons_[index] = value;
 }
 
 // FUNZIONI GETTERS
 
 int Pattern::getNeuron(unsigned index) const
 {
-
-   return neurons[index];
-
+    assert(index < numNeurons_);
+    return neurons_[index];
 }
 
-
-
-unsigned Pattern::getLato() const
+unsigned Pattern::getSize() const
 {
 
-    return lato;
+    return size_;
 }
 
 unsigned Pattern::getNumNeurons() const
 {
 
-    return numNeurons;
+    return numNeurons_;
 }
 
 const std::vector<int> &Pattern::getData() const
 {
-    return neurons;
+    return neurons_;
 }
 
 // FUNZIONE NOISE
@@ -61,7 +59,7 @@ void Pattern::addNoise(float noisePerc) // QUA HO USATO UNA LAMBDA E UN ALGORITM
 {                                       // VOLENDO SI PUO' FARE ANCHE CON UN CICLO FOR
 
     // std::transform prende: Inizio, Fine, Dove Scrivere, La Funzione da applicare
-    std::transform(neurons.begin(), neurons.end(), neurons.begin(), [=](int currentNeuron)
+    std::transform(neurons_.begin(), neurons_.end(), neurons_.begin(), [=](int currentNeuron)
                    {
 
 
