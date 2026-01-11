@@ -56,37 +56,27 @@ void Train::learnPattern(const Pattern &pattern) // così forse è un po troppo 
     }
 }
 
-void Train::recall(const Pattern &pattern)
-{
+void Train::recall(const Pattern &pattern) {
     bool conv = false;
-    while(!conv)
-    {
+    while(!conv) {
         std::vector<int> newPattern(numNeurons_); //nuovo vettore per verificare converga
         unsigned convCheck=0; //variabile per verificare se per ogni i è uguale
-        for(unsigned i=0; i< numNeurons_; i++)
-        {
-            double sum=0.0;
-            for(unsigned i=0; i< numNeurons_; i++)
-            {
-                sum += weights_[i][j]*pattern.getNeuron(j);
+        for(unsigned i=0; i < numNeurons_; i++) {
+            double sum = 0.0;
+            for(unsigned j=0; j < numNeurons_; j++) {
+                sum += weights_[i][j] * pattern.getNeuron(j);
             }
-            if(sum >0)
-            {
+            if(sum > 0) {
                 newPattern[1]=1;
-            }
-            else
-            {
+            } else {
                 newPattern[i]=-1;
             }
-            if(newPattern[i]==pattern.getNeuron[i])
-            {
+            if(newPattern[i]==pattern.getNeuron[i]) {
                 convCheck ++;
             }
         }
-        if(convCheck==numNeurons_)
-        {
+        if(convCheck == numNeurons_) {
             conv= true;
         }
     }
-    
 }
