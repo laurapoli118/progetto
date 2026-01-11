@@ -10,25 +10,19 @@
 #include <string>
 #include <cassert>
 
-// RICORDARSI DI METTERE TUTTE LE ASSERT E EXCEPTION PER GESTIRE RUNTIME
+// RICORDARSI DI AGGIUNGERE ASSERT E EXCEPTION PER GESTIRE RUNTIME
 
-Pattern::Pattern(int size) : lato(size), numNeurons(size * size)
-{
+Pattern::Pattern(int size) : lato(size), numNeurons(size * size) {
     assert(size > 0 && "Error: size must be greater than 0.");
-    neurons.resize(numNeurons, 0); // Costruttore che inizializza il vettore con zeri
+    neurons.resize(numNeurons, 0); // costruttore che inizializza il vettore con zeri, vedi giù per diff. resize e reserve
 }
 
-// FUNZIONI PER SETTARE
-
-void Pattern::setNeuron(unsigned index, int value)
-{
+void Pattern::setNeuron(unsigned index, int value) { // FUNZIONE SETTER 
     assert(index <= numNeurons && "Error: can't set an inexisting nueron.");
     neurons[index] = value;
 }
 
-// FUNZIONI GETTERS
-
-int Pattern::getNeuron(unsigned index) const { return neurons[index]; }
+int Pattern::getNeuron(unsigned index) const { return neurons[index]; } // FUNZIONI GETTERS
 
 unsigned Pattern::getLato() const { return lato; }
 
@@ -36,76 +30,63 @@ unsigned Pattern::getNumNeurons() const { return numNeurons; }
 
 const std::vector<int> &Pattern::getData() const { return neurons; }
 
-// FUNZIONE NOISE
-
-void Pattern::addNoise(float noisePerc) { // QUA HO USATO UNA LAMBDA E UN ALGORITMO, VOLENDO SI PUO' FARE ANCHE CON UN CICLO FOR
-    // std::transform prende: Inizio, Fine, Dove Scrivere, La Funzione da applicare
-    std::transform(neurons.begin(), neurons.end(), neurons.begin(), [=](int currentNeuron) {
-        
+void Pattern::addNoise(float noisePerc) { // POI LOLLO QUANDO VUOI MI SPIEGHI STA MERDA E VALUTIAMO QUALE FARE
+    std::transform(neurons.begin(), neurons.end(), neurons.begin(), [=](int currentNeuron) { // std::transform prende: Inizio, Fine, Dove Scrivere, La Funzione da applicare
         float random = static_cast<float>(std::rand()) / static_cast<float>(RAND_MAX);
-        if (random < noisePerc)
-            {
+        if (random < noisePerc) {
                 return -currentNeuron;
-            }
-            else
-            {
+            } else {
                 return currentNeuron;
             } 
         }
     );
 }
 
-sf::Image Pattern::resize(const sf::Image& originale) const {
-    if (originale.getSize().x == lato && originale.getSize().y == lato) {
-        return originale;
+sf::Image Pattern::resize(const sf::Image& original) const {
+    if (original.getSize().x == lato && original.getSize().y == lato) {
+        return original;
     } //controllo se va già bene
 
-    sf::Image ridimensionata; // creo una tela delle dimensioni che vogliamo
-    ridimensionata.create(lato, lato, sf::Color::Black);
+    sf::Image risized; // creo una tela delle dimensioni che vogliamo
+    risized.create(lato, lato, sf::Color::Black);
 
-    sf::Vector2u orgSize = originale.getSize();
+    sf::Vector2u orgSize = original.getSize();
     
     for (unsigned y = 0; y < lato; ++y) {
         for (unsigned x = 0; x < lato; ++x) {
-            // Mappa le coordinate
             unsigned orgX = x * orgSize.x / lato;
             unsigned orgY = y * orgSize.y / lato;
-            ridimensionata.setPixel(x, y, originale.getPixel(orgX, orgY));
+            risized.setPixel(x, y, original.getPixel(orgX, orgY));
         }
     }
-    return ridimensionata;
+    return risized;
 }
 
-// trasforma il vettore in un'immagine visibile
 void Pattern::display() const {
-    sf::Image immagineVisiva;
-    immagineVisiva.create(lato, lato); 
+    sf::Image visibleImage;
+    visibleImage.create(lato, lato); // trasforma il vettore in un'immagine
 
     for (unsigned int i = 0; i < numNeurons; i++) {
         unsigned int x = i % lato;
         unsigned int y = i / lato;
-        
-        // Uso directly this->neurons
-        int valore = neurons[i];
-
-        if (valore == 1) {
-            immagineVisiva.setPixel(x, y, sf::Color::White); // Attivo
+        if (neurons[i] == 1) {
+            visibleImage.setPixel(x, y, sf::Color::Black); // li giro di nuovo così vengono i colori sensati
         } else {
-            immagineVisiva.setPixel(x, y, sf::Color::Black); // Spento (-1)
+            visibleImage.setPixel(x, y, sf::Color::White);
         }
-    }
+    } // colora
 
     sf::Texture texture;
-    texture.loadFromImage(immagineVisiva);
+    texture.loadFromImage(visibleImage);
     sf::Sprite sprite(texture);
-    sprite.setScale(10.0f, 10.0f); 
+    sprite.setScale(10.0f, 10.0f); // ingrandisce che sarebbe 50 pixel se no
 
     sf::RenderWindow window(sf::VideoMode(lato * 10, lato * 10), "Pattern Preview");
 
     while (window.isOpen()) {
         sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
+        while (window.pollEvent(event)) { // praticamente ogni tipo secondo controlla se fai qualcosa sul pc e se premi X allora esce
+            if (event.type == sf::Event::Closed) // che merda c++
                 window.close();
         }
         window.clear();     
@@ -114,50 +95,37 @@ void Pattern::display() const {
     }
 }
 
-// Funzione Principale: Carica, Ridimensiona e Converte
 bool Pattern::loadFromImage(const std::string& imgName) {
-    sf::Image immagineGrezza;
-    if (!immagineGrezza.loadFromFile("./images/" + imgName)) {
-        std::cerr << "Errore: Impossibile caricare il file " << imgName << std::endl;
-        return false; 
-    }
+    sf::Image startingImg;
+    if (!startingImg.loadFromFile("./images/" + imgName)) {
+        std::cerr << "Error: Impossible to find the file " << imgName << std::endl;
+        return false;
+    } // autoesplicativo
 
-    sf::Image immagine = Pattern::resize(immagineGrezza);
+    sf::Image image = Pattern::resize(startingImg);
 
-    neurons.clear();
-    neurons.reserve(numNeurons);
+    std::vector<int> pixelLuminance; // vettore temporaneo per salvare le luminosità dei pixel
+    pixelLuminance.reserve(numNeurons); // sicuro lo chiede, questo 'riserva' tot spazi ma vuoti, mentre .resize riempe tot spazi di 0.
+    
+    long luminositySum = 0;
 
     for (unsigned int y = 0; y < lato; y++) {
         for (unsigned int x = 0; x < lato; x++) {
-            sf::Color colore = immagine.getPixel(x, y);
-            int luminosita = (static_cast<int>(colore.r) + static_cast<int>(colore.g) + static_cast<int>(colore.b)) / 3;
-
-            // Logica Bipolare: >127 è +1, altrimenti -1
-            if (luminosita > 127) 
-                neurons.push_back(1); 
-            else 
-                neurons.push_back(-1);
+            sf::Color c = image.getPixel(x, y);
+            int lum = 0.299 * c.r + 0.587 * c.g + 0.114 * c.b; // sono le proporzioni di importanza per l'occhio del rosso, giallo e blu
+            pixelLuminance.push_back(lum);
+            luminositySum += lum;
         }
     }
 
-    /*unsigned int width = immagine.getSize().x;
-    unsigned int height = immagine.getSize().y;
-
-    std::vector<int> input_rete;
-    input_rete.reserve(width * height);
-
-    // conversione in -1 / +1
-    for (unsigned int y = 0; y < height; y++) {
-        for (unsigned int x = 0; x < width; x++) {
-            sf::Color colore = immagine.getPixel(x, y);
-            int luminosita = (static_cast<int>(colore.r) + static_cast<int>(colore.g) + static_cast<int>(colore.b)) / 3;
-
-            if (luminosita > 127) input_rete.push_back(1); 
-            else input_rete.push_back(-1);
+    int turningPoint = 0.8 * luminositySum / numNeurons;
+    for (size_t i = 0; i < pixelLuminance.size(); ++i) {
+        if (pixelLuminance[i] > turningPoint) {
+            neurons[i] = -1; // per le reti è meglio (non chiedetemi perchè) avere 1 nero, tipo riconosce i bordi come attivo e sfondo spento
+        } else {
+            neurons[i] = 1;
         }
-    } era il vecchio metodo */
-
-    // display(); in automatico o la chiamiamo?
+    }
 
     return true;
 }

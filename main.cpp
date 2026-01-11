@@ -10,8 +10,7 @@ int main() {
         std::cout << "Inserisci il nome di un file jpg: ";
         std::string imgName;
         std::cin >> imgName;
-        p.loadFromImage(imgName);
-        p.display();
+        if (p.loadFromImage(imgName)) { p.display(); }
         std::cout << "Vuoi caricare altre foto? (y/n)\n";
         std::cin >> y;
     } while (y == 'y');
