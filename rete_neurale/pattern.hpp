@@ -1,15 +1,18 @@
 #ifndef PATTERN_HPP
 #define PATTERN_HPP
 
+#include <iostream>
 #include <vector>
 #include <string>
+#include <SFML/Graphics.hpp>
 
 class Pattern
 {
 private:
-    unsigned size_;       // qua bisogna decidere se usare solo un lato o base e latezza
-    unsigned numNeurons_; // comunqur ci conviene lavorare con immagini quadrate così è più semplice
-    std::vector<int> neurons_;
+    unsigned lato;       // qua bisogna decidere se usare solo un lato o base e latezza
+    unsigned numNeurons; // comunqur ci conviene lavorare con immagini quadrate così è più semplice
+    std::vector<int> neurons;
+    sf::Image resize(const sf::Image& originale) const;
 
 public:
     Pattern(int size);
@@ -37,6 +40,9 @@ public:
     // void saveToFile(const std::string &filename) const;
 
     // void loadFromFile(const std::string &filename);
+
+    bool loadFromImage(const std::string& filename);
+    void display() const;
 };
 
 #endif

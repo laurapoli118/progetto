@@ -26,7 +26,7 @@ endif()
 string(APPEND CMAKE_CXX_FLAGS_DEBUG " -fsanitize=address,undefined")
 string(APPEND CMAKE_EXE_LINKER_FLAGS_DEBUG " -fsanitize=address,undefined")
 
-add_executable(ReteNeurale main.cpp rete_neurale/pattern.cpp rete_neurale/acquisition.cpp rete_neurale/recall.cpp rete_neurale/train.cpp)
+add_executable(ReteNeurale main.cpp rete_neurale/pattern.cpp rete_neurale/recall.cpp rete_neurale/train.cpp)
 
 target_link_libraries(ReteNeurale sfml-graphics sfml-window sfml-system)
 
@@ -35,7 +35,7 @@ target_link_libraries(ReteNeurale sfml-graphics sfml-window sfml-system)
 if (BUILD_TESTING)
 
   # aggiungi l'eseguibile sample.t
-  add_executable (ReteNeuraleTest.t test/test_runner.cpp test/pattern_test.cpp test/recall_test.cpp test/train_test.cpp test/acquisition_test.cpp)
+  add_executable (ReteNeuraleTest.t test/test_runner.cpp test/pattern_test.cpp test/recall_test.cpp test/train_test.cpp)
   # aggiungi l'eseguibile sample.t alla lista dei test
   add_test(NAME ReteNeuraleTest.t COMMAND ReteNeuraleTest.t)
 
