@@ -23,6 +23,8 @@ public:
 
     // Funzioni per ottenere le grandezze del pattern
 
+    unsigned getLato() const;
+
     int getNeuron(unsigned index) const;
 
     unsigned getSize() const;
