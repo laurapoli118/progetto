@@ -1,6 +1,6 @@
 #include "rete_neurale/pattern.hpp"
 #include "rete_neurale/recall.hpp"
-#include "rete_neurale/train.hpp"
+#include "rete_neurale/matrix.hpp"
 
 int main() {
 
