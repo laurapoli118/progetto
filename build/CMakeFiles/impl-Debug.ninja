@@ -217,8 +217,6 @@ build CMakeFiles/ReteNeurale.dir/Debug/main.cpp.o: CXX_COMPILER__ReteNeurale_uns
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeurale.dir/Debug
   OBJECT_FILE_DIR = CMakeFiles/ReteNeurale.dir/Debug
-  TARGET_COMPILE_PDB = CMakeFiles/ReteNeurale.dir/Debug/
-  TARGET_PDB = Debug/ReteNeurale.pdb
 
 build CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/pattern.cpp.o: CXX_COMPILER__ReteNeurale_unscanned_Debug /home/amasini/masi/progetto/rete_neurale/pattern.cpp || cmake_object_order_depends_target_ReteNeurale_DEBUG
   DEFINES = -DCMAKE_INTDIR=\"Debug\"
@@ -226,8 +224,6 @@ build CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/pattern.cpp.o: CXX_COMPILER_
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeurale.dir/Debug
   OBJECT_FILE_DIR = CMakeFiles/ReteNeurale.dir/Debug/rete_neurale
-  TARGET_COMPILE_PDB = CMakeFiles/ReteNeurale.dir/Debug/
-  TARGET_PDB = Debug/ReteNeurale.pdb
 
 build CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/recall.cpp.o: CXX_COMPILER__ReteNeurale_unscanned_Debug /home/amasini/masi/progetto/rete_neurale/recall.cpp || cmake_object_order_depends_target_ReteNeurale_DEBUG
   DEFINES = -DCMAKE_INTDIR=\"Debug\"
@@ -235,17 +231,13 @@ build CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/recall.cpp.o: CXX_COMPILER__
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeurale.dir/Debug
   OBJECT_FILE_DIR = CMakeFiles/ReteNeurale.dir/Debug/rete_neurale
-  TARGET_COMPILE_PDB = CMakeFiles/ReteNeurale.dir/Debug/
-  TARGET_PDB = Debug/ReteNeurale.pdb
 
-build CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/train.cpp.o: CXX_COMPILER__ReteNeurale_unscanned_Debug /home/amasini/masi/progetto/rete_neurale/train.cpp || cmake_object_order_depends_target_ReteNeurale_DEBUG
+build CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/matrix.cpp.o: CXX_COMPILER__ReteNeurale_unscanned_Debug /home/amasini/masi/progetto/rete_neurale/matrix.cpp || cmake_object_order_depends_target_ReteNeurale_DEBUG
   DEFINES = -DCMAKE_INTDIR=\"Debug\"
-  DEP_FILE = CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/train.cpp.o.d
+  DEP_FILE = CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/matrix.cpp.o.d
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeurale.dir/Debug
   OBJECT_FILE_DIR = CMakeFiles/ReteNeurale.dir/Debug/rete_neurale
-  TARGET_COMPILE_PDB = CMakeFiles/ReteNeurale.dir/Debug/
-  TARGET_PDB = Debug/ReteNeurale.pdb
 
 
 # =============================================================================
@@ -255,16 +247,15 @@ build CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/train.cpp.o: CXX_COMPILER__R
 #############################################
 # Link the executable Debug/ReteNeurale
 
-build Debug/ReteNeurale: CXX_EXECUTABLE_LINKER__ReteNeurale_Debug CMakeFiles/ReteNeurale.dir/Debug/main.cpp.o CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/pattern.cpp.o CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/recall.cpp.o CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/train.cpp.o | /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
+build Debug/ReteNeurale: CXX_EXECUTABLE_LINKER__ReteNeurale_Debug CMakeFiles/ReteNeurale.dir/Debug/main.cpp.o CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/pattern.cpp.o CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/recall.cpp.o CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/matrix.cpp.o | /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined
   LINK_FLAGS = -fsanitize=address,undefined
   LINK_LIBRARIES = /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
   OBJECT_DIR = CMakeFiles/ReteNeurale.dir/Debug
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/ReteNeurale.dir/Debug/
   TARGET_FILE = Debug/ReteNeurale
-  TARGET_PDB = Debug/ReteNeurale.pdb
+  TARGET_PDB = ReteNeurale.dbg
 
 # =============================================================================
 # Object build statements for EXECUTABLE target ReteNeuraleTest.t
@@ -281,8 +272,6 @@ build CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/test_runner.cpp.o: CXX_COMPILE
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Debug
   OBJECT_FILE_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Debug/test
-  TARGET_COMPILE_PDB = CMakeFiles/ReteNeuraleTest.t.dir/Debug/
-  TARGET_PDB = Debug/ReteNeuraleTest.t.pdb
 
 build CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/pattern_test.cpp.o: CXX_COMPILER__ReteNeuraleTest.2et_unscanned_Debug /home/amasini/masi/progetto/test/pattern_test.cpp || cmake_object_order_depends_target_ReteNeuraleTest.t_DEBUG
   DEFINES = -DCMAKE_INTDIR=\"Debug\"
@@ -290,8 +279,6 @@ build CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/pattern_test.cpp.o: CXX_COMPIL
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Debug
   OBJECT_FILE_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Debug/test
-  TARGET_COMPILE_PDB = CMakeFiles/ReteNeuraleTest.t.dir/Debug/
-  TARGET_PDB = Debug/ReteNeuraleTest.t.pdb
 
 build CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/recall_test.cpp.o: CXX_COMPILER__ReteNeuraleTest.2et_unscanned_Debug /home/amasini/masi/progetto/test/recall_test.cpp || cmake_object_order_depends_target_ReteNeuraleTest.t_DEBUG
   DEFINES = -DCMAKE_INTDIR=\"Debug\"
@@ -299,17 +286,13 @@ build CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/recall_test.cpp.o: CXX_COMPILE
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Debug
   OBJECT_FILE_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Debug/test
-  TARGET_COMPILE_PDB = CMakeFiles/ReteNeuraleTest.t.dir/Debug/
-  TARGET_PDB = Debug/ReteNeuraleTest.t.pdb
 
-build CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/train_test.cpp.o: CXX_COMPILER__ReteNeuraleTest.2et_unscanned_Debug /home/amasini/masi/progetto/test/train_test.cpp || cmake_object_order_depends_target_ReteNeuraleTest.t_DEBUG
+build CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/matrix_test.cpp.o: CXX_COMPILER__ReteNeuraleTest.2et_unscanned_Debug /home/amasini/masi/progetto/test/matrix_test.cpp || cmake_object_order_depends_target_ReteNeuraleTest.t_DEBUG
   DEFINES = -DCMAKE_INTDIR=\"Debug\"
-  DEP_FILE = CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/train_test.cpp.o.d
+  DEP_FILE = CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/matrix_test.cpp.o.d
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20
   OBJECT_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Debug
   OBJECT_FILE_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Debug/test
-  TARGET_COMPILE_PDB = CMakeFiles/ReteNeuraleTest.t.dir/Debug/
-  TARGET_PDB = Debug/ReteNeuraleTest.t.pdb
 
 
 # =============================================================================
@@ -319,15 +302,14 @@ build CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/train_test.cpp.o: CXX_COMPILER
 #############################################
 # Link the executable Debug/ReteNeuraleTest.t
 
-build Debug/ReteNeuraleTest.t: CXX_EXECUTABLE_LINKER__ReteNeuraleTest.2et_Debug CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/test_runner.cpp.o CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/pattern_test.cpp.o CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/recall_test.cpp.o CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/train_test.cpp.o
+build Debug/ReteNeuraleTest.t: CXX_EXECUTABLE_LINKER__ReteNeuraleTest.2et_Debug CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/test_runner.cpp.o CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/pattern_test.cpp.o CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/recall_test.cpp.o CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/matrix_test.cpp.o
   FLAGS = -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined
   LINK_FLAGS = -fsanitize=address,undefined
   OBJECT_DIR = CMakeFiles/ReteNeuraleTest.t.dir/Debug
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/ReteNeuraleTest.t.dir/Debug/
   TARGET_FILE = Debug/ReteNeuraleTest.t
-  TARGET_PDB = Debug/ReteNeuraleTest.t.pdb
+  TARGET_PDB = ReteNeuraleTest.t.dbg
 
 
 #############################################
