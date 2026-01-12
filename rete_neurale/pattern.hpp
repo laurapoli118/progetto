@@ -9,9 +9,9 @@
 class Pattern
 {
 private:
-    unsigned lato;       // qua bisogna decidere se usare solo un lato o base e latezza
-    unsigned numNeurons; // comunqur ci conviene lavorare con immagini quadrate così è più semplice
-    std::vector<int> neurons;
+    unsigned size_;       // qua bisogna decidere se usare solo un lato o base e latezza
+    unsigned numNeurons_; // comunqur ci conviene lavorare con immagini quadrate così è più semplice
+    std::vector<int> neurons_;
     sf::Image resize(const sf::Image& originale) const;
 
 public:
