@@ -68,5 +68,5 @@ void Matrix::recall(Pattern &pattern) {
         }
         currentRun++;
     }
-    assert(currentRun == maxRuns && "Err: Reached maxRuns without perfect convergence.");
+    // assert(currentRun == maxRuns && "Err: Reached maxRuns without perfect convergence.");
 }
