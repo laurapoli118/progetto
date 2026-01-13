@@ -81,5 +81,5 @@ void Matrix::recall(Pattern &pattern) {
         std::cout << "Run: " << currentRun << " Energy: " << energy << std::endl;
         currentRun++;
     }
-    assert(currentRun == maxRuns && "Err: Reached maxRuns without perfect convergence.");
+    assert(currentRun != maxRuns && "Err: Reached maxRuns without perfect convergence.");
 }
