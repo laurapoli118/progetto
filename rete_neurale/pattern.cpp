@@ -26,12 +26,12 @@ int Pattern::getNeuron(unsigned index) const { return neurons_[index]; } // FUNZ
 
 unsigned Pattern::getSize() const { return size_; }
 
-unsigned Pattern::getNumNeurons() const { return numNeurons; }
+unsigned Pattern::getNumNeurons() const { return numNeurons_; }
 
-const std::vector<int> &Pattern::getData() const { return neurons; }
+const std::vector<int> &Pattern::getData() const { return neurons_; }
 
 void Pattern::addNoise(float noisePerc) { // POI LOLLO QUANDO VUOI MI SPIEGHI STA MERDA E VALUTIAMO QUALE FARE
-    std::transform(neurons.begin(), neurons.end(), neurons.begin(), [=](int currentNeuron) { // std::transform prende: Inizio, Fine, Dove Scrivere, La Funzione da applicare
+    std::transform(neurons_.begin(), neurons_.end(), neurons_.begin(), [=](int currentNeuron) { // std::transform prende: Inizio, Fine, Dove Scrivere, La Funzione da applicare
         float random = static_cast<float>(std::rand()) / static_cast<float>(RAND_MAX);
         if (random < noisePerc) {
                 return -currentNeuron;
