@@ -66,14 +66,17 @@ void Matrix::recall(Pattern &pattern) {
         for(unsigned k=0; k < numNeurons_; k++) { // modifichiamo effettivamente l'oggetto nuovo
             pattern.setNeuron(k, newPattern[k]);
 
-            //CALCOLO ENERGIA
-
-            energy += 0.5 * weights_[k][k] * newPattern[k] * newPattern[k];
-
-
         }
         if(convCheck == 0) {
             conv = true;
+        }
+
+        for(unsigned m=0; m < numNeurons_; m++) {
+            double localSum = 0.0;
+            for(unsigned n=0; n < numNeurons_; n++) {
+                localSum += weights_[m][n] * pattern.getNeuron(n);
+            }
+            energy += -0.5 * localSum * pattern.getNeuron(m);
         }
 
         std::cout << "Run: " << currentRun << " Energy: " << energy << std::endl;
