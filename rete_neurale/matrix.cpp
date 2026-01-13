@@ -40,7 +40,7 @@ void Matrix::learnPattern(const Pattern &pattern) { // così forse è un po trop
 
 void Matrix::recall(Pattern &pattern) {
     bool conv = false;
-    unsigned int maxRuns = 100;
+    unsigned int maxRuns = 200;
     unsigned int currentRun = 0;
     while(!conv && currentRun <= maxRuns) {
         std::vector<int> currentPattern = pattern.getData();       // nuovo vettore per verificare converga
@@ -68,5 +68,5 @@ void Matrix::recall(Pattern &pattern) {
         }
         currentRun++;
     }
-    // assert(currentRun == maxRuns && "Err: Reached maxRuns without perfect convergence.");
+    assert(currentRun == maxRuns && "Err: Reached maxRuns without perfect convergence.");
 }
