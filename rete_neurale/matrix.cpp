@@ -46,6 +46,8 @@ void Matrix::recall(Pattern &pattern) {
         std::vector<int> currentPattern = pattern.getData();       // nuovo vettore per verificare converga
         std::vector<int> newPattern = currentPattern;           // HO MESSO DOUBLE BUFFERING (due vettori) così che durante un giro gli ultimi cambi non siano influenzati dai primi
         unsigned convCheck = 0;                           // variabile per verificare se per ogni i è uguale
+        double energy = 0.0;
+        
         for(unsigned i=0; i < numNeurons_; i++) {
             double sum = 0.0;
             for(unsigned j=0; j < numNeurons_; j++) {
@@ -62,10 +64,21 @@ void Matrix::recall(Pattern &pattern) {
         }
         for(unsigned k=0; k < numNeurons_; k++) { // modifichiamo effettivamente l'oggetto nuovo
             pattern.setNeuron(k, newPattern[k]);
+
         }
         if(convCheck == 0) {
             conv = true;
         }
+
+        for(unsigned m=0; m < numNeurons_; m++) {
+            double localSum = 0.0;
+            for(unsigned n=0; n < numNeurons_; n++) {
+                localSum += weights_[m][n] * pattern.getNeuron(n);
+            }
+            energy += -0.5 * localSum * pattern.getNeuron(m);
+        }
+
+        std::cout << "Run: " << currentRun << " Energy: " << energy << std::endl;
         currentRun++;
     }
     assert(currentRun == maxRuns && "Err: Reached maxRuns without perfect convergence.");

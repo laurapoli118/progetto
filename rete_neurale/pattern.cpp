@@ -12,19 +12,19 @@
 
 // RICORDARSI DI AGGIUNGERE ASSERT E EXCEPTION PER GESTIRE RUNTIME
 
-Pattern::Pattern(int size) : lato(size), numNeurons(size * size) {
+Pattern::Pattern(int size) : size_(size), numNeurons_(size * size) {
     assert(size > 0 && "Error: size must be greater than 0.");
-    neurons.resize(numNeurons, 0); // costruttore che inizializza il vettore con zeri, vedi giù per diff. resize e reserve
+    neurons_.resize(numNeurons_, 0); // costruttore che inizializza il vettore con zeri, vedi giù per diff. resize e reserve
 }
 
 void Pattern::setNeuron(unsigned index, int value) { // FUNZIONE SETTER 
-    assert(index <= numNeurons && "Error: can't set an inexisting nueron.");
-    neurons[index] = value;
+    assert(index <= numNeurons_ && "Error: can't set an inexisting nueron.");
+    neurons_[index] = value;
 }
 
-int Pattern::getNeuron(unsigned index) const { return neurons[index]; } // FUNZIONI GETTERS
+int Pattern::getNeuron(unsigned index) const { return neurons_[index]; } // FUNZIONI GETTERS
 
-unsigned Pattern::getLato() const { return lato; }
+unsigned Pattern::getSize() const { return size_; }
 
 unsigned Pattern::getNumNeurons() const { return numNeurons; }
 
@@ -43,19 +43,19 @@ void Pattern::addNoise(float noisePerc) { // POI LOLLO QUANDO VUOI MI SPIEGHI ST
 }
 
 sf::Image Pattern::resize(const sf::Image& original) const {
-    if (original.getSize().x == lato && original.getSize().y == lato) {
+    if (original.getSize().x == size_ && original.getSize().y == size_) {
         return original;
     } //controllo se va già bene
 
     sf::Image risized; // creo una tela delle dimensioni che vogliamo
-    risized.create(lato, lato, sf::Color::Black);
+    risized.create(size_, size_, sf::Color::Black);
 
     sf::Vector2u orgSize = original.getSize();
     
-    for (unsigned y = 0; y < lato; ++y) {
-        for (unsigned x = 0; x < lato; ++x) {
-            unsigned orgX = x * orgSize.x / lato;
-            unsigned orgY = y * orgSize.y / lato;
+    for (unsigned y = 0; y < size_; ++y) {
+        for (unsigned x = 0; x < size_; ++x) {
+            unsigned orgX = x * orgSize.x / size_;
+            unsigned orgY = y * orgSize.y / size_;
             risized.setPixel(x, y, original.getPixel(orgX, orgY));
         }
     }
@@ -64,12 +64,12 @@ sf::Image Pattern::resize(const sf::Image& original) const {
 
 void Pattern::display() const {
     sf::Image visibleImage;
-    visibleImage.create(lato, lato); // trasforma il vettore in un'immagine
+    visibleImage.create(size_, size_); // trasforma il vettore in un'immagine
 
-    for (unsigned int i = 0; i < numNeurons; i++) {
-        unsigned int x = i % lato;
-        unsigned int y = i / lato;
-        if (neurons[i] == 1) {
+    for (unsigned int i = 0; i < numNeurons_; i++) {
+        unsigned int x = i % size_;
+        unsigned int y = i / size_;
+        if (neurons_[i] == 1) {
             visibleImage.setPixel(x, y, sf::Color::Black); // li giro di nuovo così vengono i colori sensati
         } else {
             visibleImage.setPixel(x, y, sf::Color::White);
@@ -81,7 +81,7 @@ void Pattern::display() const {
     sf::Sprite sprite(texture);
     sprite.setScale(10.0f, 10.0f); // ingrandisce che sarebbe 50 pixel se no
 
-    sf::RenderWindow window(sf::VideoMode(lato * 10, lato * 10), "Pattern Preview");
+    sf::RenderWindow window(sf::VideoMode(size_ * 10, size_ * 10), "Pattern Preview");
 
     while (window.isOpen()) {
         sf::Event event;
@@ -105,12 +105,12 @@ bool Pattern::loadFromImage(const std::string& imgName) {
     sf::Image image = Pattern::resize(startingImg);
 
     std::vector<int> pixelLuminance; // vettore temporaneo per salvare le luminosità dei pixel
-    pixelLuminance.reserve(numNeurons); // sicuro lo chiede, questo 'riserva' tot spazi ma vuoti, mentre .resize riempe tot spazi di 0.
+    pixelLuminance.reserve(numNeurons_); // sicuro lo chiede, questo 'riserva' tot spazi ma vuoti, mentre .resize riempe tot spazi di 0.
     
     long luminositySum = 0;
 
-    for (unsigned int y = 0; y < lato; y++) {
-        for (unsigned int x = 0; x < lato; x++) {
+    for (unsigned int y = 0; y < size_; y++) {
+        for (unsigned int x = 0; x < size_; x++) {
             sf::Color c = image.getPixel(x, y);
             int lum = 0.299 * c.r + 0.587 * c.g + 0.114 * c.b; // sono le proporzioni di importanza per l'occhio del rosso, giallo e blu
             pixelLuminance.push_back(lum);
@@ -118,12 +118,12 @@ bool Pattern::loadFromImage(const std::string& imgName) {
         }
     }
 
-    int turningPoint = 0.8 * luminositySum / numNeurons;
+    int turningPoint = 0.8 * luminositySum / numNeurons_;
     for (size_t i = 0; i < pixelLuminance.size(); ++i) {
         if (pixelLuminance[i] > turningPoint) {
-            neurons[i] = -1; // per le reti è meglio (non chiedetemi perchè) avere 1 nero, tipo riconosce i bordi come attivo e sfondo spento
+            neurons_[i] = -1; // per le reti è meglio (non chiedetemi perchè) avere 1 nero, tipo riconosce i bordi come attivo e sfondo spento
         } else {
-            neurons[i] = 1;
+            neurons_[i] = 1;
         }
     }
 
