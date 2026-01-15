@@ -40,8 +40,8 @@ void Matrix::learnPattern(const Pattern &pattern) { // così forse è un po trop
 
 void Matrix::recall(Pattern &pattern) {
     bool conv = false;
-    unsigned int maxRuns = 200;
-    unsigned int currentRun = 0;
+    unsigned int maxRuns = 100;
+    unsigned int currentRun = 1;
     while(!conv && currentRun <= maxRuns) {
         std::vector<int> currentPattern = pattern.getData();       // nuovo vettore per verificare converga
         std::vector<int> newPattern = currentPattern;           // HO MESSO DOUBLE BUFFERING (due vettori) così che durante un giro gli ultimi cambi non siano influenzati dai primi
@@ -75,7 +75,7 @@ void Matrix::recall(Pattern &pattern) {
             for(unsigned n=0; n < numNeurons_; n++) {
                 localSum += weights_[m][n] * pattern.getNeuron(n);
             }
-            energy += -0.5 * localSum * pattern.getNeuron(m);
+            energy -= 0.5 * localSum * pattern.getNeuron(m);
         }
 
         std::cout << "Run: " << currentRun << " Energy: " << energy << std::endl;
