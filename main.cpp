@@ -11,34 +11,41 @@ int main() {
     Matrix matrix(lato);
     unsigned int imgsGotten = 0;
     while (true) {
-        std::cout << "[" << imgsGotten + 1 << "] Insert the name of a jpg file or write \'stop\': ";
+        std::cout << "[" << imgsGotten + 1 << "] Insert the name of a png file (Mario, Luigi, Toad, Peach or Bowser) or write \'stop\': ";
         std::string imgName;
         std::cin >> imgName;
         if (imgName == "stop") { break; }
         Pattern p(lato);
         if (p.loadFromImage(imgName)) { 
             p.display();
-            std::cout << "Got it, teaching the network.\n"; // ha senso?
+            std::cout << "Got it, teaching the network.\n";
             matrix.learnPattern(p);
             imgsGotten++;
         }
     }
     assert(imgsGotten > 0 && "Err: no images learnt.");
-    std::cout << "Training phase completed.\nInsert the name of image you want to corrupt: ";
-    std::string testImgName;
-    std::cin >> testImgName;
-    Pattern p(lato);
-    if (p.loadFromImage(testImgName)) {
-        float noiseLevel = 0.1f;
-        std::cout << "Got it, adding " << (noiseLevel * 100) <<"% of noise.\n";
-        p.addNoise(noiseLevel);
-        p.display();
-        std::cout << "Starting the recall.\n";
-        matrix.recall(p);
-        std::cout << "Image rebuilt!\n";
-        p.display();
-    } else {
-        std::cout << "Err: couldn't see the image.";
+    std::cout << "Training phase completed.\n";
+    while (true) {
+        std::cout << "Insert the name of image you want to corrupt or write \'stop\' : ";
+        std::string testImgName;
+        std::cin >> testImgName;
+        if (testImgName == "stop") { break; }
+        Pattern p(lato);
+        if (p.loadFromImage(testImgName)) {
+            std::cout << "Insert the percentage you want to corrupt the image with: ";
+            float noiseLevel;
+            std::cin >> noiseLevel;
+            assert(noiseLevel >= 0 && noiseLevel <= 100 && "Err: NoiseLevel must be between 0 and 100.");
+            std::cout << "Got it, adding " << (noiseLevel) <<"\% of noise.\n";
+            p.addNoise(noiseLevel/100);
+            p.display();
+            std::cout << "Starting the recall.\n";
+            matrix.recall(p);
+            std::cout << "Image rebuilt!\n";
+            p.display();
+        } else {
+            std::cout << "Err: couldn't see the image.";
+        }
     }
     return 0;
 }

@@ -97,7 +97,7 @@ void Pattern::display() const {
 
 bool Pattern::loadFromImage(const std::string& imgName) {
     sf::Image startingImg;
-    if (!startingImg.loadFromFile("./images/" + imgName)) {
+    if (!startingImg.loadFromFile("./images/" + imgName + ".png")) {
         std::cerr << "Error: Impossible to find the file " << imgName << std::endl;
         return false;
     } // autoesplicativo
