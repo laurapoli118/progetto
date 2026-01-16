@@ -1,4 +1,3 @@
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 #include "matrix.hpp"
 #include "pattern.hpp"
@@ -23,7 +22,9 @@ TEST_CASE("Proprietà matrice dei pesi")
 
     SUBCASE("simmetria"){
         for(unsigned i=0; i<size; i++){
-            CHECK(m.getWeight(i,j)==doctest::Approx(j,i));
+            for(unsigned j=0; j<size; j++) {
+                CHECK(m.getWeight(i,j)==doctest::Approx(m.getWeight(j,i)));
+            }
         }
     }
 

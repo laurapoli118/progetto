@@ -1,146 +1,68 @@
 [
 {
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Debug\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20 -o CMakeFiles/ReteNeurale.dir/Debug/main.cpp.o -c /home/amasini/masi/progetto/main.cpp",
-  "file": "/home/amasini/masi/progetto/main.cpp",
-  "output": "CMakeFiles/ReteNeurale.dir/Debug/main.cpp.o"
+  "directory": "/workspaces/progetto/build",
+  "command": "/usr/bin/c++    -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -std=c++20 -o CMakeFiles/ReteNeurale.dir/main.cpp.o -c /workspaces/progetto/main.cpp",
+  "file": "/workspaces/progetto/main.cpp",
+  "output": "CMakeFiles/ReteNeurale.dir/main.cpp.o"
 },
 {
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Debug\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20 -o CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/pattern.cpp.o -c /home/amasini/masi/progetto/rete_neurale/pattern.cpp",
-  "file": "/home/amasini/masi/progetto/rete_neurale/pattern.cpp",
-  "output": "CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/pattern.cpp.o"
+  "directory": "/workspaces/progetto/build",
+  "command": "/usr/bin/c++    -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -std=c++20 -o CMakeFiles/ReteNeurale.dir/rete_neurale/pattern.cpp.o -c /workspaces/progetto/rete_neurale/pattern.cpp",
+  "file": "/workspaces/progetto/rete_neurale/pattern.cpp",
+  "output": "CMakeFiles/ReteNeurale.dir/rete_neurale/pattern.cpp.o"
 },
 {
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Debug\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20 -o CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/recall.cpp.o -c /home/amasini/masi/progetto/rete_neurale/recall.cpp",
-  "file": "/home/amasini/masi/progetto/rete_neurale/recall.cpp",
-  "output": "CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/recall.cpp.o"
+  "directory": "/workspaces/progetto/build",
+  "command": "/usr/bin/c++    -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -std=c++20 -o CMakeFiles/ReteNeurale.dir/rete_neurale/matrix.cpp.o -c /workspaces/progetto/rete_neurale/matrix.cpp",
+  "file": "/workspaces/progetto/rete_neurale/matrix.cpp",
+  "output": "CMakeFiles/ReteNeurale.dir/rete_neurale/matrix.cpp.o"
 },
 {
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Debug\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20 -o CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/matrix.cpp.o -c /home/amasini/masi/progetto/rete_neurale/matrix.cpp",
-  "file": "/home/amasini/masi/progetto/rete_neurale/matrix.cpp",
-  "output": "CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/matrix.cpp.o"
+  "directory": "/workspaces/progetto/build",
+  "command": "/usr/bin/c++    -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -std=c++20 -o CMakeFiles/ReteNeurale.dir/rete_neurale/recall.cpp.o -c /workspaces/progetto/rete_neurale/recall.cpp",
+  "file": "/workspaces/progetto/rete_neurale/recall.cpp",
+  "output": "CMakeFiles/ReteNeurale.dir/rete_neurale/recall.cpp.o"
 },
 {
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Release\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O3 -DNDEBUG -std=c++20 -o CMakeFiles/ReteNeurale.dir/Release/main.cpp.o -c /home/amasini/masi/progetto/main.cpp",
-  "file": "/home/amasini/masi/progetto/main.cpp",
-  "output": "CMakeFiles/ReteNeurale.dir/Release/main.cpp.o"
+  "directory": "/workspaces/progetto/build",
+  "command": "/usr/bin/c++  -I/workspaces/progetto/test -I/workspaces/progetto/rete_neurale  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -std=c++20 -o CMakeFiles/ReteNeuraleTest.dir/test/test_runner.cpp.o -c /workspaces/progetto/test/test_runner.cpp",
+  "file": "/workspaces/progetto/test/test_runner.cpp",
+  "output": "CMakeFiles/ReteNeuraleTest.dir/test/test_runner.cpp.o"
 },
 {
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Release\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O3 -DNDEBUG -std=c++20 -o CMakeFiles/ReteNeurale.dir/Release/rete_neurale/pattern.cpp.o -c /home/amasini/masi/progetto/rete_neurale/pattern.cpp",
-  "file": "/home/amasini/masi/progetto/rete_neurale/pattern.cpp",
-  "output": "CMakeFiles/ReteNeurale.dir/Release/rete_neurale/pattern.cpp.o"
+  "directory": "/workspaces/progetto/build",
+  "command": "/usr/bin/c++  -I/workspaces/progetto/test -I/workspaces/progetto/rete_neurale  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -std=c++20 -o CMakeFiles/ReteNeuraleTest.dir/test/pattern_test.cpp.o -c /workspaces/progetto/test/pattern_test.cpp",
+  "file": "/workspaces/progetto/test/pattern_test.cpp",
+  "output": "CMakeFiles/ReteNeuraleTest.dir/test/pattern_test.cpp.o"
 },
 {
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Release\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O3 -DNDEBUG -std=c++20 -o CMakeFiles/ReteNeurale.dir/Release/rete_neurale/recall.cpp.o -c /home/amasini/masi/progetto/rete_neurale/recall.cpp",
-  "file": "/home/amasini/masi/progetto/rete_neurale/recall.cpp",
-  "output": "CMakeFiles/ReteNeurale.dir/Release/rete_neurale/recall.cpp.o"
+  "directory": "/workspaces/progetto/build",
+  "command": "/usr/bin/c++  -I/workspaces/progetto/test -I/workspaces/progetto/rete_neurale  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -std=c++20 -o CMakeFiles/ReteNeuraleTest.dir/test/recall_test.cpp.o -c /workspaces/progetto/test/recall_test.cpp",
+  "file": "/workspaces/progetto/test/recall_test.cpp",
+  "output": "CMakeFiles/ReteNeuraleTest.dir/test/recall_test.cpp.o"
 },
 {
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Release\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O3 -DNDEBUG -std=c++20 -o CMakeFiles/ReteNeurale.dir/Release/rete_neurale/matrix.cpp.o -c /home/amasini/masi/progetto/rete_neurale/matrix.cpp",
-  "file": "/home/amasini/masi/progetto/rete_neurale/matrix.cpp",
-  "output": "CMakeFiles/ReteNeurale.dir/Release/rete_neurale/matrix.cpp.o"
+  "directory": "/workspaces/progetto/build",
+  "command": "/usr/bin/c++  -I/workspaces/progetto/test -I/workspaces/progetto/rete_neurale  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -std=c++20 -o CMakeFiles/ReteNeuraleTest.dir/test/matrix_test.cpp.o -c /workspaces/progetto/test/matrix_test.cpp",
+  "file": "/workspaces/progetto/test/matrix_test.cpp",
+  "output": "CMakeFiles/ReteNeuraleTest.dir/test/matrix_test.cpp.o"
 },
 {
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"RelWithDebInfo\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O2 -g -DNDEBUG -std=c++20 -o CMakeFiles/ReteNeurale.dir/RelWithDebInfo/main.cpp.o -c /home/amasini/masi/progetto/main.cpp",
-  "file": "/home/amasini/masi/progetto/main.cpp",
-  "output": "CMakeFiles/ReteNeurale.dir/RelWithDebInfo/main.cpp.o"
+  "directory": "/workspaces/progetto/build",
+  "command": "/usr/bin/c++  -I/workspaces/progetto/test -I/workspaces/progetto/rete_neurale  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -std=c++20 -o CMakeFiles/ReteNeuraleTest.dir/rete_neurale/pattern.cpp.o -c /workspaces/progetto/rete_neurale/pattern.cpp",
+  "file": "/workspaces/progetto/rete_neurale/pattern.cpp",
+  "output": "CMakeFiles/ReteNeuraleTest.dir/rete_neurale/pattern.cpp.o"
 },
 {
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"RelWithDebInfo\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O2 -g -DNDEBUG -std=c++20 -o CMakeFiles/ReteNeurale.dir/RelWithDebInfo/rete_neurale/pattern.cpp.o -c /home/amasini/masi/progetto/rete_neurale/pattern.cpp",
-  "file": "/home/amasini/masi/progetto/rete_neurale/pattern.cpp",
-  "output": "CMakeFiles/ReteNeurale.dir/RelWithDebInfo/rete_neurale/pattern.cpp.o"
+  "directory": "/workspaces/progetto/build",
+  "command": "/usr/bin/c++  -I/workspaces/progetto/test -I/workspaces/progetto/rete_neurale  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -std=c++20 -o CMakeFiles/ReteNeuraleTest.dir/rete_neurale/matrix.cpp.o -c /workspaces/progetto/rete_neurale/matrix.cpp",
+  "file": "/workspaces/progetto/rete_neurale/matrix.cpp",
+  "output": "CMakeFiles/ReteNeuraleTest.dir/rete_neurale/matrix.cpp.o"
 },
 {
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"RelWithDebInfo\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O2 -g -DNDEBUG -std=c++20 -o CMakeFiles/ReteNeurale.dir/RelWithDebInfo/rete_neurale/recall.cpp.o -c /home/amasini/masi/progetto/rete_neurale/recall.cpp",
-  "file": "/home/amasini/masi/progetto/rete_neurale/recall.cpp",
-  "output": "CMakeFiles/ReteNeurale.dir/RelWithDebInfo/rete_neurale/recall.cpp.o"
-},
-{
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"RelWithDebInfo\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O2 -g -DNDEBUG -std=c++20 -o CMakeFiles/ReteNeurale.dir/RelWithDebInfo/rete_neurale/matrix.cpp.o -c /home/amasini/masi/progetto/rete_neurale/matrix.cpp",
-  "file": "/home/amasini/masi/progetto/rete_neurale/matrix.cpp",
-  "output": "CMakeFiles/ReteNeurale.dir/RelWithDebInfo/rete_neurale/matrix.cpp.o"
-},
-{
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Debug\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20 -o CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/test_runner.cpp.o -c /home/amasini/masi/progetto/test/test_runner.cpp",
-  "file": "/home/amasini/masi/progetto/test/test_runner.cpp",
-  "output": "CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/test_runner.cpp.o"
-},
-{
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Debug\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20 -o CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/pattern_test.cpp.o -c /home/amasini/masi/progetto/test/pattern_test.cpp",
-  "file": "/home/amasini/masi/progetto/test/pattern_test.cpp",
-  "output": "CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/pattern_test.cpp.o"
-},
-{
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Debug\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20 -o CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/recall_test.cpp.o -c /home/amasini/masi/progetto/test/recall_test.cpp",
-  "file": "/home/amasini/masi/progetto/test/recall_test.cpp",
-  "output": "CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/recall_test.cpp.o"
-},
-{
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Debug\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -g -fsanitize=address,undefined -std=c++20 -o CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/matrix_test.cpp.o -c /home/amasini/masi/progetto/test/matrix_test.cpp",
-  "file": "/home/amasini/masi/progetto/test/matrix_test.cpp",
-  "output": "CMakeFiles/ReteNeuraleTest.t.dir/Debug/test/matrix_test.cpp.o"
-},
-{
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Release\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O3 -DNDEBUG -std=c++20 -o CMakeFiles/ReteNeuraleTest.t.dir/Release/test/test_runner.cpp.o -c /home/amasini/masi/progetto/test/test_runner.cpp",
-  "file": "/home/amasini/masi/progetto/test/test_runner.cpp",
-  "output": "CMakeFiles/ReteNeuraleTest.t.dir/Release/test/test_runner.cpp.o"
-},
-{
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Release\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O3 -DNDEBUG -std=c++20 -o CMakeFiles/ReteNeuraleTest.t.dir/Release/test/pattern_test.cpp.o -c /home/amasini/masi/progetto/test/pattern_test.cpp",
-  "file": "/home/amasini/masi/progetto/test/pattern_test.cpp",
-  "output": "CMakeFiles/ReteNeuraleTest.t.dir/Release/test/pattern_test.cpp.o"
-},
-{
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Release\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O3 -DNDEBUG -std=c++20 -o CMakeFiles/ReteNeuraleTest.t.dir/Release/test/recall_test.cpp.o -c /home/amasini/masi/progetto/test/recall_test.cpp",
-  "file": "/home/amasini/masi/progetto/test/recall_test.cpp",
-  "output": "CMakeFiles/ReteNeuraleTest.t.dir/Release/test/recall_test.cpp.o"
-},
-{
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Release\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O3 -DNDEBUG -std=c++20 -o CMakeFiles/ReteNeuraleTest.t.dir/Release/test/matrix_test.cpp.o -c /home/amasini/masi/progetto/test/matrix_test.cpp",
-  "file": "/home/amasini/masi/progetto/test/matrix_test.cpp",
-  "output": "CMakeFiles/ReteNeuraleTest.t.dir/Release/test/matrix_test.cpp.o"
-},
-{
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"RelWithDebInfo\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O2 -g -DNDEBUG -std=c++20 -o CMakeFiles/ReteNeuraleTest.t.dir/RelWithDebInfo/test/test_runner.cpp.o -c /home/amasini/masi/progetto/test/test_runner.cpp",
-  "file": "/home/amasini/masi/progetto/test/test_runner.cpp",
-  "output": "CMakeFiles/ReteNeuraleTest.t.dir/RelWithDebInfo/test/test_runner.cpp.o"
-},
-{
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"RelWithDebInfo\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O2 -g -DNDEBUG -std=c++20 -o CMakeFiles/ReteNeuraleTest.t.dir/RelWithDebInfo/test/pattern_test.cpp.o -c /home/amasini/masi/progetto/test/pattern_test.cpp",
-  "file": "/home/amasini/masi/progetto/test/pattern_test.cpp",
-  "output": "CMakeFiles/ReteNeuraleTest.t.dir/RelWithDebInfo/test/pattern_test.cpp.o"
-},
-{
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"RelWithDebInfo\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O2 -g -DNDEBUG -std=c++20 -o CMakeFiles/ReteNeuraleTest.t.dir/RelWithDebInfo/test/recall_test.cpp.o -c /home/amasini/masi/progetto/test/recall_test.cpp",
-  "file": "/home/amasini/masi/progetto/test/recall_test.cpp",
-  "output": "CMakeFiles/ReteNeuraleTest.t.dir/RelWithDebInfo/test/recall_test.cpp.o"
-},
-{
-  "directory": "/home/amasini/masi/progetto/build",
-  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"RelWithDebInfo\\\"  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -O2 -g -DNDEBUG -std=c++20 -o CMakeFiles/ReteNeuraleTest.t.dir/RelWithDebInfo/test/matrix_test.cpp.o -c /home/amasini/masi/progetto/test/matrix_test.cpp",
-  "file": "/home/amasini/masi/progetto/test/matrix_test.cpp",
-  "output": "CMakeFiles/ReteNeuraleTest.t.dir/RelWithDebInfo/test/matrix_test.cpp.o"
+  "directory": "/workspaces/progetto/build",
+  "command": "/usr/bin/c++  -I/workspaces/progetto/test -I/workspaces/progetto/rete_neurale  -fno-omit-frame-pointer -Wall -Wextra -D_GLIBCXX_ASSERTIONS -std=c++20 -o CMakeFiles/ReteNeuraleTest.dir/rete_neurale/recall.cpp.o -c /workspaces/progetto/rete_neurale/recall.cpp",
+  "file": "/workspaces/progetto/rete_neurale/recall.cpp",
+  "output": "CMakeFiles/ReteNeuraleTest.dir/rete_neurale/recall.cpp.o"
 }
 ]
