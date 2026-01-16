@@ -46,3 +46,10 @@
 1778	1981	1768316426257326170	Debug/ReteNeurale	ecafb614423adaf6
 18	2021	1768485845240182957	CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/matrix.cpp.o	37f8177c323d5d6e
 2021	2377	1768485845599135837	Debug/ReteNeurale	ecafb614423adaf6
+28	3835	1768565020096031109	CMakeFiles/ReteNeurale.dir/Debug/main.cpp.o	e6815418ef4de2cf
+3835	4199	1768565020459031195	Debug/ReteNeurale	ecafb614423adaf6
+3	1012	1768565203873641342	CMakeFiles/ReteNeurale.dir/Debug/main.cpp.o	e6815418ef4de2cf
+4	1740	1768565204600841375	CMakeFiles/ReteNeurale.dir/Debug/rete_neurale/pattern.cpp.o	1937593cc837b28d
+1740	1928	1768565204788041384	Debug/ReteNeurale	ecafb614423adaf6
+2	808	1768565366582419155	CMakeFiles/ReteNeurale.dir/Debug/main.cpp.o	e6815418ef4de2cf
+808	987	1768565366762419162	Debug/ReteNeurale	ecafb614423adaf6
