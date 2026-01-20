@@ -7,7 +7,7 @@ int main() {
 
     std::cout << "Hopfield Network Creation.\n";
     std::srand(static_cast<unsigned>(std::time(nullptr)));
-    const unsigned lato = 50;
+    const unsigned lato = 64;
     Matrix matrix(lato);
     unsigned int imgsGotten = 0;
     while (true) {

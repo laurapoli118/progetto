@@ -62,6 +62,7 @@ void Matrix::recall(Pattern& pattern)
   unsigned int maxRuns    = 100;
   unsigned int currentRun = 1;
   std::vector<float> energies;
+  energies.push_back(calcEnergy(pattern)); // energia iniziale
 
   while (!conv && currentRun <= maxRuns) {
     std::vector<int> currentPattern =
@@ -90,11 +91,12 @@ void Matrix::recall(Pattern& pattern)
          k++) { // modifichiamo effettivamente l'oggetto nuovo
       pattern.setNeuron(k, newPattern[k]);
     }
+
+    energies.push_back(calcEnergy(pattern)); // energia ad ogni step
+
     if (convCheck == 0) {
       conv = true;
     }
-
-    energies.push_back(calcEnergy(pattern)); // trovo energia
 
     currentRun++;
   }
@@ -105,3 +107,4 @@ void Matrix::recall(Pattern& pattern)
     std::cout << "Energy at step " << i << ": " << energies[i] << std::endl;
   }
 }
+
