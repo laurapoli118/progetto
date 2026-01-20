@@ -17,6 +17,10 @@ public:
     void setWeight(unsigned i, unsigned j, float weight);
     void learnPattern(const Pattern &pattern);
     void recall(Pattern &pattern);
+    float calcEnergy(const Pattern &pattern) const;
+
+
+
 };
 
 #endif
