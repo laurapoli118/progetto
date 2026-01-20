@@ -1,0 +1,19 @@
+# Cartelle di compilazione
+build/
+bin/
+out/
+
+# File oggetto e librerie compilate
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+
+# File temporanei di sistema
+.DS_Store
+Thumbs.db
+
+# VS Code (opzionale: se vuoi che ognuno abbia le sue impostazioni)
+.vscode/
