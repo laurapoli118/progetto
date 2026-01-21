@@ -38,7 +38,7 @@ target_link_libraries(ReteNeurale sfml-graphics sfml-window sfml-system)
 if (BUILD_TESTING)
 
   # aggiungi l'eseguibile sample.t
-  add_executable (ReteNeuraleTest test/test_runner.cpp test/pattern_test.cpp test/recall_test.cpp test/matrix_test.cpp ${RETE_SOURCES})
+  add_executable (ReteNeuraleTest test/test_runner.cpp test/pattern_test.cpp test/acquisition_test.cpp test/matrix_test.cpp ${RETE_SOURCES})
   # aggiungi l'eseguibile sample.t alla lista dei test
   target_include_directories(ReteNeuraleTest PRIVATE test rete_neurale)
   target_compile_definitions(ReteNeuraleTest PRIVATE ROOT_DIR=\"${CMAKE_SOURCE_DIR}\")
