@@ -1,6 +1,6 @@
 #include <cassert>
 #include "rete_neurale/pattern.hpp"
-#include "rete_neurale/recall.hpp"
+#include "rete_neurale/acquisition.hpp"
 #include "rete_neurale/matrix.hpp"
 
 int main() {
@@ -22,14 +22,14 @@ int main() {
         if (imgName == "all") {
             std::string images[] = {"Mario" , "Luigi", "Bowser", "Toad"};
             for (int i=0; i<4; i++) {
-                p.loadFromImage(images[i]);
+                Acquisition::loadFromImage(images[i], p);
                 matrix.learnPattern(p);
                 imgsGotten++;
             }
             break;
         }
-        if (p.loadFromImage(imgName)) { 
-            p.display();
+        if (Acquisition::loadFromImage(imgName, p)) { 
+            Acquisition::display(lato, p.getData());
             std::cout << "Got it, teaching the network.\n";
             matrix.learnPattern(p);
             imgsGotten++;
@@ -43,18 +43,18 @@ int main() {
         std::cin >> testImgName;
         if (testImgName == "stop") { break; }
         Pattern p(lato);
-        if (p.loadFromImage(testImgName)) {
+        if (Acquisition::loadFromImage(testImgName, p)) {
             std::cout << "Insert the percentage you want to corrupt the image with: ";
             float noiseLevel;
             std::cin >> noiseLevel;
             assert(noiseLevel >= 0 && noiseLevel <= 100 && "Err: NoiseLevel must be between 0 and 100.");
             std::cout << "Got it, adding " << (noiseLevel) <<"\% of noise.\n";
             p.addNoise(noiseLevel/100);
-            p.display();
+            Acquisition::display(lato, p.getData());
             std::cout << "Starting the recall.\n";
             matrix.recall(p);
             std::cout << "Image rebuilt!\n";
-            p.display();
+            Acquisition::display(lato, p.getData());
         } else {
             std::cout << "Err: couldn't see the image.";
         }

@@ -26,7 +26,7 @@ endif()
 string(APPEND CMAKE_CXX_FLAGS_DEBUG " -fsanitize=address,undefined")
 string(APPEND CMAKE_EXE_LINKER_FLAGS_DEBUG " -fsanitize=address,undefined")
 
-set(RETE_SOURCES rete_neurale/pattern.cpp rete_neurale/matrix.cpp rete_neurale/recall.cpp)
+set(RETE_SOURCES rete_neurale/pattern.cpp rete_neurale/matrix.cpp rete_neurale/acquisition.cpp)
 
 add_executable(ReteNeurale main.cpp ${RETE_SOURCES})
 target_compile_definitions(ReteNeurale PRIVATE ROOT_DIR=\"${CMAKE_SOURCE_DIR}\") # questo dovrebbe rendere il percorso per le immagini assoluto

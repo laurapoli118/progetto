@@ -1,45 +1,42 @@
 #ifndef PATTERN_HPP
 #define PATTERN_HPP
 
-#include <iostream>
-#include <vector>
-#include <string>
 #include <SFML/Graphics.hpp>
+#include <iostream>
+#include <string>
+#include <vector>
 
 class Pattern
 {
-private:
-    unsigned size_;       // qua bisogna decidere se usare solo un lato o base e latezza
-    unsigned numNeurons_; // comunqur ci conviene lavorare con immagini quadrate così è più semplice
-    std::vector<int> neurons_;
-    sf::Image resize(const sf::Image& originale) const;
+ private:
+  unsigned size_;
+  unsigned numNeurons_;
+  std::vector<int> neurons_;
+  
 
-public:
-    Pattern(int size);
+ public:
+  Pattern(int size);  // costruttore
 
-    // Funzioni per settare valori
+  // Funzioni per settare valori
 
-    void setNeuron(unsigned index, int value);
+  void setNeuron(unsigned index, int value);
 
-    // Funzioni per ottenere le grandezze del pattern
+  // Funzioni per ottenere le grandezze del pattern
 
-    //unsigned getLato() const;
+  int getNeuron(unsigned index) const;
 
-    int getNeuron(unsigned index) const;
+  unsigned getSize() const;
 
-    unsigned getSize() const;
+  unsigned getNumNeurons() const;
 
-    unsigned getNumNeurons() const;
+  const std::vector<int>& getData() const;
 
-    const std::vector<int> &getData() const;
+  // Funzione per rumore
 
-    // Funzione per rumore
+  void addNoise(float noisePerc);
 
-    void addNoise(float noisePerc);
-
-    
-    bool loadFromImage(const std::string& filename);
-    void display() const;
+  
+  
 };
 
 #endif
