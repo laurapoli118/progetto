@@ -11,6 +11,10 @@
 
 // RICORDARSI DI AGGIUNGERE ASSERT E EXCEPTION PER GESTIRE RUNTIME
 
+#ifndef ROOT_DIR
+#define ROOT_DIR "."
+#endif
+
 Pattern::Pattern(int size)
     : size_(size)
     , numNeurons_(size * size)
@@ -106,9 +110,9 @@ void Pattern::display() const
   sf::Texture texture;
   texture.loadFromImage(visibleImage);
   sf::Sprite sprite(texture);
-  sprite.setScale(10.0f, 10.0f); // ingrandisce che sarebbe 50 pixel se no
+  sprite.setScale(640.0f / size_, 640.0f / size_); // ingrandisce che sarebbe 50 pixel se no
 
-  sf::RenderWindow window(sf::VideoMode(size_ * 10, size_ * 10),
+  sf::RenderWindow window(sf::VideoMode(640.0f, 640.0f),
                           "Pattern Preview");
 
   while (window.isOpen()) {
@@ -128,7 +132,7 @@ void Pattern::display() const
 bool Pattern::loadFromImage(const std::string& imgName)
 {
   sf::Image startingImg;
-  if (!startingImg.loadFromFile("./images/" + imgName + ".png")) {
+  if (!startingImg.loadFromFile(std::string(ROOT_DIR) + "/images/" + imgName + ".png")) {
     std::cerr << "Error: Impossible to find the file " << imgName << std::endl;
     return false;
   } // autoesplicativo

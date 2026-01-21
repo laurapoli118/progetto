@@ -29,6 +29,7 @@ string(APPEND CMAKE_EXE_LINKER_FLAGS_DEBUG " -fsanitize=address,undefined")
 set(RETE_SOURCES rete_neurale/pattern.cpp rete_neurale/matrix.cpp rete_neurale/recall.cpp)
 
 add_executable(ReteNeurale main.cpp ${RETE_SOURCES})
+target_compile_definitions(ReteNeurale PRIVATE ROOT_DIR=\"${CMAKE_SOURCE_DIR}\") # questo dovrebbe rendere il percorso per le immagini assoluto
 
 target_link_libraries(ReteNeurale sfml-graphics sfml-window sfml-system)
 
@@ -40,6 +41,7 @@ if (BUILD_TESTING)
   add_executable (ReteNeuraleTest test/test_runner.cpp test/pattern_test.cpp test/recall_test.cpp test/matrix_test.cpp ${RETE_SOURCES})
   # aggiungi l'eseguibile sample.t alla lista dei test
   target_include_directories(ReteNeuraleTest PRIVATE test rete_neurale)
+  target_compile_definitions(ReteNeuraleTest PRIVATE ROOT_DIR=\"${CMAKE_SOURCE_DIR}\")
   target_link_libraries(ReteNeuraleTest sfml-graphics sfml-window sfml-system)
   add_test(NAME ReteNeuraleTest COMMAND ReteNeuraleTest)
 
