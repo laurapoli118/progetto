@@ -107,4 +107,3 @@ void Matrix::recall(Pattern& pattern)
     std::cout << "Energy at step " << i << ": " << energies[i] << std::endl;
   }
 }
-
