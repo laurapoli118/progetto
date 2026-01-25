@@ -36,7 +36,7 @@ TEST_CASE("accumulo di due pattern") {
     Pattern p1(size);
     Pattern p2(size);
     for(unsigned i=0; i<size*size; i++) {
-        p1.setNeuron(i, 1.0f); //[1,1,1,1,1....1]
+        p1.setNeuron(i, 1.0f); //[1,1,1,1,1....1] dimensione 16cd 
         p2.setNeuron(i, (i<2)? -1.0f : 1.0f); //[-1,-1,1,1,1,1,1....1]
     }
     m.learnPattern(p1);
@@ -46,12 +46,27 @@ TEST_CASE("accumulo di due pattern") {
         CHECK(m.getWeight(1,3)==doctest::Approx(0.0f)); 
     }
     SUBCASE("i pesi si sommano") {
-        CHECK(m.getWeight(2,3)==doctest::Approx(0.5f));
-        CHECK(m.getWeight(0,1)==doctest::Approx(0.5f));
+        CHECK(m.getWeight(2,3)==doctest::Approx(0.125f));
+        CHECK(m.getWeight(0,1)==doctest::Approx(0.125f));
 
     }
+    SUBCASE("riconoscimento di un pattern non corrotto") {
+
+        Pattern test_p1 = p1; 
+        m.recall(test_p1); 
+        for(unsigned i = 0; i < size * size; i++) {
+            CHECK(test_p1.getNeuron(i) == doctest::Approx(p1.getNeuron(i))); 
+        }
+
+        Pattern test_p2 = p2;
+        m.recall(test_p2); 
+        for(unsigned i = 0; i < size * size; i++) {
+            CHECK(test_p2.getNeuron(i) == doctest::Approx(p2.getNeuron(i))); 
+        }
+}
 
 
 }
+
 
 

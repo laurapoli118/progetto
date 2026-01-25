@@ -45,10 +45,9 @@ float Matrix::calcEnergy(const Pattern& pattern) const
 
 void Matrix::learnPattern(const Pattern& pattern)
 { // così forse è un po troppo messa bene, se vogliamo essere più grulli
-  unsigned side = std::sqrt(numNeurons_);
-  float normFactor = 1.0f / side;
-  for (unsigned i = 0; i < side; ++i) {
-    for (unsigned j = 0; j < side; ++j) {
+  float normFactor = 1.0f / numNeurons_;
+  for (unsigned i = 0; i < numNeurons_; ++i) {
+    for (unsigned j = 0; j < numNeurons_; ++j) {
       if (i != j) { // controllo per la diagonale nulla
         float coeffWeight = pattern.getNeuron(i) * pattern.getNeuron(j)
                           * normFactor; // SE TOGLIESSIMO LA VARIABILE IN PIù E
