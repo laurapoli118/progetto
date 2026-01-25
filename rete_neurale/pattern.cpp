@@ -79,7 +79,6 @@ bool Pattern::checkConv(const Pattern& original, const Pattern& current) const
     if (original.getNeuron(i) != current.getNeuron(i)) {
       return false;
     }
-
-    return true;
   }
+  return true;
 }
