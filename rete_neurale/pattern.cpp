@@ -12,7 +12,7 @@
 // RICORDARSI DI AGGIUNGERE ASSERT E EXCEPTION PER GESTIRE RUNTIME
 
 #ifndef ROOT_DIR
-#define ROOT_DIR "."
+#  define ROOT_DIR "."
 #endif
 
 Pattern::Pattern(int size)
@@ -66,10 +66,20 @@ void Pattern::addNoise(float noisePerc)
         } else {
           return currentNeuron;
         }
+
       });
 }
 
+bool Pattern::checkConv(const Pattern& original, const Pattern& current) const
+{
+  assert(original.getNumNeurons() == current.getNumNeurons());
+  unsigned n = original.getNumNeurons();
 
+  for (unsigned i = 0; i < n; ++i) {
+    if (original.getNeuron(i) != current.getNeuron(i)) {
+      return false;
+    }
 
-
-
+    return true;
+  }
+}
