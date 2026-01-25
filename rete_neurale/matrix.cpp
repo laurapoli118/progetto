@@ -21,11 +21,13 @@ Matrix::Matrix(unsigned size)
 
 float Matrix::getWeight(unsigned i, unsigned j) const
 {
+  assert(i < numNeurons_ && j < numNeurons_); // assert aggiunto da ettore tramite gemini
   return weights_[i][j];
 }
 
 void Matrix::setWeight(unsigned i, unsigned j, float weight)
 {
+  assert(i < numNeurons_ && j < numNeurons_); // assert aggiunto da ettore tramite gemini
   weights_[i][j] = weight;
 }
 
