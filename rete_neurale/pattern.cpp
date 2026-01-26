@@ -70,13 +70,14 @@ void Pattern::addNoise(float noisePerc)
       });
 }
 
-bool Pattern::checkConv(const Pattern& original, const Pattern& current) const
+bool Pattern::checkConv( const Pattern& current) const
 {
-  assert(original.getNumNeurons() == current.getNumNeurons());
-  unsigned n = original.getNumNeurons();
+  assert(getNumNeurons() == current.getNumNeurons() &&
+         "Error: Patterns must have the same number of neurons to compare.");
+  unsigned n = getNumNeurons();
 
   for (unsigned i = 0; i < n; ++i) {
-    if (original.getNeuron(i) != current.getNeuron(i)) {
+    if (getNeuron(i) != current.getNeuron(i)) {
       return false;
     }
   }

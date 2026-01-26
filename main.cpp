@@ -42,19 +42,28 @@ int main() {
         std::string testImgName;
         std::cin >> testImgName;
         if (testImgName == "stop") { break; }
-        Pattern p(lato);
-        if (Acquisition::loadFromImage(testImgName, p)) {
+        Pattern current(lato);
+        Pattern dirty(lato);
+        if (Acquisition::loadFromImage(testImgName, current)) {
             std::cout << "Insert the percentage you want to corrupt the image with: ";
             float noiseLevel;
             std::cin >> noiseLevel;
             assert(noiseLevel >= 0 && noiseLevel <= 100 && "Err: NoiseLevel must be between 0 and 100.");
             std::cout << "Got it, adding " << (noiseLevel) <<"\% of noise.\n";
-            p.addNoise(noiseLevel/100);
-            Acquisition::display(lato, p.getData());
+            Acquisition::loadFromImage(testImgName, dirty);
+            dirty.addNoise(noiseLevel/100);
+            Acquisition::display(lato, dirty.getData());
             std::cout << "Starting the recall.\n";
-            matrix.recall(p);
+            matrix.recall(dirty);
+
+            if (dirty.checkConv(current)) {
+                std::cout << "The network successfully recalled the image!\n";
+            } else {
+                std::cout << "The network couldn't fully recall the image.\n";
+            }
+
             std::cout << "Image rebuilt!\n";
-            Acquisition::display(lato, p.getData());
+            Acquisition::display(lato, dirty.getData());
         } else {
             std::cout << "Err: couldn't see the image.";
         }
