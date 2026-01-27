@@ -67,6 +67,17 @@ TEST_CASE("accumulo di due pattern") {
 
 
 }
+TEST_CASE("Gestione errori dimensioni") {
+    Matrix m(4); // Matrice per 16 neuroni (16x16)
+    Pattern p_sbagliato(3); // Pattern per 9 neuroni (3x3)
+    
+    // Verifichiamo che la funzione rifiuti il pattern sbagliato
+    CHECK_THROWS_AS(m.learnPattern(p_sbagliato), std::runtime_error);
+}
+TEST_CASE("Costruttore con size zero") {
+    // serve a evitare che il programma impazzisca dividenso per 0 nella regola di Hebb
+    CHECK_THROWS(Matrix(0));
+}
 
 
 

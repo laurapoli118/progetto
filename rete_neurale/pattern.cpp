@@ -8,6 +8,7 @@
 #include <random>
 #include <string>
 #include <vector>
+#include <stdexcept>
 
 // RICORDARSI DI AGGIUNGERE ASSERT E EXCEPTION PER GESTIRE RUNTIME
 
@@ -55,6 +56,11 @@ const std::vector<int>& Pattern::getData() const
 
 void Pattern::addNoise(float noisePerc)
 { // POI LOLLO QUANDO VUOI MI SPIEGHI STA MERDA E VALUTIAMO QUALE FARE
+
+  // CONTROLLO INPUT: La percentuale deve essere tra 0.0 (0%) e 1.0 (100%)
+  if (noisePerc < 0.0f || noisePerc > 1.0f) {
+      throw std::invalid_argument("Errore: la percentuale di rumore deve essere compresa tra 0 e 100");
+  }
   std::transform(
       neurons_.begin(), neurons_.end(), neurons_.begin(),
       [=](int currentNeuron) { // std::transform prende: Inizio, Fine, Dove

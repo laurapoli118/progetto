@@ -9,9 +9,13 @@
 #include <random>
 #include <string>
 #include <vector>
+#include <stdexcept>
 
 Matrix::Matrix(unsigned size)
-{ // la inizializzo a 0 e poi sommo i pesi
+{ if (size == 0) {
+      throw std::invalid_argument("Errore: la dimensione della matrice non può essere zero!");
+  }
+  // la inizializzo a 0 e poi sommo i pesi
   numNeurons_ = size * size;
   // invece di fare tanti push_back, ridimensioniamo subito la matrice
   // vettore di numNeurons_ righe, ognuna contenente un vettore di numNeurons_
@@ -44,7 +48,12 @@ float Matrix::calcEnergy(const Pattern& pattern) const
 }
 
 void Matrix::learnPattern(const Pattern& pattern)
-{ // così forse è un po troppo messa bene, se vogliamo essere più grulli
+{ // CONTROLLO DIMENSIONE: Se il pattern non ha lo stesso numero di neuroni della matrice, STOP!
+  if (pattern.getNumNeurons() != numNeurons_) {
+      throw std::runtime_error("Errore: La dimensione del pattern non corrisponde con la dimensione del lato della matrice!");
+  }
+  
+  // così forse è un po troppo messa bene, se vogliamo essere più grulli
   float normFactor = 1.0f / numNeurons_;
   for (unsigned i = 0; i < numNeurons_; ++i) {
     for (unsigned j = 0; j < numNeurons_; ++j) {
