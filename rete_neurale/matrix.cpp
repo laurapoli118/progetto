@@ -66,7 +66,7 @@ void Matrix::learnPattern(const Pattern& pattern)
     }
   }
 }
-
+/*
 void Matrix::recall(Pattern& pattern)
 {
   bool conv               = false;
@@ -117,4 +117,54 @@ void Matrix::recall(Pattern& pattern)
   for (unsigned i = 0; i < energies.size(); i++) {
     std::cout << "Energy at step " << i << ": " << energies[i] << std::endl;
   }
+}
+*/
+
+void Matrix::recall(Pattern& pattern) 
+{
+  unsigned int maxRuns= 150;
+  unsigned int currentRun=1;
+  float temp=2.0f;
+  float alpha=0.98f;
+
+  std::random_device rd;// queste tre linee potrebbero essere sostit con rand() % 100, più basico
+  std::mt19937 gen(rd());// ma meno efficiente
+  std::uniform_real_distribution<float> dis(0.0f, 1.0f); 
+
+  std::vector<float> energies;
+  energies.push_back(calcEnergy(pattern)); // energia iniziale
+
+  while(Temp>0.01f && currentRun<= maxRuns){
+    changesThisRun=0; 
+    for(unsigned i=0; i< numNeurons_; i++){
+      double x_t=0.0;
+      for(unsigned j=0; j< numNeurons_; j++){
+        x_t += weights_[i][j] * pattern.getNeuron(j);
+      }
+
+      int x_now= pattern.getNeuron(i);
+      double deEnergy=2.0*x_now*x_t;
+      //static_cast per conversione da double a float
+      float prob=std::exp(-static_cast<float>(deEnergy)/temp);
+
+      if(prob>=1)//inverto neurone
+      {
+        pattern.setNeuron(i, -x_now);
+        changesThisRun++;
+      }
+      else if(dis(gen)<prob) {
+        pattern.setNeuron(i, -x_now);
+        changesThisRun++;
+      }
+    }
+  }
+  energies.push_back(calcEnergy(pattern)); // energia ad ogni step
+  temp*=alpha; // a ogni step si riduce la temperatura variando prob
+  if(temp <0.05f && changesThisRun==0 ) break;
+  currentRun++;
+
+  for (unsigned i=0; i<energies.size(); i++){
+    std::cout << "step"<< i <<":"<<energies[i]<< std::endl;
+  } //sto for è copia incolla paro paro perchè continuo a non capire che faccia
+  
 }
