@@ -66,7 +66,7 @@ int main()
       std::cout << "Starting the recall.\n";
       matrix.recall(dirty);
 
-      if (dirty.checkConv(current)) {     //check conv è un bool
+      if (dirty.isIdentical(current)) {     //check conv è un bool
         std::cout << "The network successfully recalled the image!\n";
       } else {
         std::cout << "The network couldn't fully recall the image.\n";

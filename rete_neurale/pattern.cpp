@@ -77,7 +77,7 @@ void Pattern::addNoise(float noisePerc)
       });
 }
 
-bool Pattern::checkConv(const Pattern& current) const
+bool Pattern::isIdentical(const Pattern& current) const
 {
   assert(getNumNeurons() == current.getNumNeurons()
          && "Error: Patterns must have the same number of neurons to compare.");
@@ -86,12 +86,12 @@ bool Pattern::checkConv(const Pattern& current) const
   bool isIdentical = true;
   for (unsigned i = 0; i < n; ++i) {
     if (getNeuron(i) != current.getNeuron(i)) {
-      isIdentical = false; // Non è identica
+      isIdentical = false; 
       break; // il break permette di passare al ciclo dopo se questo fallisce
     }
   }
 
-  if (isIdentical) {
+  if (isIdentical) { 
     return true;
   }
 

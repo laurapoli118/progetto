@@ -35,7 +35,7 @@ class Pattern
 
   void addNoise(float noisePerc);
 
-  bool checkConv(const Pattern& current) const;
+  bool isIdentical(const Pattern& current) const;
 
   
   
