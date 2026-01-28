@@ -134,10 +134,10 @@ void Matrix::recall(Pattern& pattern)
   std::vector<float> energies;
   energies.push_back(calcEnergy(pattern)); // energia iniziale
 
-  while(Temp>0.01f && currentRun<= maxRuns){
-    changesThisRun=0; 
+  while(temp>0.01f && currentRun<= maxRuns){
+    unsigned int changesThisRun=0; 
     for(unsigned i=0; i< numNeurons_; i++){
-      double x_t=0.0;
+      double x_t=0.0; //se qui facciamo direttamente un float possiamo evitare la conversione
       for(unsigned j=0; j< numNeurons_; j++){
         x_t += weights_[i][j] * pattern.getNeuron(j);
       }
@@ -157,11 +157,15 @@ void Matrix::recall(Pattern& pattern)
         changesThisRun++;
       }
     }
+    energies.push_back(calcEnergy(pattern)); // energia ad ogni step
+
+    temp*=alpha; // a ogni step si riduce la temperatura variando prob
+    if(temp <0.05f && changesThisRun==0 ) {
+      break;
+    }
+    currentRun++;
   }
-  energies.push_back(calcEnergy(pattern)); // energia ad ogni step
-  temp*=alpha; // a ogni step si riduce la temperatura variando prob
-  if(temp <0.05f && changesThisRun==0 ) break;
-  currentRun++;
+ 
 
   for (unsigned i=0; i<energies.size(); i++){
     std::cout << "step"<< i <<":"<<energies[i]<< std::endl;
