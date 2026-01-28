@@ -6,9 +6,9 @@
 #include <fstream>
 #include <iostream>
 #include <random>
+#include <stdexcept>
 #include <string>
 #include <vector>
-#include <stdexcept>
 
 // RICORDARSI DI AGGIUNGERE ASSERT E EXCEPTION PER GESTIRE RUNTIME
 
@@ -59,7 +59,8 @@ void Pattern::addNoise(float noisePerc)
 
   // CONTROLLO INPUT: La percentuale deve essere tra 0.0 (0%) e 1.0 (100%)
   if (noisePerc < 0.0f || noisePerc > 1.0f) {
-      throw std::invalid_argument("Errore: la percentuale di rumore deve essere compresa tra 0 e 100");
+    throw std::invalid_argument(
+        "Errore: la percentuale di rumore deve essere compresa tra 0 e 100");
   }
   std::transform(
       neurons_.begin(), neurons_.end(), neurons_.begin(),
@@ -76,16 +77,29 @@ void Pattern::addNoise(float noisePerc)
       });
 }
 
-bool Pattern::checkConv( const Pattern& current) const
+bool Pattern::checkConv(const Pattern& current) const
 {
-  assert(getNumNeurons() == current.getNumNeurons() &&
-         "Error: Patterns must have the same number of neurons to compare.");
+  assert(getNumNeurons() == current.getNumNeurons()
+         && "Error: Patterns must have the same number of neurons to compare.");
   unsigned n = getNumNeurons();
 
+  bool isIdentical = true;
   for (unsigned i = 0; i < n; ++i) {
     if (getNeuron(i) != current.getNeuron(i)) {
+      isIdentical = false; // Non è identica
+      break; // il break permette di passare al ciclo dopo se questo fallisce
+    }
+  }
+
+  if (isIdentical) {
+    return true;
+  }
+
+  for (unsigned i = 0; i < n; ++i) {
+    if (getNeuron(i) == current.getNeuron(i)) {
       return false;
     }
   }
+
   return true;
 }

@@ -57,9 +57,7 @@ int main()
       std::cin >> noiseLevel;
       assert(noiseLevel >= 0 && noiseLevel <= 100
              && "Err: NoiseLevel must be between 0 and 100.");
-      if (noiseLevel > 50) {
-        noiseLevel = 100 - noiseLevel;
-      }
+      
 
       std::cout << "Got it, adding " << (noiseLevel) << "\% of noise.\n";
       Acquisition::loadFromImage(testImgName, dirty);
