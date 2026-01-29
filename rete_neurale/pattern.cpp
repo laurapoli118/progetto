@@ -55,13 +55,25 @@ const std::vector<int>& Pattern::getData() const
 }
 
 void Pattern::addNoise(float noisePerc)
-{ // POI LOLLO QUANDO VUOI MI SPIEGHI STA MERDA E VALUTIAMO QUALE FARE
-
+{
   // CONTROLLO INPUT: La percentuale deve essere tra 0.0 (0%) e 1.0 (100%)
   if (noisePerc < 0.0f || noisePerc > 1.0f) {
     throw std::invalid_argument(
-        "Errore: la percentuale di rumore deve essere compresa tra 0 e 100");
+        "Errore: la percentuale di rumore deve essere compresa tra 0 e 100"); // potremmo mettere un catch??
   }
+
+  static std::random_device rd;  // Chiede al sistema operativo un seme casuale vero (entropia)
+  static std::mt19937 gen(rd()); // Inizializza il Mersenne Twister col seme
+  // grazie a static tipo rimangono inizializzate boh
+
+  std::uniform_real_distribution<float> dis(0.0f, 1.0f); // numero reale tra 0 e 1
+
+  for (int& neuron : neurons_) {
+        if (dis(gen) < noisePerc) {
+            neuron = -neuron; // Flip
+        }
+      }
+  /*
   std::transform(
       neurons_.begin(), neurons_.end(), neurons_.begin(),
       [=](int currentNeuron) { // std::transform prende: Inizio, Fine, Dove
@@ -74,32 +86,21 @@ void Pattern::addNoise(float noisePerc)
           return currentNeuron;
         }
 
-      });
+      }); */
 }
 
-bool Pattern::isIdentical(const Pattern& current) const
-{
+bool Pattern::isIdentical(const Pattern& current) const {
   assert(getNumNeurons() == current.getNumNeurons()
          && "Error: Patterns must have the same number of neurons to compare.");
-  unsigned n = getNumNeurons();
 
-  bool isIdentical = true;
-  for (unsigned i = 0; i < n; ++i) {
-    if (getNeuron(i) != current.getNeuron(i)) {
-      isIdentical = false; 
-      break; // il break permette di passare al ciclo dopo se questo fallisce
+  const std::vector<int>& otherData = current.getData();
+  if (neurons_ == otherData) {
+        return true;
     }
-  }
 
-  if (isIdentical) { 
-    return true;
-  }
+  bool isInverted = std::equal(neurons_.begin(), neurons_.end(), otherData.begin(), [](int a, int b) {
+    return a == -b; 
+    });
 
-  for (unsigned i = 0; i < n; ++i) {
-    if (getNeuron(i) == current.getNeuron(i)) {
-      return false;
-    }
-  }
-
-  return true;
+  return isInverted;
 }

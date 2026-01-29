@@ -120,55 +120,61 @@ void Matrix::recall(Pattern& pattern)
 }
 */
 
-void Matrix::recall(Pattern& pattern) 
+std::vector<float> Matrix::recall(Pattern& pattern) 
 {
-  unsigned int maxRuns= 150;
+  unsigned int maxRuns= 1500;
   unsigned int currentRun=1;
   float temp=2.0f;
+  float minTemp = 0.01f;
   float alpha=0.98f;
 
-  std::random_device rd;// queste tre linee potrebbero essere sostit con rand() % 100, più basico
-  std::mt19937 gen(rd());// ma meno efficiente
-  std::uniform_real_distribution<float> dis(0.0f, 1.0f); 
+  static std::random_device rd; // con static llo crea una volta sola per tutto il programma
+  static std::mt19937 gen(rd());
+  static std::uniform_real_distribution<float> dis(0.0f, 1.0f); 
+  std::uniform_int_distribution<int> randNeuron(0, numNeurons_ - 1); // Per scegliere neurone a caso
+  // perchè gemini dice che il vero Simulated Annealing funziona su neuroni casuali non in fila
+  std::vector<float> energyHistory;
+  float currentEnergy = calcEnergy(pattern);
+  energyHistory.push_back(currentEnergy); // energia iniziale
 
-  std::vector<float> energies;
-  energies.push_back(calcEnergy(pattern)); // energia iniziale
-
-  while(temp>0.01f && currentRun<= maxRuns){
+  while(temp>minTemp && currentRun<= maxRuns){
     unsigned int changesThisRun=0; 
-    for(unsigned i=0; i< numNeurons_; i++){
-      double x_t=0.0; //se qui facciamo direttamente un float possiamo evitare la conversione
+    for(unsigned k=0; k < numNeurons_; k++) {
+      unsigned int i = randNeuron(gen);
+
+      float localField=0.0;
       for(unsigned j=0; j< numNeurons_; j++){
-        x_t += weights_[i][j] * pattern.getNeuron(j);
+        // ho spiegato a gemini che non serve togliere il caso i=j perchè weights (i)(i) è 0 e si è stupito 
+        localField += weights_[i][j] * pattern.getNeuron(j);
       }
 
-      int x_now= pattern.getNeuron(i);
-      double deEnergy=2.0*x_now*x_t;
-      //static_cast per conversione da double a float
-      float prob=std::exp(-static_cast<float>(deEnergy)/temp);
-
-      if(prob>=1)//inverto neurone
-      {
-        pattern.setNeuron(i, -x_now);
+      double deEnergy=2.0 * localField * pattern.getNeuron(i);
+      // float prob=std::exp(-deEnergy/temp);
+      if (deEnergy < 0 || dis(gen) < std::exp(-deEnergy/temp)) {
+        pattern.setNeuron (i, -pattern.getNeuron(i)); //flip se fa diminuire l'energia o se la temperatura è abbastanza alta da acceettare la mossa sbagliata
+        currentEnergy += deEnergy;
         changesThisRun++;
-      }
-      else if(dis(gen)<prob) {
-        pattern.setNeuron(i, -x_now);
-        changesThisRun++;
-      }
     }
-    energies.push_back(calcEnergy(pattern)); // energia ad ogni step
+  }
+    
+    energyHistory.push_back(currentEnergy); // TOLTo IL RICALCOLO PERCHè è MOOLTO PIù VELOCE SEMPLICEMENTE AGGIUNGERE DEENERGY
 
     temp*=alpha; // a ogni step si riduce la temperatura variando prob
-    if(temp <0.05f && changesThisRun==0 ) {
+    currentRun++;
+    
+    if(temp <0.05f && changesThisRun==0 ) { // esce prima se temp è bassa e non ha cambiato niente
       break;
     }
-    currentRun++;
   }
- 
-
-  for (unsigned i=0; i<energies.size(); i++){
+  /* for (unsigned i=0; i<energies.size(); i++){
     std::cout << "step"<< i <<":"<<energies[i]<< std::endl;
-  } //sto for è copia incolla paro paro perchè continuo a non capire che faccia
+  } 
+    lo metterei nel main così:
+   std::vector<float> storia = matrix.recall(dirty);
+
+std::cout << "Energia Iniziale: " << storia.front() << "\n";
+std::cout << "Energia Finale:   " << storia.back() << "\n";
+std::cout << "Step totali:      " << storia.size() << "\n";*/
   
+  return energyHistory;
 }
