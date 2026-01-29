@@ -122,11 +122,13 @@ void Matrix::recall(Pattern& pattern)
 
 std::vector<float> Matrix::recall(Pattern& pattern) 
 {
-  unsigned int maxRuns= 1500;
+  unsigned int maxRuns= 1000;
   unsigned int currentRun=1;
-  float temp=2.0f;
-  float minTemp = 0.01f;
-  float alpha=0.98f;
+  float temp=0.1f;
+  float minTemp = 0.005f;
+  float alpha=0.95f;
+
+  bool doAnnealing = true;
 
   static std::random_device rd; // con static llo crea una volta sola per tutto il programma
   static std::mt19937 gen(rd());
@@ -137,10 +139,16 @@ std::vector<float> Matrix::recall(Pattern& pattern)
   float currentEnergy = calcEnergy(pattern);
   energyHistory.push_back(currentEnergy); // energia iniziale
 
-  while(temp>minTemp && currentRun<= maxRuns){
+  while(currentRun<= maxRuns){
     unsigned int changesThisRun=0; 
     for(unsigned k=0; k < numNeurons_; k++) {
-      unsigned int i = randNeuron(gen);
+      unsigned int i;
+      if (!doAnnealing) {
+        i = k;
+      } else {
+        i = randNeuron(gen);
+      }
+      bool doFlip = false;
 
       float localField=0.0;
       for(unsigned j=0; j< numNeurons_; j++){
@@ -149,12 +157,17 @@ std::vector<float> Matrix::recall(Pattern& pattern)
       }
 
       double deEnergy=2.0 * localField * pattern.getNeuron(i);
-      // float prob=std::exp(-deEnergy/temp);
-      if (deEnergy < 0 || dis(gen) < std::exp(-deEnergy/temp)) {
-        pattern.setNeuron (i, -pattern.getNeuron(i)); //flip se fa diminuire l'energia o se la temperatura è abbastanza alta da acceettare la mossa sbagliata
+
+      if (deEnergy < 0) {
+        doFlip = true;
+      } else if (doAnnealing && dis(gen) < std::exp(-deEnergy/temp)) {
+        doFlip = true;
+      }
+      if (doFlip) {
+        pattern.setNeuron(i, -pattern.getNeuron(i)); //flip se fa diminuire l'energia o se la temperatura è abbastanza alta da acceettare la mossa sbagliata
         currentEnergy += deEnergy;
         changesThisRun++;
-    }
+      }
   }
     
     energyHistory.push_back(currentEnergy); // TOLTo IL RICALCOLO PERCHè è MOOLTO PIù VELOCE SEMPLICEMENTE AGGIUNGERE DEENERGY
@@ -162,7 +175,10 @@ std::vector<float> Matrix::recall(Pattern& pattern)
     temp*=alpha; // a ogni step si riduce la temperatura variando prob
     currentRun++;
     
-    if(temp <0.05f && changesThisRun==0 ) { // esce prima se temp è bassa e non ha cambiato niente
+    if(temp < minTemp) { // esce prima se temp è bassa e non ha cambiato niente
+      doAnnealing = false;
+    }
+    if (changesThisRun == 0) {
       break;
     }
   }
