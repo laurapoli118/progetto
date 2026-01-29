@@ -146,25 +146,16 @@ std::vector<float> Matrix::recall(Pattern& pattern)
       return{};
     }
   }
-  unsigned int maxRuns    = 1500;
-  unsigned int currentRun = 1;
-  float temp              = 2.0f;
-  float minTemp           = 0.01f;
-  float alpha             = 0.98f;
-
-  static std::random_device
-      rd; // con static llo crea una volta sola per tutto il programma
+  static std::random_device rd; // con static llo crea una volta sola per tutto il programma
   static std::mt19937 gen(rd());
   static std::uniform_real_distribution<float> dis(0.0f, 1.0f);
-  std::uniform_int_distribution<int> randNeuron(
-      0, numNeurons_ - 1); // Per scegliere neurone a caso
-  // perchè gemini dice che il vero Simulated Annealing funziona su neuroni
-  // casuali non in fila
+  std::uniform_int_distribution<int> randNeuron(0, numNeurons_ - 1); // Per scegliere neurone a caso
+  // perchè gemini dice che il vero Simulated Annealing funziona su neuroni casuali non in fila
   std::vector<float> energyHistory;
   float currentEnergy = calcEnergy(pattern);
   energyHistory.push_back(currentEnergy); // energia iniziale
 
-  while(currentRun<= maxRuns){
+  while(currentRun <= maxRuns){
     unsigned int changesThisRun=0; 
     for(unsigned k=0; k < numNeurons_; k++) {
       unsigned int i;
@@ -177,8 +168,6 @@ std::vector<float> Matrix::recall(Pattern& pattern)
 
       float localField = 0.0;
       for (unsigned j = 0; j < numNeurons_; j++) {
-        // ho spiegato a gemini che non serve togliere il caso i=j perchè
-        // weights (i)(i) è 0 e si è stupito
         localField += weights_[i][j] * pattern.getNeuron(j);
       }
 
@@ -198,15 +187,12 @@ std::vector<float> Matrix::recall(Pattern& pattern)
     
     energyHistory.push_back(currentEnergy); // TOLTo IL RICALCOLO PERCHè è MOOLTO PIù VELOCE SEMPLICEMENTE AGGIUNGERE DEENERGY
 
-    energyHistory.push_back(
-        currentEnergy); // TOLTo IL RICALCOLO PERCHè è MOOLTO PIù VELOCE
-                        // SEMPLICEMENTE AGGIUNGERE DEENERGY
-
     temp *= alpha; // a ogni step si riduce la temperatura variando prob
     currentRun++;
     
-    if(temp < minTemp) { // esce prima se temp è bassa e non ha cambiato niente
+    if(temp < minTemp) {
       doAnnealing = false;
+      std::cout << "DEBUG: Time for the classics.";
     }
     if (changesThisRun == 0) {
       break;
