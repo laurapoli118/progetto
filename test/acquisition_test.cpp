@@ -67,104 +67,112 @@ TEST_CASE("Resize, Compressione Immagine caso base)")
   }
 }
 
-TEST_CASE("resize, compressione immagine rettangolare") {
-    // 1. Setup: Creiamo immagine rettangolare 20x10
-    unsigned orgW = 20;
-    unsigned orgH = 10;
-    sf::Image rectImg;
-    rectImg.create(orgW, orgH, sf::Color::White); // Sfondo tutto bianco
-
-    // 2. Inseriamo un pixel rosso
-    // Calcoliamo la posizione in modo che finisca esattamente in (2, 2) nel target 5x5.
-    // X: 2 * (20 / 5) = 8
-    // Y: 2 * (10 / 5) = 4
-    rectImg.setPixel(8, 4, sf::Color::Red);
-
-    // 3. Azione: Ridimensioniamo a 5x5
-    unsigned targetSize = 5;
-    sf::Image resized = Acquisition::resize(rectImg, targetSize);
-
-    // 4. Verifiche
-    SUBCASE("La dimensione finale deve essere quadrata 5x5") {
-        CHECK(resized.getSize().x == targetSize);
-        CHECK(resized.getSize().y == targetSize);
-    }
-
-    SUBCASE("Il pixel rosso deve essere sopravvissuto nella posizione prevista") {
-        // Verifichiamo che il pixel in (2, 2) sia diventato Rosso
-        CHECK(resized.getPixel(2, 2) == sf::Color::Red);
-    }
-
-    SUBCASE("Il resto dell'immagine deve essere rimasto bianco") {
-        // Controllo paranoico: verifichiamo che un pixel vicino (es. 1,1) sia ancora bianco
-        // Questo conferma che le coordinate X e Y non si sono mescolate
-        CHECK(resized.getPixel(1, 1) == sf::Color::White);
-    }
-}
-/*
-TEST_CASE("Acquisition::loadFromImage - Caricamento e Binarizzazione")
+TEST_CASE("resize, compressione immagine rettangolare")
 {
-  // Definiamo il percorso che il tuo codice si aspetta.
-  // Il tuo codice cerca in: ROOT_DIR + "/images/" + filename + ".png"
-  // Nota: ROOT_DIR nei test è definita da CMake come la cartella del progetto.
+  // 1. Setup: Creiamo immagine rettangolare 20x10
+  unsigned orgW = 20;
+  unsigned orgH = 10;
+  sf::Image rectImg;
+  rectImg.create(orgW, orgH, sf::Color::White); // Sfondo tutto bianco
 
-  std::string testDir = "images";
-  std::string testFile =
-      "test_dummy"; // Senza estensione, la aggiunge la tua funzione
-  std::string fullPath = testDir + "/" + testFile + ".png";
+  // 2. Inseriamo un pixel rosso
+  // Calcoliamo la posizione in modo che finisca esattamente in (2, 2) nel
+  // target 5x5. X: 2 * (20 / 5) = 8 Y: 2 * (10 / 5) = 4
+  rectImg.setPixel(8, 4, sf::Color::Red);
 
-  // Setup: Creiamo la cartella immagini se non esiste
-  if (!fs::exists(testDir)) {
-    fs::create_directory(testDir);
+  // 3. Azione: Ridimensioniamo a 5x5
+  unsigned targetSize = 5;
+  sf::Image resized   = Acquisition::resize(rectImg, targetSize);
+
+  // 4. Verifiche
+  SUBCASE("La dimensione finale deve essere quadrata 5x5")
+  {
+    CHECK(resized.getSize().x == targetSize);
+    CHECK(resized.getSize().y == targetSize);
   }
 
-  // Creiamo un'immagine fittizia nera e bianca
-  sf::Image img;
-  img.create(2, 2, sf::Color::White);   // Sfondo bianco
-  img.setPixel(0, 0, sf::Color::Black); // Un pixel nero
-  img.saveToFile(fullPath);
-
-  // Prepariamo il pattern che riceverà i dati
-  Pattern p(2); // Dimensione 2 (4 neuroni totali)
-
-  SUBCASE("Caricamento file esistente")
+  SUBCASE("Il pixel rosso deve essere sopravvissuto nella posizione prevista")
   {
-    // La funzione deve restituire true
-    bool result = Acquisition::loadFromImage(testFile, p);
-    CHECK(result == true);
+    // Verifichiamo che il pixel in (2, 2) sia diventato Rosso
+    CHECK(resized.getPixel(2, 2) == sf::Color::Red);
+  }
 
-    // Verifica che i dati siano stati caricati nel pattern
-    // Il pixel nero (0,0) dovrebbe diventare -1 (o 1 a seconda della tua logica
-    // inversa) Nel tuo codice: if (pixel > turningPoint) -> -1. Nero ha
-    // luminanza bassa, Bianco alta. ATTENZIONE: La tua logica dice "se
-    // luminanza > turningPoint (chiaro) metti -1". Controlliamo cosa succede
-    // effettivamente:
+  SUBCASE("Il resto dell'immagine deve essere rimasto bianco")
+  {
+    // Controllo paranoico: verifichiamo che un pixel vicino (es. 1,1) sia
+    // ancora bianco Questo conferma che le coordinate X e Y non si sono
+    // mescolate
+    CHECK(resized.getPixel(1, 1) == sf::Color::White);
+  }
+}
+TEST_CASE("loadFromImage logica")
+{
+  // Setup ambiente: assicura che la cartella images esista
+  std::string dirPath = std::string(ROOT_DIR) + "/images";
+  if (!fs::exists(dirPath)) {
+    fs::create_directories(dirPath);
+  }
 
-    // Questo check dipende dalla tua formula di binarizzazione in
-    // acquisition.cpp Se non sei sicuro, controlla che non siano tutti uguali
-    bool tuttiUguali = true;
-    int primoValore  = p.getNeuron(0);
-    for (unsigned i = 1; i < p.getNumNeurons(); i++) {
-      if (p.getNeuron(i) != primoValore)
-        tuttiUguali = false;
+  Pattern p(2); // Pattern 2x2 (4 neuroni)
+
+  SUBCASE("Distinzione Bianco/Nero (Binarizzazione)")
+  {
+    std::string filename = "test_bw";
+    sf::Image img;
+    img.create(2, 2, sf::Color::White);   // Sfondo bianco
+    img.setPixel(0, 0, sf::Color::Black); // Un pixel nero in (0,0)
+
+    img.saveToFile(dirPath + "/" + filename + ".png");
+
+    bool success = Acquisition::loadFromImage(filename, p);
+    CHECK(success == true);
+
+    // Verifica logica:
+    // Nero -> Luminosità bassa -> Sotto soglia -> 1
+    // Bianco -> Luminosità alta -> Sopra soglia -> -1
+    CHECK(p.getNeuron(0) == 1);
+    CHECK(p.getNeuron(1) == -1);
+    CHECK(p.getNeuron(2) == -1);
+    CHECK(p.getNeuron(3) == -1);
+
+    fs::remove(dirPath + "/" + filename + ".png");
+  }
+
+  SUBCASE("Zero Contrasto (immagine grigia uniforme)")
+  {
+    std::string filename = "test_gray";
+    sf::Image img;
+    // Grigio medio uniforme (RGB 100,100,100)
+    img.create(2, 2, sf::Color(100, 100, 100));
+
+    img.saveToFile(dirPath + "/" + filename + ".png");
+
+    Acquisition::loadFromImage(filename, p);
+
+    // Verifica logica:
+    // Media = 100. Soglia = 0.8 * 100 = 80.
+    // Valore pixel (100) > Soglia (80) -> Considerato Sfondo (-1)
+    for (unsigned i = 0; i < p.getNumNeurons(); ++i) {
+      CHECK(p.getNeuron(i) == -1);
     }
-    CHECK(tuttiUguali == false); // Deve aver distinto il nero dal bianco
+
+    fs::remove(dirPath + "/" + filename + ".png");
   }
 
-  SUBCASE("Caricamento file inesistente")
+  SUBCASE("Gestione File Corrotto (Fake PNG)")
   {
-    Pattern p_empty(2);
-    // Proviamo a caricare un file che non c'è
-    bool result = Acquisition::loadFromImage("file_che_non_esiste", p_empty);
-    CHECK(result
-          == false); // Deve restituire false e stampare errore su terminale
-  }
+    std::string filename = "test_fake";
+    std::string fullPath = dirPath + "/" + filename + ".png";
 
-  // Teardown: Pulizia (Rimuoviamo il file creato per non sporcare il progetto)
-  fs::remove(fullPath);
-  // Rimuoviamo la cartella solo se è vuota (per non cancellare le tue immagini
-  // vere!)
-  if (fs::is_empty(testDir)) {
-    fs::remove(testDir);
+    // Creiamo un file di testo mascherato da PNG
+    std::ofstream outfile(fullPath);
+    outfile << "Questo non è un'immagine valida.";
+    outfile.close();
+
+    // Deve fallire elegantemente restituendo false, senza crashare
+    bool result = Acquisition::loadFromImage(filename, p);
+    CHECK(result == false);
+
+    fs::remove(fullPath);
   }
-}*/
+}

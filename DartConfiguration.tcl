@@ -4,14 +4,14 @@
 
 
 # Configuration directories and files
-SourceDirectory: /home/lvannucci/progetto
-BuildDirectory: /home/lvannucci/progetto
+SourceDirectory: /home/etasini/progetto
+BuildDirectory: /home/etasini/progetto
 
 # Where to place the cost data store
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: DESKTOP-HPL6067
+Site: DESKTOP-2MU5GOR
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
 BuildName: Linux-c++
@@ -27,7 +27,7 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/home/lvannucci/progetto"
+ConfigureCommand: "/usr/bin/cmake" "/home/etasini/progetto"
 MakeCommand: /usr/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 

@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lvannucci/progetto
+CMAKE_SOURCE_DIR = /home/etasini/progetto
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lvannucci/progetto
+CMAKE_BINARY_DIR = /home/etasini/progetto
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -97,9 +97,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lvannucci/progetto/CMakeFiles /home/lvannucci/progetto//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/etasini/progetto/CMakeFiles /home/etasini/progetto//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lvannucci/progetto/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/etasini/progetto/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -621,6 +621,30 @@ rete_neurale/pattern.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ReteNeuraleTest.dir/build.make CMakeFiles/ReteNeuraleTest.dir/rete_neurale/pattern.cpp.s
 .PHONY : rete_neurale/pattern.cpp.s
 
+test/acquisition_test.o: test/acquisition_test.cpp.o
+.PHONY : test/acquisition_test.o
+
+# target to build an object file
+test/acquisition_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ReteNeuraleTest.dir/build.make CMakeFiles/ReteNeuraleTest.dir/test/acquisition_test.cpp.o
+.PHONY : test/acquisition_test.cpp.o
+
+test/acquisition_test.i: test/acquisition_test.cpp.i
+.PHONY : test/acquisition_test.i
+
+# target to preprocess a source file
+test/acquisition_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ReteNeuraleTest.dir/build.make CMakeFiles/ReteNeuraleTest.dir/test/acquisition_test.cpp.i
+.PHONY : test/acquisition_test.cpp.i
+
+test/acquisition_test.s: test/acquisition_test.cpp.s
+.PHONY : test/acquisition_test.s
+
+# target to generate assembly for a file
+test/acquisition_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ReteNeuraleTest.dir/build.make CMakeFiles/ReteNeuraleTest.dir/test/acquisition_test.cpp.s
+.PHONY : test/acquisition_test.cpp.s
+
 test/matrix_test.o: test/matrix_test.cpp.o
 .PHONY : test/matrix_test.o
 
@@ -668,30 +692,6 @@ test/pattern_test.s: test/pattern_test.cpp.s
 test/pattern_test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ReteNeuraleTest.dir/build.make CMakeFiles/ReteNeuraleTest.dir/test/pattern_test.cpp.s
 .PHONY : test/pattern_test.cpp.s
-
-test/recall_test.o: test/recall_test.cpp.o
-.PHONY : test/recall_test.o
-
-# target to build an object file
-test/recall_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ReteNeuraleTest.dir/build.make CMakeFiles/ReteNeuraleTest.dir/test/recall_test.cpp.o
-.PHONY : test/recall_test.cpp.o
-
-test/recall_test.i: test/recall_test.cpp.i
-.PHONY : test/recall_test.i
-
-# target to preprocess a source file
-test/recall_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ReteNeuraleTest.dir/build.make CMakeFiles/ReteNeuraleTest.dir/test/recall_test.cpp.i
-.PHONY : test/recall_test.cpp.i
-
-test/recall_test.s: test/recall_test.cpp.s
-.PHONY : test/recall_test.s
-
-# target to generate assembly for a file
-test/recall_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ReteNeuraleTest.dir/build.make CMakeFiles/ReteNeuraleTest.dir/test/recall_test.cpp.s
-.PHONY : test/recall_test.cpp.s
 
 test/test_runner.o: test/test_runner.cpp.o
 .PHONY : test/test_runner.o
@@ -768,15 +768,15 @@ help:
 	@echo "... rete_neurale/pattern.o"
 	@echo "... rete_neurale/pattern.i"
 	@echo "... rete_neurale/pattern.s"
+	@echo "... test/acquisition_test.o"
+	@echo "... test/acquisition_test.i"
+	@echo "... test/acquisition_test.s"
 	@echo "... test/matrix_test.o"
 	@echo "... test/matrix_test.i"
 	@echo "... test/matrix_test.s"
 	@echo "... test/pattern_test.o"
 	@echo "... test/pattern_test.i"
 	@echo "... test/pattern_test.s"
-	@echo "... test/recall_test.o"
-	@echo "... test/recall_test.i"
-	@echo "... test/recall_test.s"
 	@echo "... test/test_runner.o"
 	@echo "... test/test_runner.i"
 	@echo "... test/test_runner.s"
