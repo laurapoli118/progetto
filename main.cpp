@@ -10,7 +10,7 @@ int main()
   std::cout << "Insert the number of pixels you want to use (32~128): ";
   unsigned lato{};
   std::cin >> lato;
-  assert(32 <= lato && lato <= 128 && "Image size is too low or too high.");
+  assert(32 <= lato && lato <= 128 && "Image size is too low or too high."); // REGA QUI GEMINI CONSIGLIA ANCORA DI NON USARE ASSERT PER GLI USER MISTAKES
   Matrix matrix(lato);
   unsigned int imgsGotten = 0;
   while (true) {
@@ -56,15 +56,15 @@ int main()
       float noiseLevel;
       std::cin >> noiseLevel;
       assert(noiseLevel >= 0 && noiseLevel <= 100
-             && "Err: NoiseLevel must be between 0 and 100.");
+             && "Err: NoiseLevel must be between 0 and 100."); // STESSA COSA DI SOPRA PER ASSERT
       
 
       std::cout << "Got it, adding " << (noiseLevel) << "\% of noise.\n";
-      Acquisition::loadFromImage(testImgName, dirty);
+      dirty = current; // invece che rifargli caricare la funzione glielo copio da current
       dirty.addNoise(noiseLevel / 100);
       Acquisition::display(lato, dirty.getData());
       std::cout << "Starting the recall.\n";
-      matrix.recall(dirty);
+      std::vector<float> energy = matrix.recall(dirty);
 
       if (dirty.isIdentical(current)) {     //check conv è un bool
         std::cout << "The network successfully recalled the image!\n";
@@ -72,10 +72,8 @@ int main()
         std::cout << "The network couldn't fully recall the image.\n";
       }
 
-      std::cout << "Clean Pattern energy: " << matrix.calcEnergy(current)
-                << std::endl;
+      std::cout << "Initial energy: " << energy.front() << "\nFinal energy: " << energy.back() << "\nTotal steps: " << energy.size() << '\n';
 
-      
       Acquisition::display(lato, dirty.getData());
     } else {
       std::cout << "Err: couldn't see the image.";

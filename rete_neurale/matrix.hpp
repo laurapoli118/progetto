@@ -9,18 +9,15 @@ class Matrix {
 private:
     std::vector<std::vector<float>> weights_; // da decidere come la vogliamo fare
     unsigned numNeurons_;
-    std::vector<std::vector<int>> newPattern;
+    // std::vector<std::vector<int>> newPattern; TOLTO PERCHè NON PIù USATO MI PARE
 
 public:
     Matrix(unsigned size);
     float getWeight(unsigned i, unsigned j) const;
     void setWeight(unsigned i, unsigned j, float weight);
     void learnPattern(const Pattern &pattern);
-    void recall(Pattern &pattern);
+    std::vector<float> recall(Pattern &pattern);
     float calcEnergy(const Pattern &pattern) const;
-
-
-
 };
 
 #endif
