@@ -9,6 +9,7 @@ class Matrix {
 private:
     std::vector<std::vector<float>> weights_; // da decidere come la vogliamo fare
     unsigned numNeurons_;
+    std::vector<Pattern> storedPatterns_; //rega questo serve per non fare fallire il test di riconoscimento pattern noto
     // std::vector<std::vector<int>> newPattern; TOLTO PERCHè NON PIù USATO MI PARE
 
 public:
