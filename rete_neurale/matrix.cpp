@@ -133,64 +133,68 @@ void Matrix::recall(Pattern& pattern)
 
 std::vector<float> Matrix::recall(Pattern& pattern)
 {
+  unsigned int maxRuns= 1000;
+  unsigned int currentRun=1;
+  float temp=0.1f;
+  float minTemp = 0.005f;
+  float alpha=0.95f;
+
+  bool doAnnealing = true;
   // controllo che il pattern fornito sia effettivamente corrotto
   for (const auto& memory : storedPatterns_) {
     if (pattern.isIdentical(memory)) {
       return{};
     }
   }
-  unsigned int maxRuns    = 1500;
-  unsigned int currentRun = 1;
-  float temp              = 2.0f;
-  float minTemp           = 0.01f;
-  float alpha             = 0.98f;
-
-  static std::random_device
-      rd; // con static llo crea una volta sola per tutto il programma
+  static std::random_device rd; // con static llo crea una volta sola per tutto il programma
   static std::mt19937 gen(rd());
   static std::uniform_real_distribution<float> dis(0.0f, 1.0f);
-  std::uniform_int_distribution<int> randNeuron(
-      0, numNeurons_ - 1); // Per scegliere neurone a caso
-  // perchè gemini dice che il vero Simulated Annealing funziona su neuroni
-  // casuali non in fila
+  std::uniform_int_distribution<int> randNeuron(0, numNeurons_ - 1); // Per scegliere neurone a caso
+  // perchè gemini dice che il vero Simulated Annealing funziona su neuroni casuali non in fila
   std::vector<float> energyHistory;
   float currentEnergy = calcEnergy(pattern);
   energyHistory.push_back(currentEnergy); // energia iniziale
 
-  while (temp > minTemp && currentRun <= maxRuns) {
-    unsigned int changesThisRun = 0;
-    for (unsigned k = 0; k < numNeurons_; k++) {
-      unsigned int i = randNeuron(gen);
+  while(currentRun <= maxRuns){
+    unsigned int changesThisRun=0; 
+    for(unsigned k=0; k < numNeurons_; k++) {
+      unsigned int i;
+      if (!doAnnealing) {
+        i = k;
+      } else {
+        i = randNeuron(gen);
+      }
+      bool doFlip = false;
 
       float localField = 0.0;
       for (unsigned j = 0; j < numNeurons_; j++) {
-        // ho spiegato a gemini che non serve togliere il caso i=j perchè
-        // weights (i)(i) è 0 e si è stupito
         localField += weights_[i][j] * pattern.getNeuron(j);
       }
 
-      double deEnergy = 2.0 * localField * pattern.getNeuron(i);
-      // float prob=std::exp(-deEnergy/temp);
-      if (deEnergy < 0 || dis(gen) < std::exp(-deEnergy / temp)) {
-        pattern.setNeuron(
-            i, -pattern.getNeuron(
-                   i)); // flip se fa diminuire l'energia o se la temperatura è
-                        // abbastanza alta da acceettare la mossa sbagliata
+      double deEnergy=2.0 * localField * pattern.getNeuron(i);
+
+      if (deEnergy < 0) {
+        doFlip = true;
+      } else if (doAnnealing && dis(gen) < std::exp(-deEnergy/temp)) {
+        doFlip = true;
+      }
+      if (doFlip) {
+        pattern.setNeuron(i, -pattern.getNeuron(i)); //flip se fa diminuire l'energia o se la temperatura è abbastanza alta da acceettare la mossa sbagliata
         currentEnergy += deEnergy;
         changesThisRun++;
       }
-    }
-
-    energyHistory.push_back(
-        currentEnergy); // TOLTo IL RICALCOLO PERCHè è MOOLTO PIù VELOCE
-                        // SEMPLICEMENTE AGGIUNGERE DEENERGY
+  }
+    
+    energyHistory.push_back(currentEnergy); // TOLTo IL RICALCOLO PERCHè è MOOLTO PIù VELOCE SEMPLICEMENTE AGGIUNGERE DEENERGY
 
     temp *= alpha; // a ogni step si riduce la temperatura variando prob
     currentRun++;
-
-    if (temp < 0.05f
-        && changesThisRun
-               == 0) { // esce prima se temp è bassa e non ha cambiato niente
+    
+    if(temp < minTemp) {
+      doAnnealing = false;
+      std::cout << "DEBUG: Time for the classics.";
+    }
+    if (changesThisRun == 0) {
       break;
     }
   }
