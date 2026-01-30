@@ -60,6 +60,13 @@ void Matrix::learnPattern(const Pattern& pattern)
         "del lato della matrice!");
   }
 
+  for (const auto& memory : storedPatterns_) { // controllo che il pattern fornito non sia già salvato
+    if (pattern.isIdentical(memory)) {
+      std::cout << "Image already learnt!\n";
+      return;
+    }
+  }
+
   storedPatterns_.push_back(pattern); // salva il pattern imparato e lo mette fra
                                 // quelli noti alla rete (serve per i test)
 
@@ -133,28 +140,31 @@ void Matrix::recall(Pattern& pattern)
 
 std::vector<float> Matrix::recall(Pattern& pattern)
 {
+  std::vector<float> energyHistory;
+  float currentEnergy = calcEnergy(pattern);
+  energyHistory.push_back(currentEnergy); // energia iniziale
+
+  for (const auto& memory : storedPatterns_) { // controllo che il pattern fornito sia effettivamente corrotto
+    if (pattern.isIdentical(memory)) {
+      std::cout << "This image isn't corrupted!\n";
+      return energyHistory;
+    }
+  }
+
   unsigned int maxRuns= 1000;
   unsigned int currentRun=1;
-  float temp=0.2f;
-  float minTemp = 0.001f;
+  float temp=0.1f;
+  float minTemp = 0.02f;
   float alpha=0.95f;
 
   bool doAnnealing = true;
-  // controllo che il pattern fornito sia effettivamente corrotto
-  for (const auto& memory : storedPatterns_) {
-    if (pattern.isIdentical(memory)) {
-      return{};
-    }
-  }
+  
   static std::random_device rd; // con static llo crea una volta sola per tutto il programma
   static std::mt19937 gen(rd());
   static std::uniform_real_distribution<float> dis(0.0f, 1.0f);
   std::uniform_int_distribution<int> randNeuron(0, numNeurons_ - 1); // Per scegliere neurone a caso
   // perchè gemini dice che il vero Simulated Annealing funziona su neuroni casuali non in fila
-  std::vector<float> energyHistory;
-  float currentEnergy = calcEnergy(pattern);
-  energyHistory.push_back(currentEnergy); // energia iniziale
-
+  
   while(currentRun <= maxRuns){
     unsigned int changesThisRun=0; 
     for(unsigned k=0; k < numNeurons_; k++) {
@@ -184,14 +194,14 @@ std::vector<float> Matrix::recall(Pattern& pattern)
         changesThisRun++;
       }
   }
-    
+    std::cout << "Debug: Change, t, energy" << changesThisRun << ' ' << temp << ' ' << currentEnergy << '\n';
     energyHistory.push_back(currentEnergy); // TOLTo IL RICALCOLO PERCHè è MOOLTO PIù VELOCE SEMPLICEMENTE AGGIUNGERE DEENERGY
     
     if (doAnnealing) {
       temp *= alpha; // a ogni step si riduce la temperatura variando prob
       if(temp < minTemp) {
         doAnnealing = false;
-        std::cout << "DEBUG: Time for the classics. Run: " << energyHistory.size();
+        std::cout << "DEBUG: Time for the classics. Run: " << energyHistory.size() << '\n';
       }
     } else if (changesThisRun == 0) {
       break;
@@ -200,13 +210,7 @@ std::vector<float> Matrix::recall(Pattern& pattern)
   }
   /* for (unsigned i=0; i<energies.size(); i++){
     std::cout << "step"<< i <<":"<<energies[i]<< std::endl;
-  }
-    lo metterei nel main così:
-   std::vector<float> storia = matrix.recall(dirty);
-
-std::cout << "Energia Iniziale: " << storia.front() << "\n";
-std::cout << "Energia Finale:   " << storia.back() << "\n";
-std::cout << "Step totali:      " << storia.size() << "\n";*/
+  } */
 
   return energyHistory;
 }

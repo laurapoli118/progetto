@@ -14,9 +14,7 @@ int main()
   Matrix matrix(lato);
   unsigned int imgsGotten = 0;
   while (true) {
-    std::cout << "[" << imgsGotten + 1
-              << "] Insert the name of a png file (Mario, Luigi, Toad, Bowser "
-                 "or \'all\') or write \'stop\': ";
+    std::cout << "[" << imgsGotten + 1 << "] Insert the name of a png file (Mario, Luigi, Toad, Bowser or \'all\') or write \'stop\': ";
     std::string imgName;
     std::cin >> imgName;
     if (imgName == "stop") {
@@ -56,7 +54,7 @@ int main()
       float noiseLevel;
       std::cin >> noiseLevel;
       assert(noiseLevel >= 0 && noiseLevel <= 100
-             && "Err: NoiseLevel must be between 0 and 100."); // STESSA COSA DI SOPRA PER ASSERT
+             && "Err: NoiseLevel must be between 0 and 100."); // STESSA COSA DI SOPRA PER ASSERT (throw?)
       
 
       std::cout << "Got it, adding " << (noiseLevel) << "\% of noise.\n";
