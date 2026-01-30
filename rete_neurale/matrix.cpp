@@ -45,7 +45,7 @@ float Matrix::calcEnergy(const Pattern& pattern) const
   for (unsigned i = 0; i < numNeurons_; ++i) {
     for (unsigned j = 0; j < numNeurons_; ++j) {
       energy +=
-          -0.5f * getWeight(i, j) * pattern.getNeuron(i) * pattern.getNeuron(j);
+          -0.5f * getWeight(i, j) * static_cast<float>(pattern.getNeuron(i)) * static_cast<float>(pattern.getNeuron(j));
     }
   }
   return energy;
@@ -71,12 +71,12 @@ void Matrix::learnPattern(const Pattern& pattern)
                                 // quelli noti alla rete (serve per i test)
 
   // così forse è un po troppo messa bene, se vogliamo essere più grulli
-  float normFactor = 1.0f / numNeurons_;
+  float normFactor = 1.0f / static_cast<float>(numNeurons_);
   for (unsigned i = 0; i < numNeurons_; ++i) {
     for (unsigned j = 0; j < numNeurons_; ++j) {
       if (i != j) { // controllo per la diagonale nulla
         float coeffWeight =
-            pattern.getNeuron(i) * pattern.getNeuron(j)
+            static_cast<float>(pattern.getNeuron(i)) * static_cast<float>(pattern.getNeuron(j))
             * normFactor; // SE TOGLIESSIMO LA VARIABILE IN PIù E
                           // METTESSIMO /NUMNEURONS_? dopo è meno efficiente
         weights_[i][j] += coeffWeight;
@@ -178,7 +178,7 @@ std::vector<float> Matrix::recall(Pattern& pattern)
 
       float localField = 0.0;
       for (unsigned j = 0; j < numNeurons_; j++) {
-        localField += weights_[i][j] * pattern.getNeuron(j);
+        localField += weights_[i][j] * static_cast<float>(pattern.getNeuron(j));
       }
 
       double deEnergy=2.0 * localField * pattern.getNeuron(i);
@@ -190,7 +190,7 @@ std::vector<float> Matrix::recall(Pattern& pattern)
       }
       if (doFlip) {
         pattern.setNeuron(i, -pattern.getNeuron(i)); //flip se fa diminuire l'energia o se la temperatura è abbastanza alta da acceettare la mossa sbagliata
-        currentEnergy += deEnergy;
+        currentEnergy += static_cast<float>(deEnergy);
         changesThisRun++;
       }
   }

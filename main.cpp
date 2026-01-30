@@ -57,7 +57,7 @@ int main()
              && "Err: NoiseLevel must be between 0 and 100."); // STESSA COSA DI SOPRA PER ASSERT (throw?)
       
 
-      std::cout << "Got it, adding " << (noiseLevel) << "\% of noise.\n";
+      std::cout << "Got it, adding " << (noiseLevel) << "% of noise.\n";
       dirty = current; // invece che rifargli caricare la funzione glielo copio da current
       dirty.addNoise(noiseLevel / 100);
       Acquisition::display(lato, dirty.getData());
