@@ -151,11 +151,11 @@ std::vector<float> Matrix::recall(Pattern& pattern)
     }
   }
 
-  unsigned int maxRuns= 1000;
+  unsigned int maxRuns= 100000;
   unsigned int currentRun=1;
-  float temp=0.1f;
+  float temp=0.22f;
   float minTemp = 0.02f;
-  float alpha=0.95f;
+  float alpha=0.97f;
 
   bool doAnnealing = true;
   
@@ -167,13 +167,13 @@ std::vector<float> Matrix::recall(Pattern& pattern)
   
   while(currentRun <= maxRuns){
     unsigned int changesThisRun=0; 
-    for(unsigned k=0; k < numNeurons_; k++) {
-      unsigned int i;
+    for(unsigned i=0; i < numNeurons_; i++) {
+      /*unsigned int i;
       if (!doAnnealing) {
         i = k;
       } else {
         i = randNeuron(gen);
-      }
+      }*/
       bool doFlip = false;
 
       float localField = 0.0;
@@ -194,7 +194,7 @@ std::vector<float> Matrix::recall(Pattern& pattern)
         changesThisRun++;
       }
   }
-    std::cout << "Debug: Change, t, energy" << changesThisRun << ' ' << temp << ' ' << currentEnergy << '\n';
+    std::cout << "Debug: Change, temp, energy:  " << changesThisRun << ", " << temp << ", " << currentEnergy << '\n';
     energyHistory.push_back(currentEnergy); // TOLTo IL RICALCOLO PERCHè è MOOLTO PIù VELOCE SEMPLICEMENTE AGGIUNGERE DEENERGY
     
     if (doAnnealing) {
