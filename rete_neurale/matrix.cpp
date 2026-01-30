@@ -135,8 +135,8 @@ std::vector<float> Matrix::recall(Pattern& pattern)
 {
   unsigned int maxRuns= 1000;
   unsigned int currentRun=1;
-  float temp=0.1f;
-  float minTemp = 0.01f;
+  float temp=0.2f;
+  float minTemp = 0.001f;
   float alpha=0.95f;
 
   bool doAnnealing = true;
@@ -186,19 +186,17 @@ std::vector<float> Matrix::recall(Pattern& pattern)
   }
     
     energyHistory.push_back(currentEnergy); // TOLTo IL RICALCOLO PERCHè è MOOLTO PIù VELOCE SEMPLICEMENTE AGGIUNGERE DEENERGY
-
-    temp *= alpha; // a ogni step si riduce la temperatura variando prob
-    currentRun++;
     
-    if (!doAnnealing && changesThisRun == 0) {
+    if (doAnnealing) {
+      temp *= alpha; // a ogni step si riduce la temperatura variando prob
+      if(temp < minTemp) {
+        doAnnealing = false;
+        std::cout << "DEBUG: Time for the classics. Run: " << energyHistory.size();
+      }
+    } else if (changesThisRun == 0) {
       break;
     }
-    if(temp < minTemp) {
-      doAnnealing = false;
-      std::cout << "DEBUG: Time for the classics.";
-      
-    }
-    
+    currentRun++;
   }
   /* for (unsigned i=0; i<energies.size(); i++){
     std::cout << "step"<< i <<":"<<energies[i]<< std::endl;
