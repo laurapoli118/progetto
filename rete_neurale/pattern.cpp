@@ -10,12 +10,6 @@
 #include <string>
 #include <vector>
 
-// RICORDARSI DI AGGIUNGERE ASSERT E EXCEPTION PER GESTIRE RUNTIME
-
-#ifndef ROOT_DIR
-#  define ROOT_DIR "."
-#endif
-
 Pattern::Pattern(int size)
     : size_(size)
     , numNeurons_(size * size)

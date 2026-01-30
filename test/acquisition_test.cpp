@@ -5,6 +5,10 @@
 #include <filesystem>
 #include <fstream>
 
+#ifndef ROOT_DIR
+#  define ROOT_DIR "."
+#endif
+
 // Namespace alias per comodità
 namespace fs = std::filesystem;
 
