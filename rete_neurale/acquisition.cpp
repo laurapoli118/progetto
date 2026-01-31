@@ -125,4 +125,4 @@ bool loadFromImage(const std::string& filename, Pattern& pattern)
   return true;
 }
 
-} // namespace Acquisition
+} 
