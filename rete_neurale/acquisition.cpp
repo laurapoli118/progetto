@@ -9,7 +9,7 @@
 #  define ROOT_DIR "."
 #endif
 
-namespace Acquisition {
+namespace hp {
 
 sf::Image resize(const sf::Image& original, unsigned size)
 {

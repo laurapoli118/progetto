@@ -5,7 +5,7 @@
 TEST_CASE("Matrix - Funzionamento Base")
 {
   const unsigned int size = 4;
-  Matrix m(size);
+  hp::Matrix m(size);
 
   SUBCASE("Inizializzazione a zero")
   {
@@ -28,8 +28,8 @@ TEST_CASE("Matrix - Funzionamento Base")
 TEST_CASE("Proprietà matrice dei pesi")
 {
   const unsigned int size = 4; // misura minore per max velocità
-  Matrix m(size);
-  Pattern p(size);
+  hp::Matrix m(size);
+  hp::Pattern p(size);
   for (unsigned i = 0; i < size; i++) {
     p.setNeuron(i, 1.0f);
   }
@@ -56,9 +56,9 @@ TEST_CASE("Proprietà matrice dei pesi")
 TEST_CASE("accumulo di due pattern")
 {
   const unsigned int size = 4; // misura minore per max velocità
-  Matrix m(size);
-  Pattern p1(size);
-  Pattern p2(size);
+  hp::Matrix m(size);
+  hp::Pattern p1(size);
+  hp::Pattern p2(size);
   for (unsigned i = 0; i < size * size; i++) {
     p1.setNeuron(i, 1.0f);                   //[1,1,1,1,1....1] dimensione 16cd
     p2.setNeuron(i, (i < 2) ? -1.0f : 1.0f); //[-1,-1,1,1,1,1,1....1]
@@ -77,13 +77,13 @@ TEST_CASE("accumulo di due pattern")
   }
   SUBCASE("riconoscimento di un pattern non corrotto")
   {
-    Pattern test_p1 = p1;
+    hp::Pattern test_p1 = p1;
     m.recall(test_p1);
     for (unsigned i = 0; i < size * size; i++) {
       CHECK(test_p1.getNeuron(i) == doctest::Approx(p1.getNeuron(i)));
     }
 
-    Pattern test_p2 = p2;
+    hp::Pattern test_p2 = p2;
     m.recall(test_p2);
     for (unsigned i = 0; i < size * size; i++) {
       CHECK(test_p2.getNeuron(i) == doctest::Approx(p2.getNeuron(i)));
@@ -92,8 +92,8 @@ TEST_CASE("accumulo di due pattern")
 }
 TEST_CASE("Gestione errori dimensioni")
 {
-  Matrix m(4);            // Matrice per 16 neuroni (16x16)
-  Pattern p_sbagliato(3); // Pattern per 9 neuroni (3x3)
+  hp::Matrix m(4);            // Matrice per 16 neuroni (16x16)
+  hp::Pattern p_sbagliato(3); // Pattern per 9 neuroni (3x3)
 
   // Verifichiamo che la funzione rifiuti il pattern sbagliato
   CHECK_THROWS_AS(m.learnPattern(p_sbagliato), std::runtime_error);
@@ -102,5 +102,5 @@ TEST_CASE("Costruttore con size zero")
 {
   // serve a evitare che il programma impazzisca dividenso per 0 nella regola di
   // Hebb
-  CHECK_THROWS(Matrix(0));
+  CHECK_THROWS(hp::Matrix(0));
 }

@@ -9,7 +9,7 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
-
+namespace hp{
 Pattern::Pattern(int size)
     : size_(size)
     , numNeurons_(size * size)
@@ -97,4 +97,5 @@ bool Pattern::isIdentical(const Pattern& current) const {
     });
 
   return isInverted;
+}
 }

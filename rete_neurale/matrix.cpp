@@ -10,7 +10,7 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
-
+namespace hp{
 Matrix::Matrix(unsigned size)
 {
   if (size == 0) {
@@ -213,4 +213,5 @@ std::vector<float> Matrix::recall(Pattern& pattern)
   } */
 
   return energyHistory;
+}
 }

@@ -11,7 +11,7 @@ int main()
   unsigned lato{};
   std::cin >> lato;
   assert(32 <= lato && lato <= 128 && "Image size is too low or too high."); // REGA QUI GEMINI CONSIGLIA ANCORA DI NON USARE ASSERT PER GLI USER MISTAKES
-  Matrix matrix(lato);
+  hp::Matrix matrix(lato);
   unsigned int imgsGotten = 0;
   while (true) {
     std::cout << "[" << imgsGotten + 1 << "] Insert the name of a png file (Mario, Luigi, Toad, Bowser or \'all\') or write \'stop\': ";
@@ -20,18 +20,18 @@ int main()
     if (imgName == "stop") {
       break;
     }
-    Pattern p(lato);
+    hp::Pattern p(lato);
     if (imgName == "all") {
       std::string images[] = {"Mario", "Luigi", "Bowser", "Toad"};
       for (int i = 0; i < 4; i++) {
-        Acquisition::loadFromImage(images[i], p);
+        hp::loadFromImage(images[i], p);
         matrix.learnPattern(p);
         imgsGotten++;
       }
       break;
     }
-    if (Acquisition::loadFromImage(imgName, p)) {
-      Acquisition::display(lato, p.getData());
+    if (hp::loadFromImage(imgName, p)) {
+      hp::display(lato, p.getData());
       std::cout << "Got it, teaching the network.\n";
       matrix.learnPattern(p);
       imgsGotten++;
@@ -47,9 +47,9 @@ int main()
     if (testImgName == "stop") {
       break;
     }
-    Pattern current(lato);
-    Pattern dirty(lato);
-    if (Acquisition::loadFromImage(testImgName, current)) {
+    hp::Pattern current(lato);
+    hp::Pattern dirty(lato);
+    if (hp::loadFromImage(testImgName, current)) {
       std::cout << "Insert the percentage you want to corrupt the image with: ";
       float noiseLevel;
       std::cin >> noiseLevel;
@@ -60,7 +60,7 @@ int main()
       std::cout << "Got it, adding " << (noiseLevel) << "% of noise.\n";
       dirty = current; // invece che rifargli caricare la funzione glielo copio da current
       dirty.addNoise(noiseLevel / 100);
-      Acquisition::display(lato, dirty.getData());
+      hp::display(lato, dirty.getData());
       std::cout << "Starting the recall.\n";
       std::vector<float> energy = matrix.recall(dirty);
 
@@ -72,7 +72,7 @@ int main()
 
       std::cout << "Initial energy: " << energy.front() << "\nFinal energy: " << energy.back() << "\nTotal steps: " << energy.size() << '\n';
 
-      Acquisition::display(lato, dirty.getData());
+      hp::display(lato, dirty.getData());
     } else {
       std::cout << "Err: couldn't see the image.";
     }

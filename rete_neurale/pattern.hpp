@@ -5,7 +5,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
+namespace hp{
 class Pattern
 {
  private:
@@ -40,5 +40,6 @@ class Pattern
   
   
 };
+}
 
 #endif

@@ -47,7 +47,7 @@ TEST_CASE("Resize, Compressione Immagine caso base)")
 
   // 3. Eseguiamo il DOWNSCALING a (2x2)
   unsigned smallSize = 2;
-  sf::Image resized  = Acquisition::resize(bigImage, smallSize);
+  sf::Image resized  = hp::resize(bigImage, smallSize);
 
   SUBCASE("Le dimensioni sono ridotte correttamente")
   {
@@ -86,7 +86,7 @@ TEST_CASE("resize, compressione immagine rettangolare")
 
   // 3. Azione: Ridimensioniamo a 5x5
   unsigned targetSize = 5;
-  sf::Image resized   = Acquisition::resize(rectImg, targetSize);
+  sf::Image resized   = hp::resize(rectImg, targetSize);
 
   // 4. Verifiche
   SUBCASE("La dimensione finale deve essere quadrata 5x5")
@@ -117,7 +117,7 @@ TEST_CASE("loadFromImage logica")
     fs::create_directories(dirPath);
   }
 
-  Pattern p(2); // Pattern 2x2 (4 neuroni)
+  hp::Pattern p(2); // Pattern 2x2 (4 neuroni)
 
   SUBCASE("Distinzione Bianco/Nero (Binarizzazione)")
   {
@@ -128,7 +128,7 @@ TEST_CASE("loadFromImage logica")
 
     img.saveToFile(dirPath + "/" + filename + ".png");
 
-    bool success = Acquisition::loadFromImage(filename, p);
+    bool success = hp::loadFromImage(filename, p);
     CHECK(success == true);
 
     // Verifica logica:
@@ -151,7 +151,7 @@ TEST_CASE("loadFromImage logica")
 
     img.saveToFile(dirPath + "/" + filename + ".png");
 
-    Acquisition::loadFromImage(filename, p);
+    hp::loadFromImage(filename, p);
 
     // Verifica logica:
     // Media = 100. Soglia = 0.8 * 100 = 80.
@@ -174,7 +174,7 @@ TEST_CASE("loadFromImage logica")
     outfile.close();
 
     // Deve fallire elegantemente restituendo false, senza crashare
-    bool result = Acquisition::loadFromImage(filename, p);
+    bool result = hp::loadFromImage(filename, p);
     CHECK(result == false);
 
     fs::remove(fullPath);

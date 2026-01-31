@@ -7,7 +7,7 @@ TEST_CASE("Pattern - Funzionamento Base")
   SUBCASE("Inizializzazione corretta")
   {
     int lato = 5;
-    Pattern p(lato);
+    hp::Pattern p(lato);
 
     // Verifica che le dimensioni siano calcolate giuste (5*5 = 25)
     CHECK(p.getSize() == 5);
@@ -21,7 +21,7 @@ TEST_CASE("Pattern - Funzionamento Base")
 
   SUBCASE("Set e Get dei valori")
   {
-    Pattern p(3);       // 9 neuroni
+    hp::Pattern p(3);       // 9 neuroni
     p.setNeuron(0, 1);  // Scrivo 1 all'inizio
     p.setNeuron(8, -1); // Scrivo -1 alla fine
 
@@ -35,7 +35,7 @@ TEST_CASE("Gestione errori percentuale")
 {
   // Setup: Creiamo un pattern di prova (dimensione 4x4 = 16 neuroni)
   const int size = 4;
-  Pattern p(size);
+  hp::Pattern p(size);
 
   SUBCASE("Rumore negativo deve lanciare errore")
   {
@@ -62,8 +62,8 @@ TEST_CASE("Gestione errori percentuale")
 TEST_CASE("andamento e logica della funzione energia")
 {
   const unsigned size = 4; // 16 neuroni totali
-  Matrix m(size);
-  Pattern p(size);
+  hp::Matrix m(size);
+  hp::Pattern p(size);
 
   // 1. Creiamo un pattern stabile (tutti i neuroni a 1)
   //    Questo sarà il nostro "fondo valle" energetico.
@@ -80,7 +80,7 @@ TEST_CASE("andamento e logica della funzione energia")
   SUBCASE("L'energia aumenta se corrompo il pattern")
   {
     // Creiamo una copia e invertiamo manualmente un neurone (es. il primo)
-    Pattern p_corrupted = p;
+    hp::Pattern p_corrupted = p;
     p_corrupted.setNeuron(0, -p.getNeuron(0)); // Flip del bit 0
 
     float energy_corrupted = m.calcEnergy(p_corrupted);
@@ -92,7 +92,7 @@ TEST_CASE("andamento e logica della funzione energia")
 
   SUBCASE("L'energia diminuisce durante la recall")
   {
-    Pattern p_test = p;
+    hp::Pattern p_test = p;
     // Corrompiamo il pattern
     p_test.setNeuron(0, -1);
     p_test.setNeuron(1, -1);
