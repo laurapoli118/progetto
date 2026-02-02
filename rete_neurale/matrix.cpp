@@ -153,8 +153,8 @@ std::vector<float> Matrix::recall(Pattern& pattern)
 
   unsigned int maxRuns= 100000;
   unsigned int currentRun=1;
-  float temp=0.22f;
-  float minTemp = 0.025f;
+  float temp=0.13f;
+  float minTemp = 0.03f;
   float alpha=0.95f;
 
   bool doAnnealing = true;
@@ -168,7 +168,7 @@ std::vector<float> Matrix::recall(Pattern& pattern)
   while(currentRun <= maxRuns){
     unsigned int changesThisRun=0; 
     for(unsigned i=0; i < numNeurons_; i++) {
-      /*unsigned int i;
+      /*unsigned int i; 
       if (!doAnnealing) {
         i = k;
       } else {
