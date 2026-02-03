@@ -153,9 +153,9 @@ std::vector<float> Matrix::recall(Pattern& pattern)
 
   unsigned int maxRuns= 100000;
   unsigned int currentRun=1;
-  float temp=0.05f;
-  float minTemp = 0.005f;
-  float alpha=0.99f;
+  float temp=0.06f;
+  float minTemp = 0.01f;
+  float alpha=0.98f;
 
   bool doAnnealing = true;
   
@@ -176,7 +176,7 @@ std::vector<float> Matrix::recall(Pattern& pattern)
       }*/
       bool doFlip = false;
 
-      float localField = 0.0;
+      float localField = 0.0f;
       for (unsigned j = 0; j < numNeurons_; j++) {
         localField += weights_[i][j] * static_cast<float>(pattern.getNeuron(j));
       }
