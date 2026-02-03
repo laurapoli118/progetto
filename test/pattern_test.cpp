@@ -21,7 +21,7 @@ TEST_CASE("Pattern - Funzionamento Base")
 
   SUBCASE("Set e Get dei valori")
   {
-    hp::Pattern p(3);       // 9 neuroni
+    hp::Pattern p(3);   // 9 neuroni
     p.setNeuron(0, 1);  // Scrivo 1 all'inizio
     p.setNeuron(8, -1); // Scrivo -1 alla fine
 
@@ -112,5 +112,58 @@ TEST_CASE("andamento e logica della funzione energia")
 
     // Alla fine dovrebbe essere tornato al livello del pattern perfetto
     CHECK(energy_after == doctest::Approx(energy_perfect));
+  }
+}
+
+TEST_CASE("Funzionamento IsIdentical")
+{
+  SUBCASE("Pattern Vuoti sono Identici")
+  {
+    hp::Pattern p1(3);
+    hp::Pattern p2(3);
+
+    CHECK(p1.isIdentical(p2) == true);
+  }
+
+  SUBCASE("Controllo identicità dopo modifiche")
+
+  {
+    hp::Pattern p1(2);
+    hp::Pattern p2(2);
+
+    p1.setNeuron(0,1);
+    p1.setNeuron(1,-1);
+
+
+    p2.setNeuron(0,1);
+    p2.setNeuron(1,-1);
+
+    CHECK(p1.isIdentical(p2) == true);
+  }
+  SUBCASE("Pattern invertiti sono identici")
+  {
+    hp::Pattern p1(2);
+    hp::Pattern p2(2);
+
+    p1.setNeuron(0, 1);
+    p1.setNeuron(1, -1);
+
+    p2.setNeuron(0, -1);
+    p2.setNeuron(1, 1);
+
+    CHECK(p1.isIdentical(p2) == true);
+  }
+
+  SUBCASE("Pattern diversi non sono identici")
+  {
+    hp::Pattern p1(2);
+    hp::Pattern p2(2);
+
+    p1.setNeuron(0, 1);
+  
+
+    p2.setNeuron(0, -1);
+
+    CHECK(p1.isIdentical(p2) == false);
   }
 }
