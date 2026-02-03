@@ -157,10 +157,10 @@ std::vector<float> Matrix::recall(Pattern& pattern)
     }
   }
 
-  unsigned int maxRuns    = 100000;
+  unsigned int maxRuns    = 1000;
   unsigned int currentRun = 1;
   float temp              = 0.25f;
-  float minTemp           = 0.01f;
+  float minTemp           = 0.028f;
   float alpha             = 0.98f;
 
   bool doAnnealing = true;
