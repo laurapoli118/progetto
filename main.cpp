@@ -14,7 +14,7 @@ int main()
   hp::Matrix matrix(lato);
   unsigned int imgsGotten = 0;
   while (true) {
-    std::cout << "[" << imgsGotten + 1 << "] Insert the name of a png file (Mario, Luigi, Toad, Bowser or \'all\') or write \'stop\': ";
+    std::cout << "[" << imgsGotten + 1 << "] Insert the name of a png file (\'list\' to see the names) or write \'stop\': ";
     std::string imgName;
     std::cin >> imgName;
     if (imgName == "stop") {
@@ -30,7 +30,9 @@ int main()
       }
       break;
     }
-    if (hp::loadFromImage(imgName, p)) {
+    if (imgName == "list") {
+      std::cout << "..." ;
+    } else if (hp::loadFromImage(imgName, p)) {
       hp::display(lato, p.getData());
       std::cout << "Got it, teaching the network.\n";
       matrix.learnPattern(p);
