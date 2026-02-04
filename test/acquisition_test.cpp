@@ -9,7 +9,6 @@
 #  define ROOT_DIR "."
 #endif
 
-// Namespace alias per comodità
 namespace fs = std::filesystem;
 
 TEST_CASE("Resize, Compressione Immagine caso base)")
@@ -71,16 +70,11 @@ TEST_CASE("resize, compressione immagine rettangolare")
   sf::Image rectImg;
   rectImg.create(orgW, orgH, sf::Color::White);
 
-  // 2. Inseriamo un pixel rosso
-  // Calcoliamo la posizione in modo che finisca esattamente in (2, 2) nel
-  // target 5x5. X: 2 * (20 / 5) = 8 Y: 2 * (10 / 5) = 4
   rectImg.setPixel(8, 4, sf::Color::Red);
 
-  // Ridimensioniamo a 5x5
   unsigned targetSize = 5;
   sf::Image resized   = hp::resize(rectImg, targetSize);
 
-  // Verifiche
   SUBCASE("La dimensione finale deve essere quadrata 5x5")
   {
     CHECK(resized.getSize().x == targetSize);
@@ -138,7 +132,7 @@ TEST_CASE("loadFromImage logica")
 
     hp::loadFromImage(filename, p);
 
-       for (unsigned i = 0; i < p.getNumNeurons(); ++i) {
+    for (unsigned i = 0; i < p.getNumNeurons(); ++i) {
       CHECK(p.getNeuron(i) == -1);
     }
 
@@ -155,7 +149,6 @@ TEST_CASE("loadFromImage logica")
     outfile << "Questo non è un'immagine valida.";
     outfile.close();
 
-    // Deve fallire elegantemente restituendo false, senza crashare
     bool result = hp::loadFromImage(filename, p);
     CHECK(result == false);
 

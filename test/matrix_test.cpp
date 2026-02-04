@@ -9,7 +9,7 @@ TEST_CASE("Matrix - Funzionamento Base")
 
   SUBCASE("Inizializzazione a zero")
   {
-    // Appena creata, la matrice deve essere una "tabula rasa".
+    
     for (unsigned i = 0; i < size * size; ++i) {
       for (unsigned j = 0; j < size * size; ++j) {
         CHECK(m.getWeight(i, j) == doctest::Approx(0.0f));
@@ -27,7 +27,7 @@ TEST_CASE("Matrix - Funzionamento Base")
 
 TEST_CASE("Proprietà matrice dei pesi")
 {
-  const unsigned int size = 4; // misura minore per max velocità
+  const unsigned int size = 4; 
   hp::Matrix m(size);
   hp::Pattern p(size);
   for (unsigned i = 0; i < size; i++) {
@@ -39,7 +39,7 @@ TEST_CASE("Proprietà matrice dei pesi")
   {
     for (unsigned i = 0; i < size; i++) {
       CHECK(m.getWeight(i, i)
-            == doctest::Approx(0.0f)); // per confrontare i float
+            == doctest::Approx(0.0f)); 
     }
   }
 
@@ -55,7 +55,7 @@ TEST_CASE("Proprietà matrice dei pesi")
 
 TEST_CASE("accumulo di due pattern")
 {
-  const unsigned int size = 4; // misura minore per max velocità
+  const unsigned int size = 4; 
   hp::Matrix m(size);
   hp::Pattern p1(size);
   hp::Pattern p2(size);
@@ -92,15 +92,14 @@ TEST_CASE("accumulo di due pattern")
 }
 TEST_CASE("Gestione errori dimensioni")
 {
-  hp::Matrix m(4);            // Matrice per 16 neuroni (16x16)
-  hp::Pattern p_sbagliato(3); // Pattern per 9 neuroni (3x3)
+  hp::Matrix m(4);            
+  hp::Pattern p_sbagliato(3); 
 
-  // Verifichiamo che la funzione rifiuti il pattern sbagliato
+  
   CHECK_THROWS_AS(m.learnPattern(p_sbagliato), std::runtime_error);
 }
 TEST_CASE("Costruttore con size zero")
 {
-  // serve a evitare che il programma impazzisca dividenso per 0 nella regola di
-  // Hebb
+  
   CHECK_THROWS(hp::Matrix(0));
 }
