@@ -7,7 +7,7 @@ int main()
 {
   std::cout << "Hopfield Network Creation.\n";
   std::srand(static_cast<unsigned>(std::time(nullptr)));
-  std::cout << "Insert the number of pixels you want to use (32~128): ";
+  std::cout << "Insert the number of pixels on the side of the image you want to use (32~128): ";
   unsigned lato{};
   std::cin >> lato;
   assert(32 <= lato && lato <= 128 && "Image size is too low or too high."); // REGA QUI GEMINI CONSIGLIA ANCORA DI NON USARE ASSERT PER GLI USER MISTAKES
