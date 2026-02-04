@@ -115,8 +115,7 @@ bool loadFromImage(const std::string& filename, Pattern& pattern)
     if (pixelLuminance[i] > turningPoint) {
       pattern.setNeuron(
           static_cast<unsigned>(i), -1); // per le reti è meglio (non chiedetemi perchè) avere 1 nero,
-                  // tipo per le reti è meglio (non chiedetemi perchè) avere 1
-                  // nero, tipo riconosce i bordi come attivo e sfondo spento
+                  // tipo riconosce i bordi come attivo e sfondo spento
     } else {
       pattern.setNeuron(static_cast<unsigned>(i), 1);
     }
