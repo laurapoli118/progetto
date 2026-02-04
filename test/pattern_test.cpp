@@ -131,12 +131,11 @@ TEST_CASE("Funzionamento IsIdentical")
     hp::Pattern p1(2);
     hp::Pattern p2(2);
 
-    p1.setNeuron(0,1);
-    p1.setNeuron(1,-1);
+    p1.setNeuron(0, 1);
+    p1.setNeuron(1, -1);
 
-
-    p2.setNeuron(0,1);
-    p2.setNeuron(1,-1);
+    p2.setNeuron(0, 1);
+    p2.setNeuron(1, -1);
 
     CHECK(p1.isIdentical(p2) == true);
   }
@@ -156,11 +155,11 @@ TEST_CASE("Funzionamento IsIdentical")
 
   SUBCASE("Pattern diversi non sono identici")
   {
-    hp::Pattern p1(2);
-    hp::Pattern p2(2);
+    hp::Pattern p1(3);
+    hp::Pattern p2(3);
 
     p1.setNeuron(0, 1);
-  
+    p1.setNeuron(2, 1);
 
     p2.setNeuron(0, -1);
 
