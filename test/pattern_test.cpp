@@ -31,7 +31,7 @@ TEST_CASE("Pattern - Funzionamento Base")
 
 TEST_CASE("Gestione errori percentuale")
 {
-  const int size = 4;
+  const int size = 2;
   hp::Pattern p(size);
 
   SUBCASE("Rumore negativo deve lanciare errore")
@@ -49,6 +49,32 @@ TEST_CASE("Gestione errori percentuale")
     CHECK_NOTHROW(p.addNoise(0.5f));
     CHECK_NOTHROW(p.addNoise(0.0f));
     CHECK_NOTHROW(p.addNoise(1.0f));
+  }
+
+  SUBCASE("Rumore 100% inverte tutti i neuroni")
+  {
+    for (unsigned i = 0; i < p.getNumNeurons(); i++) {
+      p.setNeuron(i, 1);
+    }
+
+    p.addNoise(1.0f);
+
+    for (unsigned i = 0; i < p.getNumNeurons(); i++) {
+      CHECK(p.getNeuron(i) == -1);
+    }
+  }
+
+  SUBCASE("Rumore 0% non cambia i neuroni")
+  {
+    for (unsigned i = 0; i < p.getNumNeurons(); i++) {
+      p.setNeuron(i, -1);
+    }
+
+    p.addNoise(0.0f);
+
+    for (unsigned i = 0; i < p.getNumNeurons(); i++) {
+      CHECK(p.getNeuron(i) == -1);
+    }
   }
 }
 TEST_CASE("andamento e logica della funzione energia")
