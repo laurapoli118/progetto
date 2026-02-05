@@ -17,25 +17,21 @@ Matrix::Matrix(unsigned size)
     throw std::invalid_argument(
         "Errore: la dimensione della matrice non può essere zero!");
   }
-  // la inizializzo a 0 e poi sommo i pesi
+
   numNeurons_ = size * size;
-  // invece di fare tanti push_back, ridimensioniamo subito la matrice
-  // vettore di numNeurons_ righe, ognuna contenente un vettore di numNeurons_
-  // zeri
+
   weights_.resize(numNeurons_, std::vector<float>(numNeurons_, 0.0f));
 }
 
 float Matrix::getWeight(unsigned i, unsigned j) const
 {
-  assert(i < numNeurons_
-         && j < numNeurons_); // assert aggiunto da ettore tramite gemini
+  assert(i < numNeurons_ && j < numNeurons_);
   return weights_[i][j];
 }
 
 void Matrix::setWeight(unsigned i, unsigned j, float weight)
 {
-  assert(i < numNeurons_
-         && j < numNeurons_); // assert aggiunto da ettore tramite gemini
+  assert(i < numNeurons_ && j < numNeurons_);
   weights_[i][j] = weight;
 }
 
@@ -53,36 +49,29 @@ float Matrix::calcEnergy(const Pattern& pattern) const
 }
 
 void Matrix::learnPattern(const Pattern& pattern)
-{ // CONTROLLO DIMENSIONE: Se il pattern non ha lo stesso numero di neuroni
-  // della matrice, STOP!
+{
   if (pattern.getNumNeurons() != numNeurons_) {
     throw std::runtime_error(
         "Errore: La dimensione del pattern non corrisponde con la dimensione "
         "del lato della matrice!");
   }
 
-  for (const auto& memory : storedPatterns_) { // controllo che il pattern
-                                               // fornito non sia già salvato
+  for (const auto& memory : storedPatterns_) {
     if (pattern.isIdentical(memory)) {
       std::cout << "Image already learnt!\n";
       return;
     }
   }
 
-  storedPatterns_.push_back(
-      pattern); // salva il pattern imparato e lo mette fra
-                // quelli noti alla rete (serve per i test)
+  storedPatterns_.push_back(pattern);
 
-  // così forse è un po troppo messa bene, se vogliamo essere più grulli
   float normFactor = 1.0f / static_cast<float>(numNeurons_);
   for (unsigned i = 0; i < numNeurons_; ++i) {
     for (unsigned j = 0; j < numNeurons_; ++j) {
-      if (i != j) { // controllo per la diagonale nulla
-        float coeffWeight =
-            static_cast<float>(pattern.getNeuron(i))
-            * static_cast<float>(pattern.getNeuron(j))
-            * normFactor; // SE TOGLIESSIMO LA VARIABILE IN PIù E
-                          // METTESSIMO /NUMNEURONS_? dopo è meno efficiente
+      if (i != j) {
+        float coeffWeight = static_cast<float>(pattern.getNeuron(i))
+                          * static_cast<float>(pattern.getNeuron(j))
+                          * normFactor;
         weights_[i][j] += coeffWeight;
       }
     }
@@ -148,9 +137,7 @@ std::vector<float> Matrix::recall(Pattern& pattern)
   float currentEnergy = calcEnergy(pattern);
   energyHistory.push_back(currentEnergy); // energia iniziale
 
-  for (const auto& memory :
-       storedPatterns_) { // controllo che il pattern fornito sia effettivamente
-                          // corrotto
+  for (const auto& memory : storedPatterns_) {
     if (pattern.isIdentical(memory)) {
       std::cout << "This image isn't corrupted!\n";
       return energyHistory;
@@ -165,14 +152,10 @@ std::vector<float> Matrix::recall(Pattern& pattern)
 
   bool doAnnealing = true;
 
-  static std::random_device
-      rd; // con static llo crea una volta sola per tutto il programma
+  static std::random_device rd;
   static std::mt19937 gen(rd());
   static std::uniform_real_distribution<float> dis(0.0f, 1.0f);
-  std::uniform_int_distribution<int> randNeuron(
-      0, numNeurons_ - 1); // Per scegliere neurone a caso
-  // perchè gemini dice che il vero Simulated Annealing funziona su neuroni
-  // casuali non in fila
+  std::uniform_int_distribution<int> randNeuron(0, numNeurons_ - 1);
   std::vector<int> neuronIndices(numNeurons_);
   std::iota(neuronIndices.begin(), neuronIndices.end(), 0); // ri
 
@@ -205,22 +188,17 @@ std::vector<float> Matrix::recall(Pattern& pattern)
         doFlip = true;
       }
       if (doFlip) {
-        pattern.setNeuron(
-            i, -pattern.getNeuron(
-                   i)); // flip se fa diminuire l'energia o se la temperatura è
-                        // abbastanza alta da acceettare la mossa sbagliata
+        pattern.setNeuron(i, -pattern.getNeuron(i));
         currentEnergy += static_cast<float>(deEnergy);
         changesThisRun++;
       }
     }
     std::cout << "Debug: Change, temp, energy:  " << changesThisRun << ", "
               << temp << ", " << currentEnergy << '\n';
-    energyHistory.push_back(
-        currentEnergy); // TOLTo IL RICALCOLO PERCHè è MOOLTO PIù VELOCE
-                        // SEMPLICEMENTE AGGIUNGERE DEENERGY
+    energyHistory.push_back(currentEnergy);
 
     if (doAnnealing) {
-      temp *= alpha; // a ogni step si riduce la temperatura variando prob
+      temp *= alpha;
       if (temp < minTemp) {
         doAnnealing = false;
         std::cout << "DEBUG: Time for the classics. Run: "
@@ -237,4 +215,4 @@ std::vector<float> Matrix::recall(Pattern& pattern)
 
   return energyHistory;
 }
-} // namespace hp
+} 

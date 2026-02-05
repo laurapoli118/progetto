@@ -5,23 +5,18 @@
 #include <iostream>
 #include <string>
 #include <vector>
-namespace hp{
+namespace hp {
 class Pattern
 {
  private:
   unsigned size_;
   unsigned numNeurons_;
   std::vector<int> neurons_;
-  
 
  public:
-  Pattern(int size);  // costruttore
-
-  // Funzioni per settare valori
+  Pattern(int size);
 
   void setNeuron(unsigned index, int value);
-
-  // Funzioni per ottenere le grandezze del pattern
 
   int getNeuron(unsigned index) const;
 
@@ -31,15 +26,10 @@ class Pattern
 
   const std::vector<int>& getData() const;
 
-  // Funzione per rumore
-
   void addNoise(float noisePerc);
 
   bool isIdentical(const Pattern& current) const;
-
-  
-  
 };
-}
+} 
 
 #endif

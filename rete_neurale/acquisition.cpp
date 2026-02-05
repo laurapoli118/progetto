@@ -64,10 +64,8 @@ void display(unsigned size, const std::vector<int>& data)
 
   while (window.isOpen()) {
     sf::Event event;
-    while (window.pollEvent(
-        event)) { // praticamente ogni tipo secondo controlla se fai qualcosa
-                  // sul pc e se premi X allora esce
-      if (event.type == sf::Event::Closed) // che merda c++
+    while (window.pollEvent(event)) {
+      if (event.type == sf::Event::Closed)
         window.close();
     }
     window.clear();
@@ -86,16 +84,13 @@ bool loadFromImage(const std::string& filename, Pattern& pattern)
                                 + ".png")) {
     std::cerr << "Error: Impossible to find the file " << filename << std::endl;
     return false;
-  } // autoesplicativo
+  }
 
   sf::Image image = resize(startingImg, size);
 
   std::vector<int>
       pixelLuminance; // vettore temporaneo per salvare le luminosità dei pixel
-  pixelLuminance.reserve(
-      numNeurons); // sicuro lo chiede, questo 'riserva' tot spazi ma vuoti,
-                   // mentre .resize riempe tot spazi di 0.
-
+  pixelLuminance.reserve(numNeurons);
   long luminositySum = 0;
 
   for (unsigned int y = 0; y < size; y++) {
@@ -110,12 +105,11 @@ bool loadFromImage(const std::string& filename, Pattern& pattern)
     }
   }
 
-  int turningPoint = static_cast<int>(0.8 * static_cast<double>(luminositySum) / static_cast<double>(numNeurons));
+  int turningPoint = static_cast<int>(0.8 * static_cast<double>(luminositySum)
+                                      / static_cast<double>(numNeurons));
   for (size_t i = 0; i < pixelLuminance.size(); ++i) {
     if (pixelLuminance[i] > turningPoint) {
-      pattern.setNeuron(
-          static_cast<unsigned>(i), -1); // per le reti è meglio (non chiedetemi perchè) avere 1 nero,
-                  // tipo riconosce i bordi come attivo e sfondo spento
+      pattern.setNeuron(static_cast<unsigned>(i), -1);
     } else {
       pattern.setNeuron(static_cast<unsigned>(i), 1);
     }

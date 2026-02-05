@@ -50,21 +50,20 @@ const std::vector<int>& Pattern::getData() const
 
 void Pattern::addNoise(float noisePerc)
 {
-  // CONTROLLO INPUT: La percentuale deve essere tra 0.0 (0%) e 1.0 (100%)
+  
   if (noisePerc < 0.0f || noisePerc > 1.0f) {
     throw std::invalid_argument(
         "Errore: la percentuale di rumore deve essere compresa tra 0 e 100"); // potremmo mettere un catch??
   }
 
-  static std::random_device rd;  // Chiede al sistema operativo un seme casuale vero (entropia)
-  static std::mt19937 gen(rd()); // Inizializza il Mersenne Twister col seme
-  // grazie a static tipo rimangono inizializzate boh
+  static std::random_device rd;  
+  static std::mt19937 gen(rd()); 
+  
 
-  std::uniform_real_distribution<float> dis(0.0f, 1.0f); // numero reale tra 0 e 1
-
+  std::uniform_real_distribution<float> dis(0.0f, 1.0f); 
   for (int& neuron : neurons_) {
         if (dis(gen) < noisePerc) {
-            neuron = -neuron; // Flip
+            neuron = -neuron; 
         }
       }
   /*
