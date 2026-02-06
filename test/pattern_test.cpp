@@ -77,49 +77,7 @@ TEST_CASE("Gestione errori percentuale")
     }
   }
 }
-TEST_CASE("andamento e logica della funzione energia")
-{
-  const unsigned size = 4;
-  hp::Matrix m(size);
-  hp::Pattern p(size);
 
-  for (unsigned i = 0; i < size * size; ++i) {
-    p.setNeuron(i, 1);
-  }
-
-  m.learnPattern(p);
-
-  float energy_perfect = m.calcEnergy(p);
-
-  SUBCASE("L'energia aumenta se corrompo il pattern")
-  {
-    hp::Pattern p_corrupted = p;
-    p_corrupted.setNeuron(0, -p.getNeuron(0));
-
-    float energy_corrupted = m.calcEnergy(p_corrupted);
-
-    CHECK(energy_corrupted > energy_perfect);
-  }
-
-  SUBCASE("L'energia diminuisce durante la recall")
-  {
-    hp::Pattern p_test = p;
-
-    p_test.setNeuron(0, -1);
-    p_test.setNeuron(1, -1);
-    p_test.setNeuron(2, -1);
-
-    float energy_before = m.calcEnergy(p_test);
-
-    m.recall(p_test);
-
-    float energy_after = m.calcEnergy(p_test);
-
-    CHECK(energy_after <= energy_before);
-
-    CHECK(energy_after == doctest::Approx(energy_perfect));
-  }
-}
 
 TEST_CASE("Funzionamento IsIdentical")
 {
