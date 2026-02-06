@@ -159,7 +159,7 @@ std::vector<float> Matrix::recall(Pattern& pattern)
   static std::uniform_real_distribution<float> dis(0.0f, 1.0f);
   std::uniform_int_distribution<int> randNeuron(0, numNeurons_ - 1);
   std::vector<int> neuronIndices(numNeurons_);
-  std::iota(neuronIndices.begin(), neuronIndices.end(), 0); // ri
+  std::iota(neuronIndices.begin(), neuronIndices.end(), 0);
 
   while (currentRun <= maxRuns) {
     unsigned int changesThisRun = 0;
@@ -169,15 +169,10 @@ std::vector<float> Matrix::recall(Pattern& pattern)
     }
 
     for (int i : neuronIndices) {
-      /*unsigned int i;
-      if (!doAnnealing) {
-        i = k;
-      } else {
-        i = randNeuron(gen);
-      }*/
       float localField = 0.0f;
       for (unsigned j = 0; j < numNeurons_; j++) {
-        localField += getWeight(i, j) * static_cast<float>(pattern.getNeuron(j));
+        localField +=
+            getWeight(i, j) * static_cast<float>(pattern.getNeuron(j));
       }
 
       double deEnergy = 2.0 * localField * pattern.getNeuron(i);
@@ -194,16 +189,14 @@ std::vector<float> Matrix::recall(Pattern& pattern)
         changesThisRun++;
       }
     }
-    std::cout << "Debug: Change, temp, energy:  " << changesThisRun << ", "
-              << temp << ", " << currentEnergy << '\n';
+    std::cout << "Neurons changed: " << changesThisRun << ", Temp: " << temp
+              << ", Energy: " << currentEnergy << '\n';
     energyHistory.push_back(currentEnergy);
 
     if (doAnnealing) {
       temp *= alpha;
       if (temp < minTemp) {
         doAnnealing = false;
-        std::cout << "DEBUG: Time for the classics. Run: "
-                  << energyHistory.size() << '\n';
       }
     } else if (changesThisRun == 0) {
       break;
