@@ -1,7 +1,7 @@
 #include "rete_neurale/acquisition.hpp"
 #include "rete_neurale/matrix.hpp"
 #include "rete_neurale/pattern.hpp"
-#include "rete_neurale/interfacciaUtente.hpp"
+#include "rete_neurale/userInterface.hpp"
 #include <cassert>
 
 

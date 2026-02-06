@@ -29,7 +29,7 @@ set(RETE_SOURCES
     rete_neurale/pattern.cpp 
     rete_neurale/matrix.cpp 
     rete_neurale/acquisition.cpp
-    rete_neurale/interfacciaUtente.cpp
+    rete_neurale/userInterface.cpp
 )
 
 add_executable(ReteNeurale main.cpp ${RETE_SOURCES})
