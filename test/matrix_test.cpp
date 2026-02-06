@@ -9,7 +9,6 @@ TEST_CASE("Matrix - Funzionamento Base")
 
   SUBCASE("Inizializzazione a zero")
   {
-    
     for (unsigned i = 0; i < size * size; ++i) {
       for (unsigned j = 0; j < size * size; ++j) {
         CHECK(m.getWeight(i, j) == doctest::Approx(0.0f));
@@ -27,7 +26,7 @@ TEST_CASE("Matrix - Funzionamento Base")
 
 TEST_CASE("Proprietà matrice dei pesi")
 {
-  const unsigned int size = 4; 
+  const unsigned int size = 4;
   hp::Matrix m(size);
   hp::Pattern p(size);
   for (unsigned i = 0; i < size; i++) {
@@ -38,8 +37,7 @@ TEST_CASE("Proprietà matrice dei pesi")
   SUBCASE("diagonale nulla")
   {
     for (unsigned i = 0; i < size; i++) {
-      CHECK(m.getWeight(i, i)
-            == doctest::Approx(0.0f)); 
+      CHECK(m.getWeight(i, i) == doctest::Approx(0.0f));
     }
   }
 
@@ -55,7 +53,7 @@ TEST_CASE("Proprietà matrice dei pesi")
 
 TEST_CASE("accumulo di due pattern")
 {
-  const unsigned int size = 4; 
+  const unsigned int size = 4;
   hp::Matrix m(size);
   hp::Pattern p1(size);
   hp::Pattern p2(size);
@@ -92,15 +90,13 @@ TEST_CASE("accumulo di due pattern")
 }
 TEST_CASE("Gestione errori dimensioni")
 {
-  hp::Matrix m(4);            
-  hp::Pattern p_sbagliato(3); 
+  hp::Matrix m(4);
+  hp::Pattern p_sbagliato(3);
 
-  
   CHECK_THROWS_AS(m.learnPattern(p_sbagliato), std::runtime_error);
 }
 TEST_CASE("Costruttore con size zero")
 {
-  
   CHECK_THROWS(hp::Matrix(0));
 }
 

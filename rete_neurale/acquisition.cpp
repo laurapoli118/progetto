@@ -98,13 +98,12 @@ bool loadFromImage(const std::string& filename, Pattern& pattern)
       sf::Color c = image.getPixel(x, y);
       int lum     = static_cast<int>(
           0.299 * c.r + 0.587 * c.g
-          + 0.114 * c.b); // sono le proporzioni di importanza per l'occhio
-                              // del rosso, giallo e blu
+          + 0.114 * c.b); // sono le proporzioni di importanza per l'occhio del
+                              // rosso, giallo e blu
       pixelLuminance.push_back(lum);
       luminositySum += lum;
     }
   }
-
   int turningPoint = static_cast<int>(0.8 * static_cast<double>(luminositySum)
                                       / static_cast<double>(numNeurons));
   for (size_t i = 0; i < pixelLuminance.size(); ++i) {
@@ -114,8 +113,7 @@ bool loadFromImage(const std::string& filename, Pattern& pattern)
       pattern.setNeuron(static_cast<unsigned>(i), 1);
     }
   }
-
   return true;
 }
 
-} 
+} // namespace hp

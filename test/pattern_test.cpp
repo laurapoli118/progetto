@@ -2,6 +2,7 @@
 #include "matrix.hpp"
 #include "pattern.hpp"
 #include <stdexcept>
+
 TEST_CASE("Pattern - Funzionamento Base")
 {
   SUBCASE("Inizializzazione corretta")
@@ -78,12 +79,11 @@ TEST_CASE("Gestione errori percentuale")
   }
 }
 
-
 TEST_CASE("Funzionamento IsIdentical")
 {
   hp::Pattern p1(2);
   hp::Pattern p2(2);
-  
+
   SUBCASE("Pattern Vuoti sono Identici")
   {
     CHECK(p1.isIdentical(p2) == true);

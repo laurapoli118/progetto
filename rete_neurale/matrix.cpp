@@ -48,7 +48,7 @@ float Matrix::calcEnergy(const Pattern& pattern) const
   return energy;
 }
 
-void Matrix::learnPattern(const Pattern& pattern)
+bool Matrix::learnPattern(const Pattern& pattern)
 {
   if (pattern.getNumNeurons() != numNeurons_) {
     throw std::runtime_error(
@@ -59,7 +59,7 @@ void Matrix::learnPattern(const Pattern& pattern)
   for (const auto& memory : storedPatterns_) {
     if (pattern.isIdentical(memory)) {
       std::cout << "Image already learnt!\n";
-      return;
+      return false;
     }
   }
 
@@ -76,7 +76,9 @@ void Matrix::learnPattern(const Pattern& pattern)
       }
     }
   }
+  return true;
 }
+
 /*
 void Matrix::recall(Pattern& pattern)
 {
@@ -147,8 +149,8 @@ std::vector<float> Matrix::recall(Pattern& pattern)
   unsigned int maxRuns    = 1000;
   unsigned int currentRun = 1;
   float temp              = 0.2f;
-  float minTemp           = 0.03f;
-  float alpha             = 0.98f;
+  float minTemp           = 0.05f;
+  float alpha             = 0.96f;
 
   bool doAnnealing = true;
 
@@ -173,10 +175,9 @@ std::vector<float> Matrix::recall(Pattern& pattern)
       } else {
         i = randNeuron(gen);
       }*/
-
       float localField = 0.0f;
       for (unsigned j = 0; j < numNeurons_; j++) {
-        localField += weights_[i][j] * static_cast<float>(pattern.getNeuron(j));
+        localField += getWeight(i, j) * static_cast<float>(pattern.getNeuron(j));
       }
 
       double deEnergy = 2.0 * localField * pattern.getNeuron(i);
@@ -209,10 +210,7 @@ std::vector<float> Matrix::recall(Pattern& pattern)
     }
     currentRun++;
   }
-  /* for (unsigned i=0; i<energies.size(); i++){
-    std::cout << "step"<< i <<":"<<energies[i]<< std::endl;
-  } */
-
   return energyHistory;
 }
-} 
+
+} // namespace hp

@@ -9,7 +9,9 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
-namespace hp{
+
+namespace hp {
+
 Pattern::Pattern(int size)
     : size_(size)
     , numNeurons_(size * size)
@@ -21,7 +23,6 @@ Pattern::Pattern(int size)
 
 void Pattern::setNeuron(unsigned index, int value)
 {
-  // FUNZIONE SETTER
   assert(index <= numNeurons_ && "Error: can't set an inexisting nueron.");
   neurons_[index] = value;
 }
@@ -30,8 +31,6 @@ int Pattern::getNeuron(unsigned index) const
 {
   return neurons_[index];
 }
-
-// FUNZIONI GETTERS
 
 unsigned Pattern::getSize() const
 {
@@ -50,22 +49,19 @@ const std::vector<int>& Pattern::getData() const
 
 void Pattern::addNoise(float noisePerc)
 {
-  
   if (noisePerc < 0.0f || noisePerc > 1.0f) {
     throw std::invalid_argument(
-        "Errore: la percentuale di rumore deve essere compresa tra 0 e 100"); // potremmo mettere un catch??
+        "Errore: la percentuale di rumore deve essere compresa tra 0 e 100");
   }
+  static std::random_device rd;
+  static std::mt19937 gen(rd());
+  std::uniform_real_distribution<float> dis(0.0f, 1.0f);
 
-  static std::random_device rd;  
-  static std::mt19937 gen(rd()); 
-  
-
-  std::uniform_real_distribution<float> dis(0.0f, 1.0f); 
   for (int& neuron : neurons_) {
-        if (dis(gen) < noisePerc) {
-            neuron = -neuron; 
-        }
-      }
+    if (dis(gen) < noisePerc) {
+      neuron = -neuron;
+    }
+  }
   /*
   std::transform(
       neurons_.begin(), neurons_.end(), neurons_.begin(),
@@ -78,23 +74,24 @@ void Pattern::addNoise(float noisePerc)
         } else {
           return currentNeuron;
         }
-
       }); */
 }
 
-bool Pattern::isIdentical(const Pattern& current) const {
+bool Pattern::isIdentical(const Pattern& current) const
+{
   assert(getNumNeurons() == current.getNumNeurons()
          && "Error: Patterns must have the same number of neurons to compare.");
 
   const std::vector<int>& otherData = current.getData();
   if (neurons_ == otherData) {
-        return true;
-    }
+    return true;
+  }
 
-  bool isInverted = std::equal(neurons_.begin(), neurons_.end(), otherData.begin(), [](int a, int b) {
-    return a == -b; 
-    });
+  bool isInverted =
+      std::equal(neurons_.begin(), neurons_.end(), otherData.begin(),
+                 [](int a, int b) { return a == -b; });
 
   return isInverted;
 }
-}
+
+} // namespace hp

@@ -15,7 +15,7 @@ class Matrix
   Matrix(unsigned size);
   float getWeight(unsigned i, unsigned j) const;
   void setWeight(unsigned i, unsigned j, float weight);
-  void learnPattern(const Pattern& pattern);
+  bool learnPattern(const Pattern& pattern);
   std::vector<float> recall(Pattern& pattern);
   float calcEnergy(const Pattern& pattern) const;
 };

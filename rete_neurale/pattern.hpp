@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+
 namespace hp {
 class Pattern
 {
@@ -15,21 +16,14 @@ class Pattern
 
  public:
   Pattern(int size);
-
   void setNeuron(unsigned index, int value);
-
   int getNeuron(unsigned index) const;
-
   unsigned getSize() const;
-
   unsigned getNumNeurons() const;
-
   const std::vector<int>& getData() const;
-
   void addNoise(float noisePerc);
-
   bool isIdentical(const Pattern& current) const;
 };
-} 
+} // namespace hp
 
 #endif
