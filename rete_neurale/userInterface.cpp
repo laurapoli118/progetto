@@ -23,9 +23,10 @@ void TrainingPhase(Matrix& matrix, unsigned lato)
       std::cout << "R2D2\nVader\nGrogu\nTrooper\nYoda\nBobaFett\n";
       ;
     } else if (loadFromImage(imgName, p)) {
-      display(lato, p.getData());
-      std::cout << "Got it, teaching the network.\n";
       if (matrix.learnPattern(p)) {
+        display(lato, p.getData());
+        std::cout << "Got it, teaching the network.\n";
+
         imgsGotten++;
       }
     }

@@ -65,7 +65,7 @@ bool Matrix::learnPattern(const Pattern& pattern)
 
   storedPatterns_.push_back(pattern);
 
-  float normFactor = 1.0f / static_cast<float>(numNeurons_);
+  /* float normFactor = 1.0f / static_cast<float>(numNeurons_);
   for (unsigned i = 0; i < numNeurons_; ++i) {
     for (unsigned j = 0; j < numNeurons_; ++j) {
       if (i != j) {
@@ -76,6 +76,52 @@ bool Matrix::learnPattern(const Pattern& pattern)
       }
     }
   }
+  return true; */
+
+  // --- INIZIO ALGORITMO DI STORKEY ---
+
+  // PASSO A: Calcolo il "Campo Locale" (h)
+  // Misuriamo quanto i ricordi vecchi "interferiscono" con il pattern nuovo.
+  // Se è la prima immagine, i pesi sono 0, quindi h sarà tutto 0 (diventa Hebb puro).
+  std::vector<float> h(numNeurons_, 0.0f);
+  
+  for (unsigned i = 0; i < numNeurons_; ++i) {
+      for (unsigned j = 0; j < numNeurons_; ++j) {
+          if (i != j) {
+             // h[i] += peso_esistente * valore_nuovo_pixel
+             h[i] += weights_[i][j] * static_cast<float>(pattern.getNeuron(j));
+          }
+      }
+  }
+
+  // PASSO B: Aggiornamento dei Pesi con la correzione
+  // Formula: DeltaW_ij = (1/N) * [ xi*xj  -  (1/N)*(xi*h_j + h_i*xj) ]
+  //                       ^Hebb     ^Correzione Storkey
+  
+  float n = static_cast<float>(numNeurons_); // N
+  float invN = 1.0f / n;                     // 1/N
+
+  for (unsigned i = 0; i < numNeurons_; ++i) {
+    for (unsigned j = 0; j < numNeurons_; ++j) {
+      if (i != j) {
+        float p_i = static_cast<float>(pattern.getNeuron(i));
+        float p_j = static_cast<float>(pattern.getNeuron(j));
+
+        // 1. Parte Hebbiana classica (Attrazione)
+        float hebbTerm = p_i * p_j;
+
+        // 2. Parte Storkey (Correzione dell'interferenza)
+        // Sottrae l'influenza del campo locale
+        float correctionTerm = (p_i * h[j] + h[i] * p_j) * invN;
+
+        // 3. Calcolo finale del peso da aggiungere
+        float deltaWeight = (hebbTerm - correctionTerm) * invN;
+
+        weights_[i][j] += deltaWeight;
+      }
+    }
+  }
+
   return true;
 }
 
