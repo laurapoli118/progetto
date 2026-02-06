@@ -20,13 +20,14 @@ void TrainingPhase(Matrix& matrix, unsigned lato)
     Pattern p(lato);
 
     if (imgName == "list") {
-      std::cout << " R2D2 \n Vader\n Grogu\n Trooper\n Yoda\n BobaFett\n";
+      std::cout << "R2D2\nVader\nGrogu\nTrooper\nYoda\nBobaFett\n";
       ;
     } else if (loadFromImage(imgName, p)) {
       display(lato, p.getData());
       std::cout << "Got it, teaching the network.\n";
-      matrix.learnPattern(p);
-      imgsGotten++;
+      if (matrix.learnPattern(p)) {
+        imgsGotten++;
+      }
     }
   }
   assert(imgsGotten > 0 && "Err: no images learnt.");
