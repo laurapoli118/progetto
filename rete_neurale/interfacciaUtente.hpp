@@ -5,6 +5,6 @@
 
 namespace hp {
 
-void hp::TrainingPhase();
-void hp::RecallPhase(hp::Matrix& matrix, unsigned lato);
+void TrainingPhase(hp::Matrix& matrix, unsigned lato);
+void RecallPhase(hp::Matrix& matrix, unsigned lato);
 }
