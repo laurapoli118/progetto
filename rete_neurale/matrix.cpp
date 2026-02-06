@@ -189,7 +189,7 @@ std::vector<float> Matrix::recall(Pattern& pattern)
         changesThisRun++;
       }
     }
-    std::cout << "Neurons changed: " << changesThisRun << ", Temp: " << temp
+    std::cout << "Run: " << currentRun << ", Neurons changed: " << changesThisRun << ", Temp: " << temp
               << ", Energy: " << currentEnergy << '\n';
     energyHistory.push_back(currentEnergy);
 
