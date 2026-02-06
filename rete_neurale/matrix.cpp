@@ -224,6 +224,7 @@ std::vector<float> Matrix::recall(Pattern& pattern)
       }
 
       double deEnergy = 2.0 * localField * pattern.getNeuron(i);
+
       bool doFlip     = false;
 
       if (deEnergy < 0) {
