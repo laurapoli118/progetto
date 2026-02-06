@@ -5,42 +5,7 @@
 
 int main()
 {
-  std::cout << "Hopfield Network Creation.\n";
-  std::srand(static_cast<unsigned>(std::time(nullptr)));
-  std::cout << "Insert the number of pixels on the side of the image you want to use (32~128): ";
-  unsigned lato{};
-  std::cin >> lato;
-  assert(32 <= lato && lato <= 128 && "Image size is too low or too high."); // REGA QUI GEMINI CONSIGLIA ANCORA DI NON USARE ASSERT PER GLI USER MISTAKES
-  hp::Matrix matrix(lato);
-  unsigned int imgsGotten = 0;
-  while (true) {
-    std::cout << "[" << imgsGotten + 1 << "] Insert the name of a png file (\'list\' to see the names) or write \'stop\': ";
-    std::string imgName;
-    std::cin >> imgName;
-    if (imgName == "stop") {
-      break;
-    }
-    hp::Pattern p(lato);
-    if (imgName == "all") {
-      std::string images[] = {"Mario", "Luigi", "Bowser", "Toad"};
-      for (int i = 0; i < 4; i++) {
-        hp::loadFromImage(images[i], p);
-        matrix.learnPattern(p);
-        imgsGotten++;
-      }
-      break;
-    }
-    if (imgName == "list") {
-      std::cout << "..." ;
-    } else if (hp::loadFromImage(imgName, p)) {
-      hp::display(lato, p.getData());
-      std::cout << "Got it, teaching the network.\n";
-      matrix.learnPattern(p);
-      imgsGotten++;
-    }
-  }
-  assert(imgsGotten > 0 && "Err: no images learnt.");
-  std::cout << "Training phase completed.\n";
+  
   while (true) {
     std::cout
         << "Insert the name of image you want to corrupt or write \'stop\' : ";
@@ -56,11 +21,11 @@ int main()
       float noiseLevel;
       std::cin >> noiseLevel;
       assert(noiseLevel >= 0 && noiseLevel <= 100
-             && "Err: NoiseLevel must be between 0 and 100."); // STESSA COSA DI SOPRA PER ASSERT (throw?)
+             && "Err: NoiseLevel must be between 0 and 100."); 
       
 
       std::cout << "Got it, adding " << (noiseLevel) << "% of noise.\n";
-      dirty = current; // invece che rifargli caricare la funzione glielo copio da current
+      dirty = current; 
       dirty.addNoise(noiseLevel / 100);
       hp::display(lato, dirty.getData());
       std::cout << "Starting the recall.\n";
