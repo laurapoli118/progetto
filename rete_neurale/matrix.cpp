@@ -161,7 +161,7 @@ std::vector<float> Matrix::recall(Pattern& pattern)
   std::vector<int> neuronIndices(numNeurons_);
   std::iota(neuronIndices.begin(), neuronIndices.end(), 0);
 
-  std::cout << "Run: 0, Energy: " << currentEnergy;
+  std::cout << "Run: 0, Energy: " << currentEnergy << '\n';
 
   while (currentRun <= maxRuns) {
     unsigned int changesThisRun = 0;
