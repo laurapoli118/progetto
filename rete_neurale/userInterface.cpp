@@ -76,4 +76,5 @@ void RecallPhase(Matrix& matrix, unsigned side)
     }
   }
 }
+
 } // namespace hp

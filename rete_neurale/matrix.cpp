@@ -7,16 +7,16 @@
 #include <random>
 #include <stdexcept>
 #include <vector>
+
 namespace hp {
+
 Matrix::Matrix(unsigned size)
 {
   if (size == 0) {
     throw std::invalid_argument(
         "Errore: la dimensione della matrice non può essere zero!");
   }
-
   numNeurons_ = size * size;
-
   weights_.resize(numNeurons_, std::vector<float>(numNeurons_, 0.0f));
 }
 

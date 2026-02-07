@@ -4,7 +4,6 @@
 #include "rete_neurale/userInterface.hpp"
 #include <cassert>
 
-
 int main() {
 
   std::cout << "Hopfield Network Creation.\n";
