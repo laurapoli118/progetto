@@ -16,37 +16,39 @@ sf::Image resize(const sf::Image& original, unsigned size)
   {
     if (original.getSize().x == size && original.getSize().y == size) {
       return original;
-    } // controllo se va già bene
+    }
 
-    sf::Image risized; // creo una tela delle dimensioni che vogliamo
-    risized.create(size, size, sf::Color::Black);
+    sf::Image resized; // creo una tela delle dimensioni che vogliamo
+    resized.create(size, size, sf::Color::Black);
 
-    sf::Vector2u orgSize = original.getSize();
+    sf::Vector2u orgSize =
+        original.getSize(); // Vector2u è una struct con due coordinate x e y
+                            // che devono essere unsigned int
 
     for (unsigned y = 0; y < size; ++y) {
       for (unsigned x = 0; x < size; ++x) {
         unsigned orgX = x * orgSize.x / size;
         unsigned orgY = y * orgSize.y / size;
-        risized.setPixel(x, y, original.getPixel(orgX, orgY));
+        resized.setPixel(x, y, original.getPixel(orgX, orgY));
       }
     }
-    return risized;
+    return resized;
   }
 }
 
-void display(unsigned size, const std::vector<int>& data)
+void display(const Pattern& pattern)
 {
-  unsigned numNeurons = size * size;
+  unsigned size       = pattern.getSize();
+  unsigned numNeurons = pattern.getNumNeurons();
   sf::Image visibleImage;
   visibleImage.create(size, size); // trasforma il vettore in un'immagine
 
   for (unsigned int i = 0; i < numNeurons; i++) {
-    unsigned int x = i % size;
+    unsigned int x = i % size; // calcola la coordinata x e y del pixel
+                               // corrispondente al neurone i
     unsigned int y = i / size;
-    if (data[i] == 1) {
-      visibleImage.setPixel(
-          x, y,
-          sf::Color::Black); // li giro di nuovo così vengono i colori sensati
+    if (pattern.getNeuron(i) == 1) {
+      visibleImage.setPixel(x, y, sf::Color::Black);
     } else {
       visibleImage.setPixel(x, y, sf::Color::White);
     }

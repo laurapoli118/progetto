@@ -10,7 +10,7 @@ namespace hp {
 
 sf::Image resize(const sf::Image& originale, unsigned size);
 bool loadFromImage(const std::string& filename, hp::Pattern& pattern);
-void display(unsigned size, const std::vector<int>& data);
+void display(const Pattern& pattern);
 
 } // namespace hp
 

@@ -5,7 +5,8 @@
 #include <cassert>
 
 namespace hp {
-void TrainingPhase(Matrix& matrix, unsigned lato)
+
+void TrainingPhase(Matrix& matrix, unsigned side)
 {
   unsigned int imgsGotten = 0;
   while (true) {
@@ -17,16 +18,14 @@ void TrainingPhase(Matrix& matrix, unsigned lato)
     if (imgName == "stop") {
       break;
     }
-    Pattern p(lato);
+    Pattern p(side);
 
     if (imgName == "list") {
       std::cout << "R2D2\nVader\nGrogu\nTrooper\nYoda\nBobaFett\n";
-      ;
     } else if (loadFromImage(imgName, p)) {
       if (matrix.learnPattern(p)) {
-        display(lato, p.getData());
+        display(p);
         std::cout << "Got it, teaching the network.\n";
-
         imgsGotten++;
       }
     }
@@ -35,7 +34,7 @@ void TrainingPhase(Matrix& matrix, unsigned lato)
   std::cout << "Training phase completed.\n";
 }
 
-void RecallPhase(Matrix& matrix, unsigned lato)
+void RecallPhase(Matrix& matrix, unsigned side)
 {
   while (true) {
     std::cout
@@ -45,8 +44,8 @@ void RecallPhase(Matrix& matrix, unsigned lato)
     if (testImgName == "stop") {
       break;
     }
-    hp::Pattern current(lato);
-    hp::Pattern dirty(lato);
+    hp::Pattern current(side);
+    hp::Pattern dirty(side);
     if (loadFromImage(testImgName, current)) {
       std::cout << "Insert the percentage you want to corrupt the image with: ";
       float noiseLevel;
@@ -57,7 +56,7 @@ void RecallPhase(Matrix& matrix, unsigned lato)
       std::cout << "Got it, adding " << (noiseLevel) << "% of noise.\n";
       dirty = current;
       dirty.addNoise(noiseLevel / 100);
-      display(lato, dirty.getData());
+      display(dirty);
       std::cout << "Starting the recall.\n";
       std::vector<float> energy = matrix.recall(dirty);
 
@@ -71,7 +70,7 @@ void RecallPhase(Matrix& matrix, unsigned lato)
                 << "\nFinal energy: " << energy.back()
                 << "\nTotal steps: " << energy.size() << '\n';
 
-      display(lato, dirty.getData());
+      display(dirty);
     } else {
       std::cout << "Err: couldn't see the image.";
     }

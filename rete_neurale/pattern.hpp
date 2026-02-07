@@ -15,7 +15,7 @@ class Pattern
   std::vector<int> neurons_;
 
  public:
-  Pattern(int size);
+  Pattern(unsigned size);
   void setNeuron(unsigned index, int value);
   int getNeuron(unsigned index) const;
   unsigned getSize() const;

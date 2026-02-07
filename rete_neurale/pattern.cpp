@@ -1,34 +1,31 @@
 #include "pattern.hpp"
 #include <algorithm>
 #include <cassert>
-#include <cmath>
-#include <cstdlib>
-#include <fstream>
-#include <iostream>
 #include <random>
 #include <stdexcept>
-#include <string>
 #include <vector>
 
 namespace hp {
 
-Pattern::Pattern(int size)
-    : size_(size)
-    , numNeurons_(size * size)
+Pattern::Pattern(unsigned size)
+
 {
-  assert(size > 0 && "Error: size must be greater than 0.");
-  neurons_.resize(numNeurons_, 0); // costruttore che inizializza il vettore con
-                                   // zeri, vedi giù per diff. resize e reserve
+  assert(size != 0 && "Error: size must be greater than 0.");
+  size_       = size;
+  numNeurons_ = size * size;
+
+  neurons_.resize(numNeurons_, 0);
 }
 
 void Pattern::setNeuron(unsigned index, int value)
 {
-  assert(index <= numNeurons_ && "Error: can't set an inexisting nueron.");
+  assert(index < numNeurons_ && "Error: can't set an inexisting nueron.");
   neurons_[index] = value;
 }
 
 int Pattern::getNeuron(unsigned index) const
 {
+  assert(index < numNeurons_ && "Error: can't get an inexisting nueron.");
   return neurons_[index];
 }
 
@@ -51,10 +48,10 @@ void Pattern::addNoise(float noisePerc)
 {
   if (noisePerc < 0.0f || noisePerc > 1.0f) {
     throw std::invalid_argument(
-        "Errore: la percentuale di rumore deve essere compresa tra 0 e 100");
+        "Error: noise percentage must be between 0 and 1.");
   }
-  static std::random_device rd;
-  static std::mt19937 gen(rd());
+  static std::random_device rd;   // per ottenere un seed casuale
+  static std::mt19937 gen(rd());   // motore algoritmico
   std::uniform_real_distribution<float> dis(0.0f, 1.0f);
 
   for (int& neuron : neurons_) {
@@ -62,19 +59,6 @@ void Pattern::addNoise(float noisePerc)
       neuron = -neuron;
     }
   }
-  /*
-  std::transform(
-      neurons_.begin(), neurons_.end(), neurons_.begin(),
-      [=](int currentNeuron) { // std::transform prende: Inizio, Fine, Dove
-                               // Scrivere, La Funzione da applicare
-        float random =
-            static_cast<float>(std::rand()) / static_cast<float>(RAND_MAX);
-        if (random < noisePerc) {
-          return -currentNeuron;
-        } else {
-          return currentNeuron;
-        }
-      }); */
 }
 
 bool Pattern::isIdentical(const Pattern& current) const
@@ -82,13 +66,13 @@ bool Pattern::isIdentical(const Pattern& current) const
   assert(getNumNeurons() == current.getNumNeurons()
          && "Error: Patterns must have the same number of neurons to compare.");
 
-  const std::vector<int>& otherData = current.getData();
-  if (neurons_ == otherData) {
+  const std::vector<int>& currentData = current.getData();
+  if (neurons_ == currentData) {
     return true;
   }
 
   bool isInverted =
-      std::equal(neurons_.begin(), neurons_.end(), otherData.begin(),
+      std::equal(neurons_.begin(), neurons_.end(), currentData.begin(),  //equal(partenza, fine, dove opera, funzione che dice se sono uguali)
                  [](int a, int b) { return a == -b; });
 
   return isInverted;

@@ -3,12 +3,9 @@
 #include <algorithm>
 #include <cassert>
 #include <cmath>
-#include <cstdlib>
-#include <fstream>
 #include <iostream>
 #include <random>
 #include <stdexcept>
-#include <string>
 #include <vector>
 namespace hp {
 Matrix::Matrix(unsigned size)
@@ -25,13 +22,15 @@ Matrix::Matrix(unsigned size)
 
 float Matrix::getWeight(unsigned i, unsigned j) const
 {
-  assert(i < numNeurons_ && j < numNeurons_);
+  assert(i < numNeurons_ && j < numNeurons_
+         && "Error: can't get weight for non existing neurons.");
   return weights_[i][j];
 }
 
 void Matrix::setWeight(unsigned i, unsigned j, float weight)
 {
-  assert(i < numNeurons_ && j < numNeurons_);
+  assert(i < numNeurons_ && j < numNeurons_
+         && "Error: can't set weight for non existing neurons.");
   weights_[i][j] = weight;
 }
 
@@ -51,12 +50,11 @@ float Matrix::calcEnergy(const Pattern& pattern) const
 bool Matrix::learnPattern(const Pattern& pattern)
 {
   if (pattern.getNumNeurons() != numNeurons_) {
-    throw std::runtime_error(
-        "Errore: La dimensione del pattern non corrisponde con la dimensione "
-        "del lato della matrice!");
+    throw std::runtime_error("Error: can't learn a pattern with a different "
+                             "number of neurons than the matrix.");
   }
 
-  for (const auto& memory : storedPatterns_) {
+  for (const Pattern& memory : storedPatterns_) {
     if (pattern.isIdentical(memory)) {
       std::cout << "Image already learnt!\n";
       return false;
@@ -65,63 +63,16 @@ bool Matrix::learnPattern(const Pattern& pattern)
 
   storedPatterns_.push_back(pattern);
 
-  /* float normFactor = 1.0f / static_cast<float>(numNeurons_);
   for (unsigned i = 0; i < numNeurons_; ++i) {
     for (unsigned j = 0; j < numNeurons_; ++j) {
       if (i != j) {
         float coeffWeight = static_cast<float>(pattern.getNeuron(i))
                           * static_cast<float>(pattern.getNeuron(j))
-                          * normFactor;
+                          / static_cast<float>(numNeurons_);
         weights_[i][j] += coeffWeight;
       }
     }
   }
-  return true; */
-
-  // --- INIZIO ALGORITMO DI STORKEY ---
-
-  // PASSO A: Calcolo il "Campo Locale" (h)
-  // Misuriamo quanto i ricordi vecchi "interferiscono" con il pattern nuovo.
-  // Se è la prima immagine, i pesi sono 0, quindi h sarà tutto 0 (diventa Hebb puro).
-  std::vector<float> h(numNeurons_, 0.0f);
-  
-  for (unsigned i = 0; i < numNeurons_; ++i) {
-      for (unsigned j = 0; j < numNeurons_; ++j) {
-          if (i != j) {
-             // h[i] += peso_esistente * valore_nuovo_pixel
-             h[i] += weights_[i][j] * static_cast<float>(pattern.getNeuron(j));
-          }
-      }
-  }
-
-  // PASSO B: Aggiornamento dei Pesi con la correzione
-  // Formula: DeltaW_ij = (1/N) * [ xi*xj  -  (1/N)*(xi*h_j + h_i*xj) ]
-  //                       ^Hebb     ^Correzione Storkey
-  
-  float n = static_cast<float>(numNeurons_); // N
-  float invN = 1.0f / n;                     // 1/N
-
-  for (unsigned i = 0; i < numNeurons_; ++i) {
-    for (unsigned j = 0; j < numNeurons_; ++j) {
-      if (i != j) {
-        float p_i = static_cast<float>(pattern.getNeuron(i));
-        float p_j = static_cast<float>(pattern.getNeuron(j));
-
-        // 1. Parte Hebbiana classica (Attrazione)
-        float hebbTerm = p_i * p_j;
-
-        // 2. Parte Storkey (Correzione dell'interferenza)
-        // Sottrae l'influenza del campo locale
-        float correctionTerm = (p_i * h[j] + h[i] * p_j) * invN;
-
-        // 3. Calcolo finale del peso da aggiungere
-        float deltaWeight = (hebbTerm - correctionTerm) * invN;
-
-        weights_[i][j] += deltaWeight;
-      }
-    }
-  }
-
   return true;
 }
 
@@ -132,15 +83,15 @@ void Matrix::recall(Pattern& pattern)
   unsigned int maxRuns    = 100;
   unsigned int currentRun = 1;
   std::vector<float> energies;
-  energies.push_back(calcEnergy(pattern)); // energia iniziale
+  energies.push_back(calcEnergy(pattern));
 
   while (!conv && currentRun <= maxRuns) {
     std::vector<int> currentPattern =
-        pattern.getData(); // nuovo vettore per verificare converga
+        pattern.getData();
     std::vector<int> newPattern =
-        currentPattern;     // HO MESSO DOUBLE BUFFERING (due vettori) così che
-                            // durante un giro gli ultimi cambi non siano
-                            // influenzati dai primi
+        currentPattern;
+
+
     unsigned convCheck = 0; // variabile per verificare se per ogni i è uguale
 
     for (unsigned i = 0; i < numNeurons_; i++) {
@@ -162,7 +113,7 @@ void Matrix::recall(Pattern& pattern)
       pattern.setNeuron(k, newPattern[k]);
     }
 
-    energies.push_back(calcEnergy(pattern)); // energia ad ogni step
+    energies.push_back(calcEnergy(pattern)); 
 
     if (convCheck == 0) {
       conv = true;
@@ -183,9 +134,9 @@ std::vector<float> Matrix::recall(Pattern& pattern)
 {
   std::vector<float> energyHistory;
   float currentEnergy = calcEnergy(pattern);
-  energyHistory.push_back(currentEnergy); // energia iniziale
+  energyHistory.push_back(currentEnergy);
 
-  for (const auto& memory : storedPatterns_) {
+  for (const Pattern& memory : storedPatterns_) {
     if (pattern.isIdentical(memory)) {
       std::cout << "This image isn't corrupted!\n";
       return energyHistory;
@@ -205,7 +156,7 @@ std::vector<float> Matrix::recall(Pattern& pattern)
   static std::uniform_real_distribution<float> dis(0.0f, 1.0f);
   std::uniform_int_distribution<int> randNeuron(0, numNeurons_ - 1);
   std::vector<int> neuronIndices(numNeurons_);
-  std::iota(neuronIndices.begin(), neuronIndices.end(), 0);
+  std::iota(neuronIndices.begin(), neuronIndices.end(), 0);  // iota riempie con 0, 1, 2, ..., numNeurons_-1
 
   std::cout << "Run: 0, Energy: " << currentEnergy << '\n';
 
@@ -225,7 +176,7 @@ std::vector<float> Matrix::recall(Pattern& pattern)
 
       double deEnergy = 2.0 * localField * pattern.getNeuron(i);
 
-      bool doFlip     = false;
+      bool doFlip = false;
 
       if (deEnergy < 0) {
         doFlip = true;
@@ -238,7 +189,8 @@ std::vector<float> Matrix::recall(Pattern& pattern)
         changesThisRun++;
       }
     }
-    std::cout << "Run: " << currentRun << ", Neurons changed: " << changesThisRun << ", Temp: " << temp
+    std::cout << "Run: " << currentRun
+              << ", Neurons changed: " << changesThisRun << ", Temp: " << temp
               << ", Energy: " << currentEnergy << '\n';
     energyHistory.push_back(currentEnergy);
 
