@@ -19,7 +19,6 @@ void TrainingPhase(Matrix& matrix, unsigned side)
       break;
     }
     Pattern p(side);
-
     if (imgName == "list") {
       std::cout << "R2D2\nVader\nGrogu2\nTrooper\nYoda\nBobaFett\n";
     } else if (loadFromImage(imgName, p)) {
